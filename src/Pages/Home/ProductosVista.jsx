@@ -49,7 +49,7 @@ export default function ProductosVista() {
         <div className="productos-grid">
           {productos.map((producto) => (
             <div className="producto-item" key={producto.ID_Producto}>
-              <Link to={`/productos/${producto.ID_Producto}`} style={{textDecoration:'none'}}>
+              <Link to={`/ProductDet/${producto.ID_Producto}`} style={{textDecoration:'none'}}>
                 <img src={producto.Imagen_producto} alt={producto.Nombre_producto} className="producto-imagen" />
                 <h3 className='producto-nombre'>{producto.Nombre_producto}</h3>
                 <p className="producto-descripcion">{producto.Descripción_producto}</p>

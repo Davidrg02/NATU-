@@ -1,7 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Pages/Home/Home.jsx';
-import Product from './Pages/Product/Product.jsx';
+import Product from './Pages/Product/ProductDet.jsx';
+import ProductDet from './Pages/Product/ProductDet.jsx';
 import Register from './Pages/Register/Register.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Layout from './Pages/Layout/Layout.jsx';
@@ -19,7 +20,7 @@ function App() {
           <Route path="register" element={<Register/>} />
           <Route path="login" element={<Login/>} />
           <Route path="reset" element={<Reset/>} />
-          <Route path='productos/:id' element={<Product/>} />
+          <Route path="ProductDet/:id" element={<ProductDet/>} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -402,36 +402,7 @@
 .beneficios-boton:hover {
   background-color: #d7540b; /* Tono más oscuro al pasar el mouse */
 }
-/*
-@media (max-width: 768px) {
-  .beneficios-container {
-    width: 90%;
-  }
 
-  .beneficio-item {
-    width: 200px;
-    height: 200px;
-  }
-
-  /* Ajustes adicionales para móviles 
-  .beneficios-titulo {
-    font-size: 1.8rem;
-  }
-
-  .beneficio-item h3 {
-    font-size: 1.4rem;
-  }
-
-  .beneficio-item p {
-    font-size: 1.2rem;
-  }
-
-  .beneficios-boton {
-    width: 180px;
-    font-size: 1.2rem;
-  }
-}
-*/
 /* Ajustes adicionales para una mejor visualización en móviles */
 @media (max-width: 480px) {
   .beneficios-lista {
@@ -442,12 +413,12 @@
     margin: 0.5rem;
   }
 }
-/*Productos Vista V1*/
+/*-------------------------------Productos Vista V1----------------------------*/
 .productos-vista {
   margin: 2rem 0;
   background-color: #F5F5F5; /* Color de fondo */
   padding: 1rem;
-  border-radius: 10px; /* Bordes redondeados 
+  border-radius: 20px; /* Bordes redondeados 
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
@@ -507,7 +478,8 @@
   font-family: 'Lexend', sans-serif; 
   font-size: 1.1rem;
   font-weight: bold;
-  color: #EB6613; /* Color del precio */
+  color: #d7540b;
+ 
 }
 
 @media (min-width: 768px) {

@@ -1,92 +1,174 @@
+
+
 /* Estilos generales para el producto */
 .producto-detalle {
-    display: flex; /* Distribución horizontal con flexbox */
-    width: 800px; /* Ajusta el ancho según tus necesidades */
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+  display: flex; /* Distribución horizontal con flexbox */
+  max-width: 1000px;
+  width: 60%; /* Ancho relativo */
+  margin: 100px auto 150px; /* Margen vertical de 100px y centrado horizontal */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   
-  /* Estilos para la imagen del producto */
-  .producto-imagen {
-    width: 300px; /* Ajusta el ancho de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
-    margin-right: 20px; /* Margen derecho para separar de la información */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .producto-detalle {
+      flex-direction: column; /* Cambia la dirección del flexbox a vertical */
+      width: 90%; /* Ancho relativo */
+      margin-top: 50px; /* Reducción del margen superior */
   }
+}
+ /* Estilos para la imagen del producto */
+.producto-imagen-det {
+  width: 100%; /* Ajusta el ancho de la imagen */
+  max-width: 100%; /* Establece el ancho máximo para evitar desbordamientos */
+  margin: auto;/* Margen inferior para separar de la información */
+  align-items: center;
+  height: auto;
+}
+
+.producto-imagen-det img {
+  width: 100%; /* Imagen a lo ancho de la sección */
+  height: auto;  /* Mantiene la proporción de la imagen */
+  display: block; /* Elimina el espacio extra en la parte inferior */
+  border-radius: 10px;
+}
   
-  .producto-imagen img {
-    width: 100%; /* Imagen a lo ancho de la sección */
-    height: auto; /* Mantiene la proporción de la imagen */
-    object-fit: cover; /* Mantiene la proporción y cubre el contenedor */
+ /* Estilos para la información del producto */
+.producto-informacion-det {
+  width: calc(100% - 80px); /* Ancho relativo al contenedor principal */
+  margin-left: 20px; /* Margen izquierdo para separar de la imagen */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra difusa */
+  text-align: center;
+  align-items: center;
+  background-color: white;
+}
+
+
+@media (max-width: 768px) {
+  .producto-informacion-det {
+      width: calc(100% - 20px); /* Reducir el ancho en pantallas pequeñas */
+      margin-left: 0; /* Eliminar el margen izquierdo en pantallas pequeñas */
   }
-  
-  /* Estilos para la información del producto */
-  .producto-informacion {
-    width: calc(100% - 340px); /* Ancho relativo al contenedor principal */
-    margin-left: 20px; /* Margen izquierdo para separar de la imagen */
-  }
-  
+}
   /* Estilos para el nombre del producto */
-  .producto-nombre {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  .producto-nombre-det {
+  font-family: 'Lexend , sans-serif ' ;
+  font-size: clamp(2.5vw, 5vw, 1.5rem); 
+  font-weight: bold;
+  line-height: 1.1; 
+  color: #33784a;
+  margin-bottom: 10px;
+    
   }
   
   /* Estilos para la descripción del producto */
-  .producto-descripcion {
-    line-height: 1.6;
-    color: #666;
+  .producto-descripcion-det {
+  font-family: 'Montserrat', sans-serif; 
+  font-size: clamp(1.3vw, 2.8vw, 1rem); 
+  line-height: 1.5; 
+  color: #666;
   }
   
   /* Estilos para la sección de compra */
-  .producto-compra {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-  }
+.producto-compra-det {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.3vw, 2.8vw, 1rem);
+  color: #b35b5b;
+}
+.cantidad-det {
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: #33784a;
+}
+
+.producto-compra-det label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.producto-compra-det input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-align: center;
   
-  .producto-compra label {
-    display: block;
-    margin-bottom: 5px;
+}
+
+/* Estilos para el precio del producto */
+.producto-precio-det {
+  font-size: 150x;
+  font-weight: bold;
+  color: #EB6613; /* Rojo para el precio */
+  margin-top: 10px;
+}
+
+/* Estilos para el botón de agregar al carrito */
+.btn-carrito-det {
+  background-color: #33784a;
+  color: white;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(0.8rem, 1.2vw, 1.3rem);
+  margin: 10px auto; /* Agrupa los márgenes */
+  transition: background-color 0.3s;
+  margin: 5px auto;
+  margin-left: 15px;
+}
+
+
+.btn-seguir-det {
+  display: inline-block; /* Cambiado a inline-block para permitir el ajuste del ancho */
+  padding: 1.1vw 2.5vw; /* Ajusta el relleno del botón en función del tamaño de la pantalla */
+  border-radius: 2rem; /* Redondea los bordes del botón */
+  font-size: clamp(0.8rem, 1.2vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
+  font-weight: 500;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  background: #EB6613;
+  margin: 0 auto;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+
+  /* Animación al pasar el cursor */
+  animation: pulse 1s infinite alternate; 
+}
+
+/* Definición de la animación 'pulse' */
+@keyframes pulse {
+  from {
+    transform: scale(0.75); /* Escala normal */
   }
-  
-  .producto-compra input[type="number"] {
-    width: 80px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+  to {
+    transform: scale(0.8); /* Escala aumentada */
   }
-  
-  .producto-precio {
-    font-size: 20px;
-    font-weight: bold;
-    color: #f00; /* Rojo para el precio */
-    margin-top: 10px;
-  }
-  
-  .btn-carrito {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-carrito:hover {
-    background-color: #0056b3; /* Color más oscuro al pasar el cursor */
-  }
-  
-  .producto-imagen {
+}
+
+/* Cambio de color al pasar el cursor */
+.btn-seguir-det:hover {
+  background-color: #a7845f; /* Cambia el color de fondo al pasar el cursor */
+}
+
+.btn-carrito-det:hover {
+  background-color: #9e6523; /* Color más oscuro al pasar el cursor */
+}
+  .producto-imagen-det {
     animation: fadeInRight 1s ease-in-out 0.2s forwards;
   }
   
-  .producto-informacion {
+  .producto-informacion-det {
     animation: fadeInLeft 1s ease-in-out 0.4s forwards;
   }
   
@@ -115,18 +197,5 @@
   .btn-carrito:hover {
     background-color: #0056b3;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  @media (max-width: 768px) {
-    .producto-detalle {
-      flex-direction: column; /* Controles uno debajo del otro */
-    }
-    .producto-imagen {
-      width: 100%; /* Imagen completa en móviles */
-      margin-bottom: 20px;
-    }
-    .producto-informacion {
-      width: 100%; /* Información completa en móviles */
-    }
   }
   

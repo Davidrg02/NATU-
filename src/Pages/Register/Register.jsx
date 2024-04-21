@@ -19,6 +19,12 @@ export default function Register() {
             registerUser();
         }
     };
+    const headerStyles = {
+        fontWeight: 'bold',
+        backgroundColor: 'lightgray',
+        // Agrega otros estilos según sea necesario
+      };
+      
 
     const registerUser = () => {
         fetch('http://localhost:4000/api/compradores', {

@@ -3,8 +3,13 @@ import "./Reset.css"; // Importa los estilos CSS
 
 export default function Reset() {
     return (
-        <div id="Reset">
-            <form id="reset-form">
+        <div className='register-container' id='login'>
+            <div id="background">
+                    <div id="shape"></div>
+                    <div id="shape"></div>
+            </div>
+            <title>Reset | Natu</title>
+            <form id="login-form">
                 <div id="logo">
                     {/* Puedes agregar contenido aquí si es necesario */}
                 </div>
@@ -15,26 +20,27 @@ export default function Reset() {
 
 
 
-                <input
+                <button
                     type="button"
-                    id="btnReset"
-                    className="btnrst"
+                    id="btnLogin"
+                    className="btn-primary"
                     defaultValue="Reset password"
-                />
+                >Reset Password</button>
 
 
 
                 <button
                     type="button"
-                    id="btnReset"
-                    className="btnrst"
+                    id="btnLogin"
+                    className="btn-primary"
                     defaultValue="Regresar"
                     onClick={() => { window.location.href='login'; }}
-                />
-            </form>
+                >Regresar</button>
+            
             <a id="link2" href="register">
                 ¿Aun no estoy registrado?
             </a>
+            </form>
         </div>
     );
 }

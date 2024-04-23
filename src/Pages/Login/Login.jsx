@@ -49,18 +49,14 @@ export default function Login() {
 
 
     return (
-        <>
-            <div id="login">
-                {/*<div id="background">
+            <div className='register-container' id="login">
+                <div id="background">
                     <div id="shape"></div>
                     <div id="shape"></div>
-    </div>*/}
-                <div id="container"> {/* Agrega un contenedor de Bootstrap */}
-                        <div className=""> {/* Coloca el formulario en una columna centrada */}
+                </div>
+                <title>Login | Natu</title>
                             <form id="login-form">
-                                <div id="logo">
-                                    {/* <h1><a href="index.html">Gestore</a></h1> */}
-                                    {/* <a href="index.html"><img src="assets/img/logo.png" alt="" id="img-fluid"></a> */}
+                                <div id="logo">   
                                 </div>
                                 <img src="Natu_Logo_.png" id="img-centrada" />
                                 <label htmlFor="username">Correo de usuario</label>
@@ -95,9 +91,7 @@ export default function Login() {
                                     ¿Aun no estoy registrado?
                                 </a>
                             </form>
-                        </div>
-                </div>
             </div>
-        </>
     );
 }
+

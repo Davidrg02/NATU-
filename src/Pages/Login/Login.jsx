@@ -30,6 +30,14 @@ export default function Login() {
                 if (data.error) {
                     return alert("Inicio de sesión fallido");
                 } else {
+                    localStorage.setItem("token", data.body.token);
+                    localStorage.setItem("rol", data.body.rol);
+                    if (data.body.rol === "Vendedor") {
+                        localStorage.setItem("user", data.body.user[0].Nombres_vendedor);
+                    } else if (data.body.rol === "Comprador") {
+                        localStorage.setItem("user", data.body.user[0].Nombres_comprador);
+                    }
+
                     alert("¡Inicio de sesión exitoso!");
                     window.location.href = "/";
                 }
@@ -79,7 +87,6 @@ export default function Login() {
                                 <button
                                     type="button"
                                     id="btnLogin"
-                                    className="btn-primary"
                                     onClick={checkInputs}
                                 >
                                     Iniciar sesión

@@ -30,7 +30,7 @@ export default function ProductosVista() {
 
 
     const updateCatalog = () => {
-      fetch('http://localhost:4000/api/productoss', {
+      fetch('http://localhost:4000/api/productos', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -65,9 +65,9 @@ export default function ProductosVista() {
           {productos.map((producto) => (
             <div className="producto-item" key={producto.ID_Producto}>
               <Link to={`/ProductDet/${producto.ID_Producto}`} style={{textDecoration:'none'}}>
-                <img src={producto.Imagen_producto} alt={producto.Nombre_producto} className="producto-imagen" />
+                <img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} className="producto-imagen" />
                 <h3 className='producto-nombre'>{producto.Nombre_producto}</h3>
-                <p className="producto-descripcion">{producto.Descripción_producto}</p>
+                <p className="producto-descripcion">{producto.Descripcion_breve_producto}</p>
                 <span className="producto-precio">${producto.Precio_producto}</span>
               </Link>
             </div>

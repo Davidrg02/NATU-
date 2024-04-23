@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProductDet.css';
 import { BsCart4 } from "react-icons/bs";
 import { BsCartCheckFill } from "react-icons/bs";
@@ -12,48 +11,47 @@ export default function ProductDet() {
 
   const { id } = useParams();
 
-  // Datos de prueba del producto
-  const productos = [
-      {
-          ID_Producto: 1,
-          Nombre_producto: "Fresas Camarrosa x 500g",
-          Imagen_producto: "https://cdn.pixabay.com/photo/2016/04/15/08/04/strawberry-1330459_1280.jpg",
-          Descripción_producto: "Fresas frescas cultivadas en Chiquinquira, Boyacá",
-          Precio_producto: 5600,
-      },
-      {
-          ID_Producto: 2,
-          Nombre_producto: "Naranjas x 1000g",
-          Imagen_producto: "https://cdn.pixabay.com/photo/2023/08/16/10/09/oranges-8193789_1280.jpg",
-          Descripción_producto: "Naranjas dulces cultivadas en el Valle del Cauca",
-          Precio_producto: 1600,
-      },
-      {
-        ID_Producto: 3,
-        Nombre_producto: "Papa Pastusa x 1000g",
-        Imagen_producto: "https://cdn.pixabay.com/photo/2019/07/12/02/19/potatoes-4331742_1280.jpg",
-        Descripción_producto: "Papa pastusa de buena calidad cultivadas en el Popayán",
-        Precio_producto: 2600,
-    }
-  ];
-
   // Buscamos el producto correspondiente al ID
-  const producto = productos.find(producto => producto.ID_Producto === parseInt(id));
+  const [producto, setProducto] = useState(null);
+
+
+  // Conexion a la base de datos
+
+  const fetchProduct = () => {
+    fetch(`http://localhost:4000/api/productos/${id}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+          return console.error(data.error);
+        }
+        setProducto(data.body[0]);
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    });
+
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
 
   // Si no se encuentra el producto, se muestra un mensaje
   if (!producto) {
       return <p>Producto no encontrado.</p>;
   }
 
+  
+
   return (
     <div className="contenedor-1">
         <div className="producto-detalle">
             <div className="producto-imagen-det">
-                <img src={producto.Imagen_producto} alt={producto.Nombre_producto} />
+                <img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} />
             </div>
             <div className="producto-informacion-det">
                 <h2 className="producto-nombre-det">{producto.Nombre_producto}</h2>
-                <p className="producto-descripcion-det">{producto.Descripción_producto}</p>
+                <p className="producto-descripcion-det">{producto.Descripcion_producto}</p>
                 <span className="producto-precio-det">${producto.Precio_producto}</span>
                 <div className="producto-compra-det">
                     <label htmlFor="cantidad-det">Cantidad:</label>

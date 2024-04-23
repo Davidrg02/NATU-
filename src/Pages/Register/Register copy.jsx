@@ -5,8 +5,10 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
+import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TerminosCondiciones from './TerminosCondiciones/TerminosCondiciones';
 
 export default function Register() {
 
@@ -32,6 +34,15 @@ export default function Register() {
     const [ConfirmPassword, setConfirmPassword] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState(false);
     
+
+    // Define un estado para controlar si el modal de términos y condiciones está abierto o cerrado
+    const [showTermsModal, setShowTermsModal] = useState(false);
+
+    // Función para abrir el modal de términos y condiciones
+    const handleShowTermsModal = () => setShowTermsModal(true);
+
+    // Función para cerrar el modal de términos y condiciones
+    const handleCloseTermsModal = () => setShowTermsModal(false);
 
     //-- Traer Departamentos y Municipios --//
 
@@ -178,6 +189,8 @@ export default function Register() {
 
         console.log(responseData);
     }
+
+
 
     return (
         <div className='register-container'>
@@ -361,18 +374,39 @@ export default function Register() {
                             </Form.Group>
                         </Row>
                     <div style={{display:"flex", flexDirection:"column" , alignItems:"center", justifyContent: "center", width: "100%", marginTop: "50px"}}>
-                        <Form.Group className="mb-3">
+                        <Form.Group className="mb-3" style={{display:"flex", flexDirection:"row", justifyContent:"center", alignCenter:"center", }}>
                             <Form.Check
                             required
-                            label="Agree to terms and conditions"
-                            feedback="You must agree before submitting."
+                            label="Aceptar "
+                            feedback="Debes aceptar los términos y condiciones."
                             feedbackType="invalid"
                             />
+                            &nbsp;
+                            <a href="#" onClick={handleShowTermsModal}>términos y condiciones</a>
                         </Form.Group>
                         <Button type="submit" variant="outline-success" size="lg">Registrarse</Button>
                     </div>
                 </Form>
             </div>
+            <Modal 
+                show={showTermsModal} 
+                onHide={handleCloseTermsModal}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                >
+                <Modal.Header closeButton>
+                    <Modal.Title>Términos y Condiciones</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <TerminosCondiciones />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseTermsModal}>
+                    Cerrar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }

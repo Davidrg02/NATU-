@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import "./Transactions.css";
+import "./Transaction.css";
 
 function VendorTransaction() {
     // Aquí puedes agregar tu lógica y componentes relacionados con las transacciones

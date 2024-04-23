@@ -8,8 +8,8 @@ import Reset from '../Pages/Recover/Reset.jsx';
 import Catalog from '../Pages/Home/ProductosVista.jsx';
 import Vendor from '../Pages/Vendor/Vendor.jsx';
 import VendorProduct from '../Pages/Vendor/Products/Products.jsx';
-import VendorProfile from '../Pages/Vendor/Products/Profile.jsx'; 
-import VendorTransactions from '../Pages/Vendor/Transactions/Transactions.jsx';
+import VendorProfile from '../Pages/Vendor/Profile/Profile.jsx'; 
+import VendorTransactions from '../Pages/Vendor/Transaction/Transaction.jsx';
 
 export default function Routing() {
     return (
@@ -18,13 +18,11 @@ export default function Routing() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home/>} />
           <Route path="products" element={<Catalog/>} />
-          <Route path="register" element={<Register/>} />
-          <Routes>
-            <Route path="vendor" element={<Vendor/>} />
-              <Route path="/products" element={<VendorProduct/>} />
-              <Route path="/profile" element={<VendorProfile/>} />
-              <Route path="/transactions" element={<VendorTransactions/>} />
-          </Routes>
+          <Route path="register" element={<Register/>} /> 
+          <Route path="vendor" element={<Vendor/>} />
+          <Route path="vendor/products" element={<VendorProduct/>} />
+          <Route path="vendor/profile" element={<VendorProfile/>} />
+          <Route path="vendor/transactions" element={<VendorTransactions/>} />
           <Route path="login" element={<Login/>} />
           <Route path="reset" element={<Reset/>} />
         </Route>

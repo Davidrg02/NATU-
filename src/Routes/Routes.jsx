@@ -8,7 +8,6 @@ import Reset from '../Pages/Recover/Reset.jsx';
 import Catalog from '../Pages/Home/ProductosVista.jsx';
 import Vendor from '../Pages/Vendor/Vendor.jsx';
 import VendorProduct from '../Pages/Vendor/Products/Products.jsx';
-import VendorProfile from '../Pages/Vendor/Profile/Profile.jsx'; 
 import VendorTransactions from '../Pages/Vendor/Transaction/Transaction.jsx';
 
 export default function Routing() {
@@ -21,7 +20,6 @@ export default function Routing() {
           <Route path="register" element={<Register/>} /> 
           <Route path="vendor" element={<Vendor/>} />
           <Route path="vendor/products" element={<VendorProduct/>} />
-          <Route path="vendor/profile" element={<VendorProfile/>} />
           <Route path="vendor/transactions" element={<VendorTransactions/>} />
           <Route path="login" element={<Login/>} />
           <Route path="reset" element={<Reset/>} />

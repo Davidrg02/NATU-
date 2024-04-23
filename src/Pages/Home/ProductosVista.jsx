@@ -30,7 +30,7 @@ export default function ProductosVista() {
 
 
     const updateCatalog = () => {
-      fetch('http://localhost:4000/api/productos', {
+      fetch('http://localhost:4000/api/productoss', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from '../Pages/Home/Home.jsx';
-import Product from '../Pages/Product/Product.jsx';
+import ProductDet from '../Pages/Product/ProductDet.jsx';
 import Register from '../Pages/Register/Register copy.jsx';
 import Login from '../Pages/Login/Login.jsx';
 import Layout from '../Pages/Layout/Layout.jsx';
@@ -28,6 +28,7 @@ export default function Routing() {
               <Route path="register" element={<Register/>} />
               <Route path="login" element={<Login/>} />
               <Route path="reset" element={<Reset/>} />
+              <Route path="ProductDet/:id" element={<ProductDet/>} />
             </Route>
           </Routes>
         </BrowserRouter>

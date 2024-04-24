@@ -4,12 +4,12 @@
 .producto-detalle {
   display: flex; /* Distribución horizontal con flexbox */
   max-width: 1000px;
-  width: 60%; /* Ancho relativo */
+  width: 100%; /* Ancho relativo */
   margin: 100px auto 150px; /* Margen vertical de 100px y centrado horizontal */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   
 }
 
@@ -28,6 +28,7 @@
   margin: auto;/* Margen inferior para separar de la información */
   align-items: center;
   height: auto;
+ 
 }
 
 .producto-imagen-det img {
@@ -42,11 +43,18 @@
   width: calc(100% - 80px); /* Ancho relativo al contenedor principal */
   margin-left: 20px; /* Margen izquierdo para separar de la imagen */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra difusa */
-  text-align: center;
+  text-align: left;
+  border-radius: 15px;
   align-items: center;
   background-color: white;
-}
 
+transform: 200px;
+}
+.producto-informacion-det:hover {
+box-shadow: 0 0 10px rgba(22, 69, 25, 0.5);
+  transform: translateY(-5px); /* Efecto al pasar el mouse */
+  transition: transform 0.3s, box-shadow 0.3s; /* Transición suave */
+}
 
 @media (max-width: 768px) {
   .producto-informacion-det {
@@ -57,20 +65,29 @@
   /* Estilos para el nombre del producto */
   .producto-nombre-det {
   font-family: 'Lexend , sans-serif ' ;
-  font-size: clamp(2.5vw, 5vw, 1.5rem); 
+  font-size: clamp(2.3vw, 5vw, 1.5rem); 
   font-weight: bold;
   line-height: 1.1; 
   color: #33784a;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
     
   }
   
   /* Estilos para la descripción del producto */
   .producto-descripcion-det {
   font-family: 'Montserrat', sans-serif; 
-  font-size: clamp(1.3vw, 2.8vw, 1rem); 
+  font-size: clamp(1vw, 2.8vw, 1rem); 
   line-height: 1.5; 
   color: #666;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  text-align: justify;
+
   }
   
   /* Estilos para la sección de compra */
@@ -80,7 +97,9 @@
   margin-top: 15px;
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(1.3vw, 2.8vw, 1rem);
-  color: #b35b5b;
+  font-weight: bold;
+  text-align: center;
+  color: #b38b5b;
 }
 .cantidad-det {
   align-items: center;
@@ -104,12 +123,16 @@
   
 }
 
+/* Estilos container de precio producto */
+
 /* Estilos para el precio del producto */
 .producto-precio-det {
-  font-size: 150x;
+  font-size: clamp(1vw, 2.8vw, 1rem);
   font-weight: bold;
   color: #EB6613; /* Rojo para el precio */
-  margin-top: 10px;
+  margin-top: 5px;
+  text-align: center;
+ 
 }
 
 /* Estilos para el botón de agregar al carrito */
@@ -120,7 +143,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: clamp(0.8rem, 1.2vw, 1.3rem);
+  font-size: clamp(0.8rem, 1vw, 1.3rem);
   margin: 10px auto; /* Agrupa los márgenes */
   transition: background-color 0.3s;
   margin: 5px auto;
@@ -140,6 +163,8 @@
   text-decoration: none;
   background: #EB6613;
   margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
   transition: background-color 0.3s ease; /* Transición suave del color de fondo */
 
   /* Animación al pasar el cursor */

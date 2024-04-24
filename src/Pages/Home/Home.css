@@ -32,7 +32,7 @@
 /*Estilos del párrafo principal */
 .home-page-description {
   font-family: 'Montserrat', sans-serif; 
-  font-size: clamp(1.7vw, 1.7vw, 1.5rem); 
+  font-size: clamp(1.2vw, 2.8vw, 1rem); 
   line-height: 1.5; 
   color: #828282;
   margin-bottom: 2vw; 
@@ -164,7 +164,7 @@
 /* Texto del contenedor 2*/
 .home-page-description-2 {
   font-family: 'Montserrat', sans-serif; 
-  font-size: clamp(1.7vw, 1.7vw, 1.5rem);
+  font-size: clamp(1.2vw, 2.8vw, 1rem);
   line-height: 1.5;
   color: #828282;
   margin-bottom: 2vw;
@@ -314,7 +314,7 @@
 }
 
 .beneficios-titulo {
-  font-family: 'Yeseva One, cursive';
+  font-family: 'Montserrat', sans-serif; 
   font-size: 2.2rem;
   font-weight: 650;
   text-align: center;
@@ -361,7 +361,7 @@
 }
 
 .beneficio-item h3 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif; 
   font-size: 1.1rem; /* Reduced heading size */
   font-weight: 600;
   color: #82B15A; /* Green text */
@@ -369,7 +369,7 @@
 }
 
 .beneficio-item p {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif; 
   font-size: 0.9rem; /* Reduced paragraph size */
   font-weight: 400;
   color: #666; /* Lighter text */
@@ -389,6 +389,7 @@
   background-color: #82B15A;
   border: 2px solid #82B15A;
   border-radius: 10px;
+  font-family: 'Montserrat', sans-serif; 
   font-size: 1rem;
   font-weight: 600;
   color: white;

@@ -21,8 +21,8 @@
 
 /* Estilos del título principal */
 .home-page-title {
-  font-family: 'Yeseva One', sans-serif; 
-  font-size: clamp(3.5vw, 3.5vw, 5.3rem); 
+  font-family: var(--font-family-text); 
+  font-size: clamp(3vw, 3.5vw, 2.5rem); 
   line-height: 1.1; 
   color: #33784a;
   margin-bottom: 2vw; 
@@ -153,8 +153,8 @@
 
 /* Título del 2do contenedor */
 .home-page-title-2 {
-  font-family: 'Yeseva One', sans-serif; 
-  font-size: clamp(3.5vw, 3.5vw, 5.3rem); 
+  font-family:var(--font-family-text); 
+  font-size: clamp(3vw, 3.5vw, 2.5rem);  
   line-height: 1.1; 
   color: #d25925;
   margin-bottom: 2vw; 
@@ -280,9 +280,8 @@
   align-items: center;
   padding: 3vw 0; /* Utilizamos vw para el padding en lugar de rem */
   background-color: #EAF2E8; /* Asegúrate de utilizar el formato correcto de color (#) */
-  width: 90%; /* Utilizamos porcentaje (%) para el ancho */
+  width: 100%; /* Utilizamos porcentaje (%) para el ancho */
   max-width: 1000px;
-  /* height: 830px; Quitamos la altura fija */
   margin: 150px auto; /* Centramos el contenedor vertical y horizontalmente */
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(16, 15, 15, 0.1);

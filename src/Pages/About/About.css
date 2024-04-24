@@ -1,11 +1,38 @@
+.nosotros-container {
+  display: flex; /* Distribución horizontal con flexbox */
+  max-width: 1200px;
+  width: 100%; /* Ancho relativo */
+  margin: 50px auto 150px; /* Margen vertical de 100px y centrado horizontal */
+  padding: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(7, 176, 35, 0.308);
+}
+/* Animación de fondo */
+.nosotros-container {
+  background-image: linear-gradient(to bottom, #f9f6f1, #d1dcd2); /* Gradiente de fondo */
+  animation: backgroundAnimation 5s linear infinite; /* Animación de desplazamiento suave */
+}
+/* Keyframes de la animación */
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.nosotros-container {
+  animation: fadeInLeft 1s ease-in-out 0.4s forwards;
+}
+
+
 #App2 {
   text-align: center;
 }
 
-#App-logo2 {
-  height: 40vmin;
-  pointer-events: none;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   #App-logo2 {
@@ -71,11 +98,14 @@
   border-radius: 5px;
   text-align: center;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background-color: #f9f9f9;
 }
 
 #team-member2:hover {
+  background-color: white;
   transform: translateY(-6px);
-  box-shadow: 0px 5px 10px rgba(110, 226, 145, 0.6);
+  box-shadow: 2px 5px 10px rgba(224, 163, 39, 0.6);
+
 }
 
 #team-member2 img {
@@ -124,7 +154,7 @@
   font-size: clamp(2.2vw, 5vw, 1.5rem); 
   font-weight: bold;
   line-height: 1.1; 
-  color: #33784a;
+  color: #33784acf;
   margin-bottom: 5px;
   margin-top: 10px;
   margin-left: 20px;
@@ -169,7 +199,7 @@
 
 #img-centrada2:first-child {
   width: auto;
-  height: 225px;
+  height: 235px;
   margin-top: 38px;
 }
 

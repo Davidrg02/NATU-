@@ -36,15 +36,16 @@
 
 #shape:first-child {
     background: linear-gradient(var(--blue), var(--blue-3));
-    left: -130px;
-    top: -60px;
+    left: -25%; /* Cambiado de -130px a -25% */
+    top: -15%; /* Cambiado de -60px a -15% */
 }
 
 #shape:last-child {
     background: linear-gradient(to right, #82cc38, #2b803f);
-    right: -130px;
-    bottom: -80px;
+    right: -25%; /* Cambiado de -130px a -25% */
+    bottom: -20%; /* Cambiado de -80px a -20% */
 }
+
 
 #login-form {
     position: relative; /* Establece el formulario como el contenedor de posición para #background */

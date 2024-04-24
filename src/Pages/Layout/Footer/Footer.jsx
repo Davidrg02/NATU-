@@ -1,10 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import "../Header/Header.css";
 import "../../../index.css";
 
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import Modal from 'react-bootstrap/Modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import TerminosCondiciones from '../../Register/TerminosCondiciones/TerminosCondiciones';
+
 
 export default function Footer() {
+    // Define un estado para controlar si el modal de términos y condiciones está abierto o cerrado
+    const [showTermsModal, setShowTermsModal] = useState(false);
+
+    // Función para abrir el modal de términos y condiciones
+    const handleShowTermsModal = () => setShowTermsModal(true);
+
+    // Función para cerrar el modal de términos y condiciones
+    const handleCloseTermsModal = () => setShowTermsModal(false);
   return (
     <footer className="footer py-3 shadow-lg ">  {/* Added class 'footer' */}
       <div className="container fontFooter ">
@@ -22,7 +40,30 @@ export default function Footer() {
               <Link to="/" className="text-reset">Inicio</Link>
             </li>
             <li>
-              <Link to="/Products" className="text-reset">Productoos</Link>
+              <Link to="/Products" className="text-reset">Productos</Link>
+            </li>
+            <li>
+                            <a href="#" onClick={handleShowTermsModal}>términos y condiciones</a>
+
+            <Modal 
+                show={showTermsModal} 
+                onHide={handleCloseTermsModal}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                >
+                <Modal.Header closeButton>
+                    <Modal.Title>Términos y Condiciones</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <TerminosCondiciones />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseTermsModal}>
+                    Cerrar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             </li>
             <li>
               <Link to="/about" className="text-reset">About</Link>

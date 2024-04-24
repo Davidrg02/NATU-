@@ -81,3 +81,63 @@
   margin-top: 40px;
 }
 
+#background {
+  position: absolute;
+  top: 50%;
+  left: 50%; /* Posición horizontal al 50% del contenedor principal */
+  transform: translate(-50%, -50%); /* Corrige la posición para centrar vertical y horizontalmente */
+}
+
+#background #shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+#shape:first-child {
+  background: linear-gradient(var(--orange), var(--orange-3));
+  left: -10px;
+  top: calc(50% - 100px); /* Alinea verticalmente con respecto al contenedor principal */
+}
+
+#shape:last-child {
+  background: linear-gradient(to right, var(--verde-1), var(--verde-2));
+  right: -70px;
+  bottom: calc(50% - 40px); /* Alinea verticalmente con respecto al contenedor principal */
+}
+
+
+.vinculos {
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color:var(--verde-1);  /* Verde claro */
+  /* transition: color 0.3s; Transición suave */
+}
+
+  .vinculos:hover {
+  color: var(--verde-2); /* Verde claro más claro al pasar el cursor */
+}
+
+#link {/* enlace de Ir a login*/
+  font-family: 'Poppins', sans-serif;
+  margin-right: 130px;
+    
+}
+#link-1 {/* enlace de Volver al inicio*/
+  font-family: 'Poppins', sans-serif;
+  margin-left: 23%;
+}
+
+#cuadros{
+  border: 1px var(--border1) solid;
+  border-radius: 7px;
+  margin-bottom: 8px;
+  transition: box-shadow 0.3s; /* Agrega una transición suave al cambio de sombra */
+
+}
+
+#cuadros:focus {
+  box-shadow: 0 0 5px blue; /* Establece una sombra azul cuando el input está enfocado */
+}

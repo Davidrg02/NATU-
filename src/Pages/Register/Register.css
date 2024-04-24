@@ -1,44 +1,4 @@
-:root {
-  --light-blue: #c3dcfd;
-  --mid-blue: #bc5b0c;
-  --orange: #9a3a12;
-  --orange-2: #a77636;
-  --orange-3: #fd9c6f;
-  --white: #ffffff;
-  --letters: #333;
-  --letters-2: #7a7a7a;
-  --verde-1: #204a23;
-  --verde-2: #9fdf58;
-  --registrarse-static: #f0fff0;
-  --verde-3: #136c33;
-  --border1: #aaa
-}
 
-#background {
-  position: absolute;
-  top: 50%;
-  left: 50%; /* Posición horizontal al 50% del contenedor principal */
-  transform: translate(-50%, -50%); /* Corrige la posición para centrar vertical y horizontalmente */
-}
-
-#background #shape {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  border-radius: 50%;
-}
-
-#shape:first-child {
-  background: linear-gradient(var(--orange), var(--orange-3));
-  left: -10px;
-  top: calc(50% - 100px); /* Alinea verticalmente con respecto al contenedor principal */
-}
-
-#shape:last-child {
-  background: linear-gradient(to right, var(--verde-1), var(--verde-2));
-  right: -70px;
-  bottom: calc(50% - 40px); /* Alinea verticalmente con respecto al contenedor principal */
-}
 
 .vinculos {
   margin-top: 20px;

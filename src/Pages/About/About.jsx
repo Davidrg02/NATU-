@@ -8,12 +8,11 @@ export default function About(){
     <div id="contenedor-imagenes2">
         <img src="natu.png" id="img-centrada2" />
         <img src="natu_logo.png" id="img-centrada2" />
-    </div>
-    <h2 id='titulo2'>Mision</h2>
-      <p>Natu es una plataforma en línea que busca brindar un espacio centralizado de productos orgánicos adaptativa a las necesidades del usuario que facilite su compra directa entre productores y consumidores locales, permitiendo una actividad comercial rápida y eficiente entre ambos actores.</p>
+      </div>
       <h2 id='titulo2'>Vision</h2>
-      <p>Para 2028, Natu se posicionará como la principal plataforma de intercambio de productos alimenticios en Colombia, destacando por la colaboración activa entre productores y empresas dedicadas a alimentos orgánicos. Priorizando la calidad del servicio y adaptándonos a las cambiantes necesidades del mercado, buscamos ser una herramienta integral que involucre alrededor del 30% de los actores del sector orgánico, proporcionando a los usuarios una experiencia de alta calidad y satisfaciendo sus expectativas en constante evolución.
-</p>
+      <p>Para 2028, Natu se posicionará como la principal plataforma de intercambio de productos alimenticios en Colombia, destacando por la colaboración activa entre productores y empresas dedicadas a alimentos orgánicos. Priorizando la calidad del servicio y adaptándonos a las cambiantes necesidades del mercado, buscamos ser una herramienta integral que involucre alrededor del 30% de los actores del sector orgánico, proporcionando a los usuarios una experiencia de alta calidad y satisfaciendo sus expectativas en constante evolución.</p>
+       <h2 id='titulo2'>Mision</h2>
+      <p>Natu es una plataforma en línea que busca brindar un espacio centralizado de productos orgánicos adaptativa a las necesidades del usuario que facilite su compra directa entre productores y consumidores locales, permitiendo una actividad comercial rápida y eficiente entre ambos actores.</p>
     </div>
 
     <div id="about-us-container2">
@@ -26,7 +25,7 @@ export default function About(){
           <h3 >David Rodriguez</h3>
           <p>Desarrollador Backend</p>
           <a href="https://www.linkedin.com/in/david-steven-rodr%C3%ADguez-guzm%C3%A1n-b7828a264/" target="_blank">
-            <i id="fab fa-linkedin2"></i>
+          <i className="fab fa-linkedin"></i>
           </a>
         </div>
 
@@ -35,7 +34,7 @@ export default function About(){
           <h3 >Nicolás Hernandez</h3>
           <p>Desarrollador Backend</p>
           <a href="https://www.linkedin.com/in/nihernandezv/" target="_blank">
-            <i id="fab fa-linkedin2"></i>
+          <i className="fab fa-linkedin"></i>
           </a>
         </div>
 
@@ -44,7 +43,7 @@ export default function About(){
           <h3 >Brayan Maldonado</h3>
           <p>Desarrollador Frontend</p>
           <a href="https://www.linkedin.com/in/brayan-santiago-maldonado-aparicio-549336276/" target="_blank">
-            <i id="fab fa-linkedin2"></i>
+          <i className="fab fa-linkedin"></i>
           </a>
         </div>
         
@@ -53,7 +52,7 @@ export default function About(){
           <h3 >Ivan Sepulveda</h3>
           <p>Desarrollador Frontend</p>
           <a href="https://www.linkedin.com/in/ivan-sepulveda-paez/" target="_blank">
-            <i id="fab fa-linkedin2"></i>
+          <i className="fab fa-linkedin"></i>
           </a>
         </div>
 

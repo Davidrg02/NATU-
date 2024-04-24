@@ -58,6 +58,7 @@ export default function Header() {
                     <Nav
                         className="me-auto my-2 my-lg-0"
                     >
+                        {/* Header links por rol */}
                         {userRole === 'NoRegistrado' || userRole === 'Comprador' ? (
                             <>
                                 <Nav.Link href="/products">Productos</Nav.Link>
@@ -80,8 +81,10 @@ export default function Header() {
                             </>
                         ) : userRole === 'Vendedor' ? (
                             <>
-                                <Nav.Link href="/mis-productos">Mis productos</Nav.Link>
+                                <Nav.Link href="/seller/my-products">Mis productos</Nav.Link>
                                 <Nav.Link href="/envios">Envíos</Nav.Link>
+                                <Nav.Link href="/ventas">Ventas</Nav.Link>
+                                <Nav.Link href="/about">Nosotros</Nav.Link>
                             </>
                         ) : userRole === 'Administrador' ? (
                             <>

@@ -9,17 +9,8 @@ import Catalog from '../Pages/Home/ProductosVista.jsx';
 import About from '../Pages/About/About.jsx';
 import Admin from '../Pages/Admin/Admin.jsx';
 import VendedorProducts from '../Pages/Vendedor/ProductsPage/ProductsPage.jsx';
-
-function PrivateRoute({ element, roles, ...rest }) {
-  const token = localStorage.getItem("token");
-  const userRole = localStorage.getItem("rol");
-
-  if (!token || !userRole || !roles.includes(userRole)) {
-      return <Navigate to="/login" replace />;
-  }
-
-  return <Route {...rest} element={element} />;
-}
+import PrivateRoute from '../utils/PrivateRoute.jsx';
+import NotFound from "../Pages/NotFound/NotFound.jsx";
 
 export default function Routing() {
 
@@ -27,49 +18,25 @@ export default function Routing() {
   return (
       <BrowserRouter >
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home/>} />
-            <Route path="products" element={<Catalog/>} />
-            <Route path="register" element={<Register/>} />
-            <Route path="login" element={<Login/>} />
-            <Route path="reset" element={<Reset/>} />
-            <Route path="ProductDet/:id" element={<ProductDet/>} />
-            <Route path="about" element={<About/>} />
-            <Route 
-              path='admin' 
-              element={
-                <PrivateRoute 
-                  element={<Admin/>} 
-                  roles={["Admin"]}
-                />
-              }
-            />
-            <Route 
-              path='mis-productos' 
-              element={
-                <PrivateRoute 
-                  element={<VendedorProducts/>} 
-                  roles={["Vendedor"]}
-                />
-              }
-            />
+          <Route path="/" element={<Layout />} >
+            <Route path="/" element={<Home />} />
+            <Route path="product/:id" element={<ProductDet />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="reset" element={<Reset />} />
+            <Route path="products" element={<Catalog />} />
+            <Route path="about" element={<About />} />
+            {/* Rutas protegidas */}
+            <Route path="admin" element = {<PrivateRoute roles={["Administrador"]} />} >
+              <Route path="sellers" element={<Admin />} />
+            </Route>
+            <Route path="seller" element = {<PrivateRoute roles={["Vendedor"]} />}>
+              <Route path="my-products" element={<VendedorProducts />} exact/>
+            </Route>
+            {/* Ruta no encontrada */}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
   );
 }
-    
-
-/*
-Ejemplo de uso de PrivateRoute:
-
-<Route
-  path="products"
-  element={
-      <PrivateRoute
-          element={<Catalog />}
-          roles={["admin", "user"]}
-      />
-  }
-/>
-*/

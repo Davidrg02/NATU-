@@ -7,7 +7,8 @@ import Layout from '../Pages/Layout/Layout.jsx';
 import Reset from '../Pages/Recover/Reset.jsx';
 import Catalog from '../Pages/Home/ProductosVista.jsx';
 import About from '../Pages/About/About.jsx';
-import Seller from '../Pages/Seller/Seller.jsx';
+import Admin from '../Pages/Admin/Admin.jsx';
+import VendedorProducts from '../Pages/Vendedor/ProductsPage/ProductsPage.jsx';
 
 function PrivateRoute({ element, roles, ...rest }) {
   const token = localStorage.getItem("token");
@@ -32,7 +33,8 @@ export default function Routing() {
               <Route path="reset" element={<Reset/>} />
               <Route path="ProductDet/:id" element={<ProductDet/>} />
               <Route path="about" element={<About/>} />
-              <Route path='seller' element={<Seller/>}/>
+              <Route path='admin' element={<Admin/>}/>
+              <Route path='vendedor' element={<VendedorProducts/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

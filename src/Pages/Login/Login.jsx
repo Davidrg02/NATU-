@@ -32,6 +32,7 @@ export default function Login() {
                 } else {
                     localStorage.setItem("token", data.body.token);
                     localStorage.setItem("rol", data.body.rol);
+                    localStorage.setItem("id", data.body.user[0].USUARIO_ID_Usuario);
                     if (data.body.rol === "Vendedor") {
                         localStorage.setItem("user", data.body.user[0].Nombres_vendedor);
                     } else if (data.body.rol === "Comprador") {

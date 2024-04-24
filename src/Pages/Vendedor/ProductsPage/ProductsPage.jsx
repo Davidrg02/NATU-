@@ -1,0 +1,119 @@
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import './ProductsPage.css';
+// Import components
+import SearchBar from './SearchBar/SearchBar';
+import GridProducts from './GridProducts/GridProducts';
+import CreateProduct from './Modals/CreateProduct';
+
+
+
+const productos = [
+    {
+        ID_Producto: 1,
+        Nombre_producto: "Fresas Camarrosa x 500g",
+        Ruta_img_producto: "https://cdn.pixabay.com/photo/2016/04/15/08/04/strawberry-1330459_1280.jpg",
+        Descripcion_breve_producto: "Fresas frescas cultivadas en Chiquinquira, Boyacá",
+        Precio_producto: 5600,
+        Cantidad_producto: 54,
+        Activo: true
+    },
+    {
+        ID_Producto: 2,
+        Nombre_producto: "Naranjas x 1000g",
+        Ruta_img_producto: "https://cdn.pixabay.com/photo/2023/08/16/10/09/oranges-8193789_1280.jpg",
+        Descripcion_breve_producto: "Naranjas dulces cultivadas en el Valle del Cauca",
+        Precio_producto: 1600,
+        Cantidad_producto: 14,
+        Activo: true
+    },
+    {
+        ID_Producto: 3,
+        Nombre_producto: "Papa Pastusa x 1000g",
+        Ruta_img_producto: "https://cdn.pixabay.com/photo/2014/08/06/20/32/potatoes-411975_640.jpg",
+        Descripcion_breve_producto: "Papa pastusa de buena calidad cultivadas en el Popayán",
+        Precio_producto: 2600,
+        Cantidad_producto: 78,
+        Activo: true
+    },
+    {
+        ID_Producto: 5,
+        Nombre_producto: "Tomate Chonto x 1000g",
+        Ruta_img_producto: "https://cdn.pixabay.com/photo/2016/03/26/16/44/tomatoes-1280859_640.jpg",
+        Descripcion_breve_producto: "Tomate chonto de excelente calidad cultivadas en el Cauca",
+        Precio_producto: 2600,
+        Cantidad_producto: 78,
+        Activo: true
+    },
+    {
+        ID_Producto: 6,
+        Nombre_producto: "Tomate Cherry x 1000g",
+        Ruta_img_producto: "https://cdn.pixabay.com/photo/2019/07/11/10/14/cherry-tomato-4330441_640.jpg",
+        Descripcion_breve_producto: "Tomate cherry de excelente calidad cultivadas en el Cauca",
+        Precio_producto: 2600,
+        Cantidad_producto: 78,
+        Activo: true
+    },
+    {
+        ID_Producto: 7,
+        Nombre_producto: "Tomate Larga Vida x 1000g",
+        Ruta_img_producto: "https://ecommerce.surtifamiliar.com/backend/admin/backend/web/archivosDelCliente/items/images/Verduras-Verduras-a-Granel-TOMATE-CHONTO-A-GRANEL-326220201112180105.jpg",
+        Descripcion_breve_producto: "Tomate larga vida de excelente calidad cultivadas en el Cauca",
+        Precio_producto: 2600,
+        Cantidad_producto: 78,
+        Activo: true
+    },
+    {
+        ID_Producto: 8,
+        Nombre_producto: "Tomate Perita x 1000g",
+        Ruta_img_producto: "https://cdn.pixabay.com/photo/2016/08/23/18/24/tomatoes-1618400_1280.jpg",
+        Descripcion_breve_producto: "Tomate perita de excelente calidad cultivadas en el Cauca",
+        Precio_producto: 2600,
+        Cantidad_producto: 78,
+        Activo: true
+    },
+    {
+        ID_Producto: 9,
+        Nombre_producto: "Tomate Riñon x 1000g",
+        Ruta_img_producto: "https://cdn.pixabay.com/photo/2016/08/23/18/24/tomatoes-1618400_1280.jpg",
+        Descripcion_breve_producto: "Tomate riñon de excelente calidad cultivadas en el Cauca",
+        Precio_producto: 2600,
+        Cantidad_producto: 78,
+        Activo: true
+    },
+    {
+        ID_Producto: 10,
+        Nombre_producto: "Tomate Cherry x 1000g",
+        Ruta_img_producto: "https://cdn.pixabay.com/photo/2016/08/23/18/24/tomatoes-1618400_1280.jpg",
+        Descripcion_breve_producto: "Tomate cherry de excelente calidad cultivadas en el Cauca",
+        Precio_producto: 2600,
+        Cantidad_producto: 78,
+        Activo: true
+    }
+  ];
+
+export default function ProductsPage() {
+
+    const [modalShow, setModalShow] = useState(false);
+
+    return (
+        <div className='seller-product-page'>
+            <div className='seller-product-container'>
+                <h1>Mis productos</h1>
+                <SearchBar/>
+                <Button 
+                    variant="outline-success" 
+                    className="mb-4" 
+                    size="lg" 
+                    style={{fontWeight: "600"}}
+                    onClick={() => setModalShow(true)}
+                >
+                    Publicar producto &nbsp;
+                    <i class="bi bi-arrow-bar-up"></i>
+                </Button>
+                <GridProducts products={productos}/>
+            </div>
+            <CreateProduct show={modalShow} onHide={() => setModalShow(false)} className="modals"/>
+        </div>
+    );
+}

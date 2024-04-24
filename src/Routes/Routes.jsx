@@ -22,23 +22,41 @@ function PrivateRoute({ element, roles, ...rest }) {
 }
 
 export default function Routing() {
-    return (
-        <BrowserRouter >
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home/>} />
-              <Route path="products" element={<Catalog/>} />
-              <Route path="register" element={<Register/>} />
-              <Route path="login" element={<Login/>} />
-              <Route path="reset" element={<Reset/>} />
-              <Route path="ProductDet/:id" element={<ProductDet/>} />
-              <Route path="about" element={<About/>} />
-              <Route path='admin' element={<Admin/>}/>
-              <Route path='vendedor' element={<VendedorProducts/>}/>
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      );
+
+
+  return (
+      <BrowserRouter >
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home/>} />
+            <Route path="products" element={<Catalog/>} />
+            <Route path="register" element={<Register/>} />
+            <Route path="login" element={<Login/>} />
+            <Route path="reset" element={<Reset/>} />
+            <Route path="ProductDet/:id" element={<ProductDet/>} />
+            <Route path="about" element={<About/>} />
+            <Route 
+              path='admin' 
+              element={
+                <PrivateRoute 
+                  element={<Admin/>} 
+                  roles={["Admin"]}
+                />
+              }
+            />
+            <Route 
+              path='mis-productos' 
+              element={
+                <PrivateRoute 
+                  element={<VendedorProducts/>} 
+                  roles={["Vendedor"]}
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+  );
 }
     
 

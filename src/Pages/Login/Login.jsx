@@ -34,7 +34,7 @@ export default function Login() {
                     localStorage.setItem("rol", data.body.rol);
                     localStorage.setItem("id", data.body.user[0].USUARIO_ID_Usuario);
                     if (data.body.rol === "Vendedor") {
-                        localStorage.setItem("user", data.body.user[0].Nombres_vendedor);
+                        localStorage.setItem("user", data.body.user[0].Nombre_vendedor);
                     } else if (data.body.rol === "Comprador") {
                         localStorage.setItem("user", data.body.user[0].Nombres_comprador);
                     }
@@ -78,9 +78,10 @@ export default function Login() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
+                                {/*}
                                 <a id="link2" href="reset">
                                     Olvide mi contraseña
-                                </a>
+    </a>*/}
                                 <button
                                     type="button"
                                     id="btnLogin"

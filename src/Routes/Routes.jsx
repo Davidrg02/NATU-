@@ -7,7 +7,8 @@ import Layout from '../Pages/Layout/Layout.jsx';
 import Reset from '../Pages/Recover/Reset.jsx';
 import Catalog from '../Pages/Home/ProductosVista.jsx';
 import About from '../Pages/About/About.jsx';
-import Seller from '../Pages/Seller/Seller.jsx';
+import Admin from '../Pages/Admin/Admin.jsx';
+import VendedorProducts from '../Pages/Vendedor/ProductsPage/ProductsPage.jsx';
 
 function PrivateRoute({ element, roles, ...rest }) {
   const token = localStorage.getItem("token");
@@ -21,22 +22,41 @@ function PrivateRoute({ element, roles, ...rest }) {
 }
 
 export default function Routing() {
-    return (
-        <BrowserRouter >
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home/>} />
-              <Route path="products" element={<Catalog/>} />
-              <Route path="register" element={<Register/>} />
-              <Route path="login" element={<Login/>} />
-              <Route path="reset" element={<Reset/>} />
-              <Route path="ProductDet/:id" element={<ProductDet/>} />
-              <Route path="about" element={<About/>} />
-              <Route path='seller' element={<Seller/>}/>
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      );
+
+
+  return (
+      <BrowserRouter >
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home/>} />
+            <Route path="products" element={<Catalog/>} />
+            <Route path="register" element={<Register/>} />
+            <Route path="login" element={<Login/>} />
+            <Route path="reset" element={<Reset/>} />
+            <Route path="ProductDet/:id" element={<ProductDet/>} />
+            <Route path="about" element={<About/>} />
+            <Route 
+              path='admin' 
+              element={
+                <PrivateRoute 
+                  element={<Admin/>} 
+                  roles={["Admin"]}
+                />
+              }
+            />
+            <Route 
+              path='mis-productos' 
+              element={
+                <PrivateRoute 
+                  element={<VendedorProducts/>} 
+                  roles={["Vendedor"]}
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+  );
 }
     
 

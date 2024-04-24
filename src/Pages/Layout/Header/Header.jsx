@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { Navbar, Container, Nav, Button, Form, NavDropdown } from 'react-bootstrap'; // Importa los componentes de react-bootstrap
 import { BiSearch } from 'react-icons/bi'; // Importa el ícono de búsqueda
 import "./Header.css";
 import '../../../index.css';
@@ -44,44 +45,79 @@ export default function Header() {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light shadow fontHeader">
-          <div className="container-fluid py-2" style={{ backgroundColor: '#F9F7F8', color: 'black' }}>
-                <Link className="navbar-brand d-flex mx-auto fw-bold justify-content-center py4" to="/">
-                    <img src="/natu_logo.png" alt="Logo" className="img-fluid" width="250" height="55"/>
-                </Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link className="nav-link" aria-current="page" to="/">Inicio</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/products">Productos</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/about">Nosotros</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/contact">Contáctanos</Link>
-                        </li>
-                    </ul>
-
-                    <SearchBar
-                        handleSubmit={handleSubmit}
-                        handleSearch={handleSearch}
-                        searchTerm={searchTerm}
+        <Navbar expand="lg" className="bg-body-tertiary shadow fontHeader">
+            <Container fluid>
+                <Navbar.Brand href="/">
+                    <img
+                        src="/natu_logo.png"
+                        width="200"
                     />
-
-                    <AuthButtons
-                        loggedIn={loggedIn}
-                        userRole={userRole}
-                        userNames={userNames}
-                        handleLogout={handleLogout}
-                    />
-              </div>
-          </div>
-      </nav>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                    >
+                        {userRole === 'NoRegistrado' || userRole === 'Comprador' ? (
+                            <>
+                                <Nav.Link href="/products">Productos</Nav.Link>
+                                <NavDropdown title="Categorías" id="navbarScrollingDropdown">
+                                    <NavDropdown.Item href="#action3">Alimentos</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action4">Productos lácteos</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action5">Cuidado personal</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action6">Productos para el hogar</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action7">Suplementos dietéticos</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action8">Cuidado del jardín</NavDropdown.Item>
+                                </NavDropdown>
+                                <Nav.Link href="/about">Nosotros</Nav.Link>
+                                <Nav.Item>
+                                    <SearchBar 
+                                        handleSubmit={handleSubmit}
+                                        handleSearch={handleSearch}
+                                        searchTerm={searchTerm}
+                                    />
+                                </Nav.Item>
+                            </>
+                        ) : userRole === 'Vendedor' ? (
+                            <>
+                                <Nav.Link href="/mis-productos">Mis productos</Nav.Link>
+                                <Nav.Link href="/envios">Envíos</Nav.Link>
+                            </>
+                        ) : userRole === 'Administrador' ? (
+                            <>
+                                <Nav.Link href="/vendedores">Vendedores</Nav.Link>
+                            </>
+                        ) : (
+                            <>
+                                <Nav.Link href="/products">Productos</Nav.Link>
+                                <NavDropdown title="Categorías" id="navbarScrollingDropdown">
+                                    <NavDropdown.Item href="#action3">Alimentos</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action4">Productos lácteos</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action5">Cuidado personal</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action6">Productos para el hogar</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action7">Suplementos dietéticos</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action8">Cuidado del jardín</NavDropdown.Item>
+                                </NavDropdown>
+                                <Nav.Link href="/about">Nosotros</Nav.Link>
+                                <Nav.Item>
+                                    <SearchBar 
+                                        handleSubmit={handleSubmit}
+                                        handleSearch={handleSearch}
+                                        searchTerm={searchTerm}
+                                    />
+                                </Nav.Item>
+                            </>
+                        )}
+                    </Nav>
+                    <Nav>
+                        <AuthButtons 
+                            loggedIn={loggedIn}
+                            userNames={userNames}
+                            handleLogout={handleLogout}
+                        />
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     )
 }

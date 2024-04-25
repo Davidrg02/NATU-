@@ -1,67 +1,102 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './Home.css';
+
+const categorias = [
+  {
+    ID_Categoria: 1,
+    Nombre_categoria: "food",
+  },
+  {
+    ID_Categoria: 2,
+    Nombre_categoria: "personal-care",
+  },
+  {
+    ID_Categoria: 3,
+    Nombre_categoria: "home",
+  },
+  {
+    ID_Categoria: 4,
+    Nombre_categoria: "supplements",
+  },
+  {
+    ID_Categoria: 5,
+    Nombre_categoria: "garden",
+  },
+];
 
 export default function ProductosVista() {
   const api_url = process.env.REACT_APP_API_URL;
 
-  const [productos, setProducts] = useState([
-    {
-      ID_Producto: 1,
-      Nombre_producto: "Fresas Camarrosa x 500g",
-      Imagen_producto: "https://cdn.pixabay.com/photo/2016/04/15/08/04/strawberry-1330459_1280.jpg",
-      Descripción_producto: "Fresas frescas cultivadas en Chiquinquira, Boyacá",
-      Precio_producto: 5600,
-    },
-    {
-    ID_Producto: 2,
-      Nombre_producto: "Naranjas x 1000g",
-      Imagen_producto: "https://cdn.pixabay.com/photo/2023/08/16/10/09/oranges-8193789_1280.jpg",
-      Descripción_producto: "Naranjas dulces cultivadas en el Valle del Cauca",
-      Precio_producto: 1600,
+  // ruta se recibe /:category
+  const {category} = useParams();
 
-    },
-    {
-      ID_Producto: 3,
-      Nombre_producto: "Papa Pastusa x 1000g",
-      Imagen_producto: "https://cdn.pixabay.com/photo/2019/07/12/02/19/potatoes-4331742_1280.jpg",
-      Descripción_producto: "Papa pastusa de buena calidad cultivadas en el Popayán",
-      Precio_producto: 2600,
-  }
-  ]);
+  let ID_Categoria;
+
+  const [productos, setProducts] = useState([]);
+
+  // Conexion a la base de datos
+
+  const fetchProducts = () => {
+    fetch(`${api_url}/productos`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+          return console.error(data.error);
+        }
+        setProducts(data.body);
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    }
+    );  
+  };
+
+  const fetchProductsByCategory = () => {
+    fetch(`${api_url}/productos/categoria/${ID_Categoria}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+          return console.error(data.error);
+        }
+        setProducts(data.body);
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    }
+    );
+  };
 
 
-    const updateCatalog = () => {
-      fetch(`${api_url}/productos`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-              return alert(data.error);
-            }
-            else {
-              setProducts(data.body);
-            }
-        })
-        .catch(error => {
-            console.error('There was an error!', error);
-        });
-          
+    const updateCatalog = () => { 
+      if (ID_Categoria) {
+        fetchProductsByCategory();
+      } else {
+        fetchProducts();
+      }        
     }
 
     useEffect(() => {
+      if (category) {
+        const cat = categorias.find((cat) => cat.Nombre_categoria === category);
+        if (cat) {
+          ID_Categoria = cat.ID_Categoria;
+        } else {
+          ID_Categoria = null;
+        }
+      } else {
+        ID_Categoria = null;
+      }
+      console.log(category);
+      console.log(ID_Categoria);
       updateCatalog();
-    }, []);
+    }, [category]);
 
   
     return (
       <section className="productos-vista">
         <div className="titulo-ProductosVista">
-          <h2 className="productos-titulo">Vista Rápida de Productos</h2>
+          <h1 className="productos-titulo">Productos</h1>
         </div>  
         <div className="productos-grid">
           {productos.map((producto) => (

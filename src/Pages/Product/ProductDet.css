@@ -1,16 +1,23 @@
-
+.contenedor-1{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-block: 50px;
+  background-color: #0057b300;
+  font-family: var(--font-text);
+}
 
 /* Estilos generales para el producto */
 .producto-detalle {
   display: flex; /* Distribución horizontal con flexbox */
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%; /* Ancho relativo */
-  margin: 100px auto 150px; /* Margen vertical de 100px y centrado horizontal */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  
+  margin-inline: 20px;
 }
 
 /* Media query para pantallas más pequeñas */
@@ -64,7 +71,7 @@ box-shadow: 0 0 10px rgba(22, 69, 25, 0.5);
 }
   /* Estilos para el nombre del producto */
   .producto-nombre-det {
-  font-family: 'Lexend , sans-serif ' ;
+  font-family: var(--font-text) ;
   font-size: clamp(2.3vw, 5vw, 1.5rem); 
   font-weight: bold;
   line-height: 1.1; 
@@ -79,7 +86,6 @@ box-shadow: 0 0 10px rgba(22, 69, 25, 0.5);
   
   /* Estilos para la descripción del producto */
   .producto-descripcion-det {
-  font-family: 'Montserrat', sans-serif; 
   font-size: clamp(1vw, 2.8vw, 1rem); 
   line-height: 1.5; 
   color: #666;
@@ -95,7 +101,6 @@ box-shadow: 0 0 10px rgba(22, 69, 25, 0.5);
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-  font-family: 'Montserrat', sans-serif;
   font-size: clamp(1.3vw, 2.8vw, 1rem);
   font-weight: bold;
   text-align: center;

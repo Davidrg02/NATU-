@@ -7,7 +7,7 @@ export default function Beneficios() {
   return (
     <div className="beneficios-container">
       <h2 className="beneficios-titulo">Beneficios de una alimentación natural y saludable</h2>
-      <ul className="beneficios-lista">
+      <div className="beneficios-lista">
         <li className="beneficio-item animate__animated animate__fadeInUp">
           <img src="https://cdn.pixabay.com/photo/2014/09/09/19/07/corn-field-440338_1280.jpg" alt="Cultivados en el campo" />
           <h3>Cultivados en el campo</h3>
@@ -38,7 +38,7 @@ export default function Beneficios() {
           <h3>Sabrosos</h3>
           <p>Disfruta de una gran variedad de sabores y texturas.</p>
         </li>
-      </ul>
+      </div>
       <Link to="/products" className="beneficios-boton">
         Descubre más sobre nuestros productos
       </Link>

@@ -10,14 +10,18 @@ export default function About(){
     <div id="contenedor-imagenes2">
         <img src="Natu_Logo_.png" id="img-centrada2" />
     </div>
+    <h2 id='titulo2'>Acerca de nosotros</h2>
+      <p className='vision'>Natu nace como alternativa para el encuentro rápido de alimentos orgánicos y de producción local en un solo lugar. El objetivo principal es conectar productores locales de alimentos de origen natural con consumidores conscientes por medio de una plataforma en línea que permita una transacción rápida y una trazabilidad del estado de entrega del producto por parte del cliente. La plataforma no solo se propone simplificar la adquisición de productos saludables y sostenibles, sino también busca ser de apoyo para el crecimiento de agricultores y campesinos colombianos. Más que ofrecer una experiencia de compra, se quiere fomentar un estilo de vida saludable y consciente, respaldando a aquellos productores que trabajan para cultivar y producir alimentos nutritivos y de calidad. Contribuyendo así al bienestar tanto al consumidor final como al primer eslabón dentro de la cadena de consumo de estos productos, esto por medio de la adaptabilidad, la colaboración, la mejora continua y la calidad en nuestros servicios.
+</p>
     <h2 id='titulo2'>Visión</h2>
-      <p className='vision'>Para 2028, Natu se posicionará como la principal plataforma de intercambio de productos alimenticios en Colombia, destacando por la colaboración activa entre productores y empresas dedicadas a alimentos orgánicos. Priorizando la calidad del servicio y adaptándonos a las cambiantes necesidades del mercado, buscamos ser una herramienta integral que involucre alrededor del 30% de los actores del sector orgánico, proporcionando a los usuarios una experiencia de alta calidad y satisfaciendo sus expectativas en constante evolución.</p>
+      <p className='vision'>Para 2028, Natu se posicionará como la principal plataforma de intercambio de productos orgánicos en Colombia, logrando la colaboración activa entre productores y empresas dedicadas a alimentos orgánicos con el fin de aumentar el alcance de compra por parte de los consumidores de nuestro país priorizando la calidad del servicio y adaptándonos a las cambiantes necesidades del mercado. Buscamos ser una herramienta integral que involucre alrededor del 30% de los actores del sector orgánico, proporcionando a los usuarios una experiencia de alta calidad y satisfaciendo sus expectativas en constante evolución.
+</p>
     <h2 id='titulo2'>Misión</h2>
       <p className='mision'>Natu es una plataforma en línea que busca brindar un espacio centralizado de productos orgánicos adaptativa a las necesidades del usuario que facilite su compra directa entre productores y consumidores locales, permitiendo una actividad comercial rápida y eficiente entre ambos actores.</p> 
     </div>
 
     <div id="about-us-container2">
-      <h2 id='titulo2'>Acerca de nosotros</h2>
+      <h2 id='titulo2'>Nuestro Equipo</h2>
       <p className='acerca'>Somos estudiantes de la Universidad Nacional formando un equipo de desarrolladores dedicados a crear soluciones innovadoras. Trabajamos juntos para enfrentar desafíos y generar impacto positivo.</p>
 
       <div id="team-container2">

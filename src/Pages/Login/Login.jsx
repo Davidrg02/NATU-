@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./Login.css";
 
 export default function Login() {
+    const api_url = process.env.REACT_APP_API_URL;
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,7 +16,7 @@ export default function Login() {
     };
 
     const loginUser = () => {
-        fetch("http://localhost:4000/api/auth/login", {
+        fetch(`${api_url}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -32,8 +33,9 @@ export default function Login() {
                 } else {
                     localStorage.setItem("token", data.body.token);
                     localStorage.setItem("rol", data.body.rol);
+                    localStorage.setItem("id", data.body.user[0].USUARIO_ID_Usuario);
                     if (data.body.rol === "Vendedor") {
-                        localStorage.setItem("user", data.body.user[0].Nombres_vendedor);
+                        localStorage.setItem("user", data.body.user[0].Nombre_vendedor);
                     } else if (data.body.rol === "Comprador") {
                         localStorage.setItem("user", data.body.user[0].Nombres_comprador);
                     }
@@ -77,9 +79,10 @@ export default function Login() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
+                                {/*}
                                 <a id="link2" href="reset">
                                     Olvide mi contraseña
-                                </a>
+    </a>*/}
                                 <button
                                     type="button"
                                     id="btnLogin"

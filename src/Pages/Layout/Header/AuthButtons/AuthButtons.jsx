@@ -1,29 +1,24 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
+
 import "./AuthButtons.css";
 
-export default function AuthButtons({ loggedIn, userRole, userNames, handleLogout }) {
+export default function AuthButtons({ loggedIn, userNames, handleLogout }) {
     return (
-        <div>
+        <div style={{display: "flex"}}>
             {loggedIn ? (
                 <>
-                    {userRole === 'Vendedor' ? (
-                        <>
-                            <Link to="/misproductos" className="btn btn-outline-primary ms-2 px-5">
-                                Mis Productos
-                            </Link>
-                            <Link to="/ordenes" className="btn btn-outline-primary ms-2 px-5">
-                                Ordenes
-                            </Link>
-                        </>
-                    ) : (
-                        <Link to="/perfil" className="btn btn-outline-primary ms-2 px-5" id='btn-login'>
-                            {userNames}
-                        </Link>
-                    )}
-                    <button onClick={handleLogout} className="btn btn-outline-primary ms-2 px-5" id='btn-login'>
+                    <Link to="/perfil" className="btn btn-outline-primary ms-2" id='btn-login'>
+                        <i class="bi bi-person-circle"></i>
+                        &nbsp;
+                        {userNames}
+                    </Link>
+                    <Button onClick={handleLogout} variant='outline-danger' className='ms-3'>
                         Cerrar Sesión
-                    </button>
+                        &nbsp;
+                        <i class="bi bi-box-arrow-right"></i>
+                    </Button>
                 </>
             ) : (
                 <>

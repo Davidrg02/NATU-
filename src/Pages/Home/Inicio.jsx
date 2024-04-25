@@ -41,7 +41,7 @@ export default function Inicio() {
           <p className="home-page-description-2 animate__animated animate__fadeIn">
             En Natu, respaldamos la economía local al ofrecerte productos saludables y naturales, cultivados y elaborados en el campo por familias colombianas trabajadoras. Nuestro objetivo es brindarte una experiencia auténtica y promover un estilo de vida más saludable para que puedas disfrutar plenamente de nuestros productos.
           </p>
-          <Link to="/products" className="home-page-button-2 animate__animated animate__fadeIn animate__pulse">
+          <Link to="/About" className="home-page-button-2 animate__animated animate__fadeIn animate__pulse">
             Leer más... <FiArrowRight />
           </Link>
         </div>

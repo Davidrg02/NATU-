@@ -51,8 +51,12 @@ export default function ProductDet() {
             </div>
             <div className="producto-informacion-det">
                 <h2 className="producto-nombre-det">{producto.Nombre_producto}</h2>
+                <p className="producto-precio-det">${producto.Precio_producto} COP</p> 
                 <p className="producto-descripcion-det">{producto.Descripcion_producto}</p>
-                <span className="producto-precio-det">${producto.Precio_producto}</span>
+
+                
+                
+
                 <div className="producto-compra-det">
                     <label htmlFor="cantidad-det">Cantidad:</label>
                     <div className='caja-cantidad-det'>

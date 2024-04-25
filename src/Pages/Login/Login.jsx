@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./Login.css";
 
 export default function Login() {
+    const api_url = process.env.REACT_APP_API_URL;
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,7 +16,7 @@ export default function Login() {
     };
 
     const loginUser = () => {
-        fetch("http://localhost:4000/api/auth/login", {
+        fetch(`${api_url}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

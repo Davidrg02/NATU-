@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import TerminosCondiciones from './TerminosCondiciones/TerminosCondiciones';
 
 export default function Register() {
+    const api_url = process.env.REACT_APP_API_URL;
 
     //--- Valores de los campos del formulario de registro ---//
 
@@ -50,7 +51,7 @@ export default function Register() {
     const [Departamentos, setDepartamentos] = useState([]); // Agregué el estado Departamentos
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/departamentos')
+        fetch(`${api_url}/departamentos`)
         .then(response => response.json())
         .then(data => setDepartamentos(data.body))
     }
@@ -63,11 +64,11 @@ export default function Register() {
     
     useEffect(() => {
         if (Departamento !== '') {
-            fetch(`http://localhost:4000/api/municipios/filter/${Departamento}`)
+            fetch(`${api_url}/municipios/filter/${Departamento}`)
             .then(response => response.json())
             .then(data => setMunicipios(data.body))
         } else {
-            fetch('http://localhost:4000/api/municipios')
+            fetch(`${api_url}/municipios`)
             .then(response => response.json())
             .then(data => setMunicipios(data.body))
         }
@@ -168,7 +169,7 @@ export default function Register() {
             Contraseña_encriptada: Password
         };
 
-        const response = await fetch('http://localhost:4000/api/compradores', {
+        const response = await fetch(`${api_url}/compradores`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

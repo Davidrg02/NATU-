@@ -17,6 +17,7 @@ const Product = {
 }
 
 export default function CreateProduct(props) {
+    const api_url = process.env.REACT_APP_API_URL;
 
     const [categories, setCategories] = useState([]);
     const [idVendedor, setIdVendedor] = useState(0); //localStorage["id"]
@@ -34,7 +35,7 @@ export default function CreateProduct(props) {
     // Traer categorias
 
     useEffect(() => {
-        fetch("http://localhost:4000/api/categorias/")
+        fetch(`${api_url}/categorias`)
             .then(response => response.json())
             .then(data => setCategories(data.body));
     }, []);
@@ -51,7 +52,7 @@ export default function CreateProduct(props) {
             event.stopPropagation();
         } else {
             event.preventDefault();
-            fetch("http://localhost:4000/api/productos/", {
+            fetch(`${api_url}/productos`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

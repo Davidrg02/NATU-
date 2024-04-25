@@ -17,9 +17,10 @@ export default function Crear() {
     const[Departamentos, setDepartamentos] = useState([]);
     const[Municipios, setMunicipios] = useState([]);
 
+    const api_url = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/departamentos')
+        fetch(`${api_url}/departamentos`)
         .then(response => response.json())
         .then(data => setDepartamentos(data.body))
     }
@@ -27,11 +28,11 @@ export default function Crear() {
 
     useEffect(() => {
         if (Departamento_ID_Departamento !== null && Departamento_ID_Departamento !== '') {
-            fetch(`http://localhost:4000/api/municipios/filter/${Departamento_ID_Departamento}`)
+            fetch(`${api_url}/municipios/filter/${Departamento_ID_Departamento}`)
             .then(response => response.json())
             .then(data => setMunicipios(data.body))
         } else {
-            fetch('http://localhost:4000/api/municipios')
+            fetch(`${api_url}/municipios`)
             .then(response => response.json())
             .then(data => setMunicipios(data.body))
         }
@@ -42,7 +43,7 @@ export default function Crear() {
         e.preventDefault();
         alert('Creando vendedor');
         toast.info('Creando vendedor');
-        const res = await fetch('http://localhost:4000/api/vendedores', {
+        const res = await fetch(`${api_url}/vendedores`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 export default function ProductDet() {
+  const api_url = process.env.REACT_APP_API_URL;
+
   // Obtenemos el ID del producto de los parámetros de la URL
   
 
@@ -18,7 +20,7 @@ export default function ProductDet() {
   // Conexion a la base de datos
 
   const fetchProduct = () => {
-    fetch(`http://localhost:4000/api/productos/${id}`)
+    fetch(`${api_url}/productos/${id}`)
     .then(response => response.json())
     .then(data => {
         if (data.error) {

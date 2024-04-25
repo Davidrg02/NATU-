@@ -20,7 +20,7 @@ export default function Routing() {
         <Routes>
           <Route path="/" element={<Layout />} >
             <Route path="/" element={<Home />} />
-            <Route path="product/:id" element={<ProductDet />} />
+            <Route path="productDet/:id" element={<ProductDet />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="reset" element={<Reset />} />

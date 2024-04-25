@@ -3,34 +3,36 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 export default function ProductosVista() {
-    const [productos, setProducts] = useState([
-      {
-        ID_Producto: 1,
-        Nombre_producto: "Fresas Camarrosa x 500g",
-        Imagen_producto: "https://cdn.pixabay.com/photo/2016/04/15/08/04/strawberry-1330459_1280.jpg",
-        Descripción_producto: "Fresas frescas cultivadas en Chiquinquira, Boyacá",
-        Precio_producto: 5600,
-      },
-      {
-      ID_Producto: 2,
-        Nombre_producto: "Naranjas x 1000g",
-        Imagen_producto: "https://cdn.pixabay.com/photo/2023/08/16/10/09/oranges-8193789_1280.jpg",
-        Descripción_producto: "Naranjas dulces cultivadas en el Valle del Cauca",
-        Precio_producto: 1600,
+  const api_url = process.env.REACT_APP_API_URL;
 
-      },
-      {
-        ID_Producto: 3,
-        Nombre_producto: "Papa Pastusa x 1000g",
-        Imagen_producto: "https://cdn.pixabay.com/photo/2019/07/12/02/19/potatoes-4331742_1280.jpg",
-        Descripción_producto: "Papa pastusa de buena calidad cultivadas en el Popayán",
-        Precio_producto: 2600,
-    }
-    ]);
+  const [productos, setProducts] = useState([
+    {
+      ID_Producto: 1,
+      Nombre_producto: "Fresas Camarrosa x 500g",
+      Imagen_producto: "https://cdn.pixabay.com/photo/2016/04/15/08/04/strawberry-1330459_1280.jpg",
+      Descripción_producto: "Fresas frescas cultivadas en Chiquinquira, Boyacá",
+      Precio_producto: 5600,
+    },
+    {
+    ID_Producto: 2,
+      Nombre_producto: "Naranjas x 1000g",
+      Imagen_producto: "https://cdn.pixabay.com/photo/2023/08/16/10/09/oranges-8193789_1280.jpg",
+      Descripción_producto: "Naranjas dulces cultivadas en el Valle del Cauca",
+      Precio_producto: 1600,
+
+    },
+    {
+      ID_Producto: 3,
+      Nombre_producto: "Papa Pastusa x 1000g",
+      Imagen_producto: "https://cdn.pixabay.com/photo/2019/07/12/02/19/potatoes-4331742_1280.jpg",
+      Descripción_producto: "Papa pastusa de buena calidad cultivadas en el Popayán",
+      Precio_producto: 2600,
+  }
+  ]);
 
 
     const updateCatalog = () => {
-      fetch('http://localhost:4000/api/productos', {
+      fetch(`${api_url}/productos`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

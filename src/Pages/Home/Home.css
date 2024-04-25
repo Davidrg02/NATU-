@@ -338,7 +338,7 @@
   width: 250px; /* Reduced item width */
   height: 260px; /* Added height to match width */
   padding: 2rem;
-  background-color: #EAF2E8; /* Light green */
+  background-color: #EAF2E8; /* Light */
   border-radius: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -361,7 +361,7 @@
 
 .beneficio-item h3 {
   font-family: 'Montserrat', sans-serif; 
-  font-size: 1.1rem; /* Reduced heading size */
+  font-size: 0.95rem; /* Reduced heading size */
   font-weight: 600;
   color: #82B15A; /* Green text */
   margin: 0;
@@ -369,7 +369,7 @@
 
 .beneficio-item p {
   font-family: 'Montserrat', sans-serif; 
-  font-size: 0.9rem; /* Reduced paragraph size */
+  font-size: 0.89rem; /* Reduced paragraph size */
   font-weight: 400;
   color: #666; /* Lighter text */
   line-height: 1.3;

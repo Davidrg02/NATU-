@@ -58,7 +58,7 @@ export default function About(){
         </div>
         
         <div id="team-member2">
-          <img src="https://scontent.fbog19-1.fna.fbcdn.net/v/t39.30808-1/267097944_1100311427401557_6433006303972762575_n.jpg?stp=dst-jpg_p320x320&_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=IYHLsN7SwcMAb5sdOzT&_nc_ht=scontent.fbog19-1.fna&oh=00_AfAlUd4tXnfiwdboNFS7U5fplY4Kzn1JAWSHD9iWDbT1IA&oe=66299CDE" alt="Integrante 3" />
+          <img src="https://media.licdn.com/dms/image/D4E03AQEB9kkB7CQcPg/profile-displayphoto-shrink_800_800/0/1714028763561?e=1719446400&v=beta&t=hKHsYBqYtJd4Ld9x3vIOxiK9c-T2DBt_EbFrSdNc96k" alt="Integrante 3" />
           <h3 >Ivan Sepulveda</h3>
           <p>Desarrollador Frontend</p>
           <a href="https://github.com/ivanyspaez" target="_blank" rel="noreferrer" style={{ fontSize: '1.8em' }}>

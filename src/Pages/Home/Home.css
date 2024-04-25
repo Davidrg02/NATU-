@@ -2,6 +2,7 @@
 .container-1 {
   display: flex;
   flex-wrap: wrap; /* Asegura que los elementos se envuelvan en pantallas pequeñas */
+  justify-content: center; /* Centra los elementos horizontalmente */
 }
 
 .home-page-container {
@@ -10,8 +11,6 @@
   border-radius: 20px;
   background-color: lavender;
   margin-top: 40px;
-  margin-right: 20px; 
-  margin-left: 30px; 
   max-width: 45%; /* Establece un ancho máximo para el contenedor */
 }
 .home-page-text-container {
@@ -107,6 +106,7 @@
 .container-1 {
   background-image: linear-gradient(to bottom, #a9d4ab, #dccdb5); /* Gradiente de fondo */
   animation: backgroundAnimation 5s linear infinite; /* Animación de desplazamiento suave */
+  
 }
 
 @keyframes backgroundAnimation {
@@ -133,6 +133,7 @@
 .container-2 {
   display: flex;
   flex-wrap: wrap; 
+  justify-content: center;
 }
 
 .home-page-container-2 {
@@ -209,10 +210,9 @@
 .home-image-section-2 {
   flex: 1;
   display: flex;
-  justify-content: flex-start; /* Alinea la imagen a la izquierda */
+  justify-content: center; /* Alinea la imagen a la izquierda */
   align-items: center;
   margin-top: 40px;
-  margin-left: 60px; /* Añade un margen entre los contenedores */
   max-width: 45%; /* Establece un ancho máximo para el contenedor */
 }
 
@@ -242,7 +242,6 @@
 
   .home-image-section-2 {
     justify-content: center; /* Alinea la imagen al centro en pantallas pequeñas */
-    margin-left: 0; /* Elimina el margen izquierdo en pantallas pequeñas */
   }
 }
 

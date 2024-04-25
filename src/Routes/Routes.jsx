@@ -35,6 +35,7 @@ export default function Routing() {
             <Route path="reset" element={<Reset/>} />
             <Route path="ProductDet/:id" element={<ProductDet/>} />
             <Route path="about" element={<About/>} />
+            {/* <Route path="admin" element={<Admin/>} /> */}
             <Route 
               path='admin' 
               element={

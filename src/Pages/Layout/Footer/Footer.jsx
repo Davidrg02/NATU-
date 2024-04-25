@@ -12,7 +12,7 @@ export default function Footer() {
           <Link to="/" className="col-12 col-md-3 d-flex align-items-center justify-content-center">
             <img src="/Natu_Logo_.png" alt="Logo" className="img-fluid" width="150" height="50" />
           </Link>
-          <ul className="col-12 col-md-3 list-unstyled px-3">  {/* Added class 'list-unstyled' */}
+          <ul className="col-12 col-md-2 list-unstyled px-3">  {/* Added class 'list-unstyled' */}
             <li className="footer-section fw-bold fs-7 mb-2">NATU Tienda Orgánica</li>  {/* Added class 'footer-section' */}
             <li className="text-justify">Encuentra productos orgánicos de calidad en esta, tu tienda web de confianza</li>
           </ul>
@@ -22,16 +22,17 @@ export default function Footer() {
               <Link to="/" className="text-reset">Inicio</Link>
             </li>
             <li>
-              <Link to="/Products" className="text-reset">Productoos</Link>
+              <Link to="/Products" className="text-reset">Productos</Link>
             </li>
             <li>
-              <Link to="/about" className="text-reset">About</Link>
+              <Link to="/about" className="text-reset">Nosotros</Link>
             </li>
             <li>
-              <Link to="/contact" className="text-reset">Contact</Link>
+              <Link to="/contact" className="text-reset">Contáctanos</Link>
             </li>
+          
           </ul>
-          <ul className="col-12 col-md-3 list-unstyled px-5 text-center">  {/* Added class 'list-unstyled' */}
+          <ul className="col-12 col-md-3 list-unstyled px-4 text-center">  {/* Added class 'list-unstyled' */}
             <li className="footer-section fw-bold fs-7 mb-2">Síguenos</li>  {/* Added class 'footer-section' */}
             <li className="d-flex justify-content-between">
               <a

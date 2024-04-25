@@ -9,33 +9,51 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from 'react-toastify';
 
+import './Admin.css';
+
 // Importar componentes de la aplicación 
-// import Create from './Create/Create.jsx';
+import Create from './Create/Create.jsx';
 
 import Edit from './Edit/Edit.jsx';
 
 // Datos de ejemplo para la tabla
 const personas = [
     {
-        idPersona: 10255410021,
-        personaNombre: "Juan",
-        personaApellido: "Perez",
-        personaSexo: "M",
-        personaEdad: 20,
-        personaTelefono: 1234567890,
+        ID_Vendedor: 1,
+        Nombre_vendedor: "David Steven",
+        Direccion: "Av Cali #4-87",
+        Descripcion_adicional: "Casa esquinera",
+        Municipio_nombre: "Antioquia",
+        Correo_usuario: "correo@prueba.com"
     },
     {
-        idPersona: 10255410022,
-        personaNombre: "Maria",
-        personaApellido: "Gomez",
-        personaSexo: "F",
-        personaEdad: 25,
-        personaTelefono: 1234567890,
+        ID_Vendedor: 2,
+        Nombre_vendedor: "Juan Carlos",
+        Direccion: "Calle 4 #5-6",
+        Descripcion_adicional: "Casa con piscina",
+        Municipio_nombre: "Bogotá",
+        Correo_usuario: "juanprueba@emial.com"
+    },
+    {
+        ID_Vendedor: 3,
+        Nombre_vendedor: "Andrés Felipe",
+        Direccion: "Carrera 5 #6-7",
+        Descripcion_adicional: "Apartamento",
+        Municipio_nombre: "Medellín",
+        Correo_usuario: "andresemail@prueba.com"
+    },
+    {
+        ID_Vendedor: 4,
+        Nombre_vendedor: "Camilo",
+        Direccion: "Calle 6 #7-8",
+        Descripcion_adicional: "Casa con jardín",
+        Municipio_nombre: "Cali",
+        Correo_usuario: "camilo@email.com"
     }
 ];
 
 const headerStyles = { 
-    backgroundColor: '#3f51b5', 
+    backgroundColor: '#258630', 
     color: 'white', 
     fontWeight: 'bold',
 };
@@ -158,117 +176,119 @@ export default function Personas() {
     const paginatedRows = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
     return (
-        <div className='container'>
-            <ToastContainer position="bottom-right"/>
-            <Dialog open={open} onClose={handleClose} maxWidth="lg" PaperProps={{ style: { width: '80%', maxHeight: '80vh' } }}>
-                <DialogTitle sx={{ fontWeight: 600 }}>Crear persona</DialogTitle>
-                <DialogContent>
-                    {/* Aquí va tu componente para crear */}
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancelar</Button>
-                </DialogActions>
-            </Dialog>
-            <Dialog open={editOpen} onClose={handleEditClose} maxWidth="lg" PaperProps={{ style: { width: '80%', maxHeight: '80vh' } }}>
-                <DialogTitle sx={{ fontWeight: 600 }}>Editar persona</DialogTitle>
-                <DialogContent>
-                    {/* Aquí va tu componente para editar */}
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleEditClose}>Cancelar</Button>
-                </DialogActions>
-            </Dialog>
-            <h1 className='titulo'>Vista de Administrador</h1>
-            <EmojiPeopleIcon sx={{ height: "150px", width: "150px" }}/>
-            <form id="historial-search" className='input-group mb-3' onSubmit={handleSearch}>
-                <input type="text" id="search" name="search" placeholder="Buscar persona" value={inputValue} onChange={(e) => setInputValue(e.target.value)} className='form-control'/>
-                <button id="search-btn" type="submit" className='btn btn-outline-secondary'>
-                    <SearchIcon />
-                    Buscar
-                </button>
-            </form>
-            <div style={{ ...headerStyles, width: "100%", borderRadius: "10px 10px 0px 0px", display: "flex", justifyContent: "right", borderBottom: '3px solid white' }}>
-                <div>
-                    {selected.length === 0 && (
-                        <button type="button" className="btn-create" onClick={handleClickOpen}>
-                            Crear
-                            <AddCircleOutlineIcon sx={{ fontSize: '30px' }}/>
-                        </button>
-                    )}
-                    {selected.length > 0 && (
-                        <div id="selected-container">
-                            <p>Seleccionados: {selected.length}</p>
-                            <IconButton edge="end" color="inherit" sx={{ marginInline: "10px" }} title="Eliminar" onClick={deleteItems}>
-                                <DeleteIcon sx={{ fontSize: '30px' }}/>
-                            </IconButton>
-                        </div>
-                    )}
+        <div className='admin'>
+            <div className='container-admin'>
+                <ToastContainer position="bottom-right"/>
+                <Dialog open={open} onClose={handleClose} maxWidth="lg" PaperProps={{ style: { width: '80%', maxHeight: '80vh' } }}>
+                    <DialogTitle sx={{ fontWeight: 600 }}>Crear vendedor</DialogTitle>
+                    <DialogContent>
+                        <Create />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Cancelar</Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog open={editOpen} onClose={handleEditClose} maxWidth="lg" PaperProps={{ style: { width: '80%', maxHeight: '80vh' } }}>
+                    <DialogTitle sx={{ fontWeight: 600 }}>Editar persona</DialogTitle>
+                    <DialogContent>
+                        {/* Aquí va tu componente para editar */}
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleEditClose}>Cancelar</Button>
+                    </DialogActions>
+                </Dialog>
+                <h1 className='titulo'>Vendedores</h1>
+                <EmojiPeopleIcon sx={{ height: "150px", width: "150px" }}/>
+                <form id="historial-search" className='input-group mb-3' onSubmit={handleSearch}>
+                    <input type="text" id="search" name="search" placeholder="Buscar persona" value={inputValue} onChange={(e) => setInputValue(e.target.value)} className='form-control'/>
+                    <button id="search-btn" type="submit" className='btn btn-success'>
+                        <SearchIcon />
+                        Buscar
+                    </button>
+                </form>
+                <div style={{ ...headerStyles, width: "100%", borderRadius: "10px 10px 0px 0px", display: "flex", justifyContent: "right", borderBottom: '3px solid white' }}>
+                    <div>
+                        {selected.length === 0 && (
+                            <button type="button" className="btn-create" onClick={handleClickOpen}>
+                                Crear
+                                <AddCircleOutlineIcon sx={{ fontSize: '30px' }}/>
+                            </button>
+                        )}
+                        {selected.length > 0 && (
+                            <div id="selected-container">
+                                <p>Seleccionados: {selected.length}</p>
+                                <IconButton edge="end" color="inherit" sx={{ marginInline: "10px" }} title="Eliminar" onClick={deleteItems}>
+                                    <DeleteIcon sx={{ fontSize: '30px' }}/>
+                                </IconButton>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
-            <TableContainer component={Paper} sx={{ borderRadius: "0px" }} stickyHeader>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table" stickyHeader>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell style={headerStyles} align="center"><EditIcon /></TableCell>
-                            <TableCell style={headerStyles} padding="checkbox"></TableCell>
-                            <TableCell style={headerStyles}>Documento</TableCell>
-                            <TableCell style={headerStyles} align="left">Nombre(s)</TableCell>
-                            <TableCell style={headerStyles} align="left">Apellidos</TableCell>
-                            <TableCell style={headerStyles} align="center">Sexo</TableCell>
-                            <TableCell style={headerStyles} align="center">Edad</TableCell>
-                            <TableCell style={headerStyles} align="center">Teléfono</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {paginatedRows.map((row) => (
-                            <TableRow
-                                hover
-                                role="checkbox"
-                                aria-checked={selected.indexOf(row.idPersona) !== -1}
-                                tabIndex={-1}
-                                key={row.idPersona}
-                                selected={selected.indexOf(row.idPersona) !== -1}
-                            >
-                                <TableCell>
-                                    <IconButton color="inherit" title="Editar" onClick={() => handleEdit(row)}>
-                                        <EditIcon />
-                                    </IconButton>
-                                </TableCell>
-                                <TableCell padding="checkbox">
-                                    <Checkbox
-                                        color="primary"
-                                        checked={selected.indexOf(row.idPersona) !== -1}
-                                        inputProps={{ 'aria-labelledby': `enhanced-table-checkbox-${row.idPersona}` }}
-                                        onClick={(event) => handleCheckboxChange(event, row.idPersona)}
-                                    />
-                                </TableCell>
-                                <TableCell component="th" scope="row">{row.idPersona}</TableCell>
-                                <TableCell align="left">{row.personaNombre}</TableCell>
-                                <TableCell align="left">{row.personaApellido}</TableCell>
-                                <TableCell align="center">{row.personaSexo}</TableCell>
-                                <TableCell align="center">{row.personaEdad}</TableCell>
-                                <TableCell align="center">{row.personaTelefono}</TableCell>
+                <TableContainer component={Paper} sx={{ borderRadius: "0px" }} stickyHeader>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table" stickyHeader>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell style={headerStyles} align="center"><EditIcon /></TableCell>
+                                <TableCell style={headerStyles} padding="checkbox"></TableCell>
+                                <TableCell style={headerStyles} align="center">ID</TableCell>
+                                <TableCell style={headerStyles} align="center">Correo</TableCell>
+                                <TableCell style={headerStyles} align="center">Nombre</TableCell>
+                                <TableCell style={headerStyles} align="center">Municipio</TableCell>
+                                <TableCell style={headerStyles} align="center">Dirección</TableCell>
+                                <TableCell style={headerStyles} align="center">Descripción adicional</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 50]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                sx={{
-                    border: "1px solid #e0e0e0",
-                    backgroundColor: "white",
-                    width: "100%", 
-                    borderRadius: "0px 0px 10px 10px", 
-                    minHeight: "55px" 
-                }}
-            />
+                        </TableHead>
+                        <TableBody>
+                            {paginatedRows.map((row) => (
+                                <TableRow
+                                    hover
+                                    role="checkbox"
+                                    aria-checked={selected.indexOf(row.ID_Vendedor) !== -1}
+                                    tabIndex={-1}
+                                    key={row.ID_Vendedor}
+                                    selected={selected.indexOf(row.ID_Vendedor) !== -1}
+                                >
+                                    <TableCell>
+                                        <IconButton color="inherit" title="Editar" onClick={() => handleEdit(row)}>
+                                            <EditIcon />
+                                        </IconButton>
+                                    </TableCell>
+                                    <TableCell padding="checkbox">
+                                        <Checkbox
+                                            color="primary"
+                                            checked={selected.indexOf(row.ID_Vendedor) !== -1}
+                                            inputProps={{ 'aria-labelledby': `enhanced-table-checkbox-${row.ID_Vendedor}` }}
+                                            onClick={(event) => handleCheckboxChange(event, row.ID_Vendedor)}
+                                        />
+                                    </TableCell>
+                                    <TableCell component="th" scope="row">{row.ID_Vendedor}</TableCell>
+                                    <TableCell align="center">{row.Correo_usuario}</TableCell>
+                                    <TableCell align="center">{row.Nombre_vendedor}</TableCell>
+                                    <TableCell align="center">{row.Municipio_nombre}</TableCell>
+                                    <TableCell align="center">{row.Direccion}</TableCell>
+                                    <TableCell align="center">{row.Descripcion_adicional}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[10, 25, 50]}
+                    component="div"
+                    count={rows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                    sx={{
+                        border: "1px solid #e0e0e0",
+                        backgroundColor: "white",
+                        width: "100%", 
+                        borderRadius: "0px 0px 10px 10px", 
+                        minHeight: "55px" 
+                    }}
+                />
+            </div>
         </div>
     );
 }

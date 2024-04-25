@@ -26,10 +26,13 @@ export default function Routing() {
             <Route path="reset" element={<Reset />} />
             <Route path="products" element={<Catalog />} />
             <Route path="about" element={<About />} />
+            <Route path="admin" element={<Admin />} />
             {/* Rutas protegidas */}
+            {/*
             <Route path="admin" element = {<PrivateRoute roles={["Administrador"]} />} >
               <Route path="sellers" element={<Admin />} />
             </Route>
+            */}
             <Route path="seller" element = {<PrivateRoute roles={["Vendedor"]} />}>
               <Route path="my-products" element={<VendedorProducts />} exact/>
             </Route>

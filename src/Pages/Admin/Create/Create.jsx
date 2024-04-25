@@ -1,233 +1,150 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Form, Button, Modal, Row, Col } from 'react-bootstrap';
+import { create } from '@mui/material/styles/createTransitions';
+
 
 export default function Crear() {
-    const [idPersona, setIdPersona] = useState(0);
-    const [personaNombre, setPersonaNombre] = useState('');
-    const [personaApellido, setPersonaApellido] = useState('');
-    const [personaSexo, setPersonaSexo] = useState(null);
-    const [personaEdad, setPersonaEdad] = useState(null);
-    const [personaTelefono, setPersonaTelefono] = useState(0);
-    const [PERSONA_idPersona, setPERSONA_idPersona] = useState(0); // Documento de la persona cabeza de familia
+    const [Nombres_vendedor, setNombre] = useState('');
+    const [Direccion_vendedor, setDireccion] = useState('');
+    const [Descripcion_adicional, setDescripcion] = useState('');
+    const [Departamento_ID_Departamento, setDepartamento] = useState('');
+    const [MUNICIPIO_ID_Municipio, setMunicipio] = useState('');
+    const [Correo_usuario, setCorreo] = useState('');
+    const [Contraseña_encriptada, setContraseña] = useState('');
+    
+    const[Departamentos, setDepartamentos] = useState([]);
+    const[Municipios, setMunicipios] = useState([]);
 
-    const validarPalabra = (event) => {
-        const caracteresNoDeseados = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        if (
-            !event.target.value ||
-            caracteresNoDeseados.test(event.target.value) ||
-            event.target.value.toString().length > 100 ||
-            event.target.value.trim() === ''
-        ) {
-            event.target.style.boxShadow = '0 0 5px red';
+
+    useEffect(() => {
+        fetch('http://localhost:4000/api/departamentos')
+        .then(response => response.json())
+        .then(data => setDepartamentos(data.body))
+    }
+    , []);
+
+    useEffect(() => {
+        if (Departamento_ID_Departamento !== null && Departamento_ID_Departamento !== '') {
+            fetch(`http://localhost:4000/api/municipios/filter/${Departamento_ID_Departamento}`)
+            .then(response => response.json())
+            .then(data => setMunicipios(data.body))
         } else {
-            event.target.style.boxShadow = 'none';
-            event.target.style.boxShadow = '0 0 5px green';
+            fetch('http://localhost:4000/api/municipios')
+            .then(response => response.json())
+            .then(data => setMunicipios(data.body))
         }
-    };
+    }
+    , [Departamento_ID_Departamento]);
 
-    const validarCampo = (event) => {
-        const caracteresNoDeseados = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        if (
-            !event.target.value ||
-            caracteresNoDeseados.test(event.target.value) ||
-            event.target.value > 112 ||
-            event.target.value < 0 ||
-            event.target.value.trim() === ''
-        ) {
-            event.target.style.boxShadow = '0 0 5px red';
-        } else {
-            event.target.style.boxShadow = 'none';
-            event.target.style.boxShadow = '0 0 5px green';
-        }
-    };
-
-    const validarNumero = (event) => {
-        const caracteresNoDeseados = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        if (
-            !event.target.value ||
-            caracteresNoDeseados.test(event.target.value) ||
-            event.target.value.toString().length > 11 ||
-            event.target.value.toString().length < 7
-        ) {
-            event.target.style.boxShadow = '0 0 5px red';
-        } else {
-            event.target.style.boxShadow = 'none';
-            event.target.style.boxShadow = '0 0 5px green';
-        }
-    };
-
-    const validarTelefono = (event) => {
-        const caracteresNoDeseados = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        if (
-            !event.target.value ||
-            caracteresNoDeseados.test(event.target.value) ||
-            event.target.value.toString().length > 13 ||
-            event.target.value.toString().length < 7 ||
-            event.target.value < 0
-        ) {
-            event.target.style.boxShadow = '0 0 5px red';
-        } else {
-            event.target.style.boxShadow = 'none';
-            event.target.style.boxShadow = '0 0 5px green';
-        }
-    };
-
-    const validarCdF = (event) => {
-        const caracteresNoDeseados = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        if (
-            caracteresNoDeseados.test(event.target.value) ||
-            event.target.value.toString().length > 11 ||
-            (event.target.value.toString().length < 7 && event.target.value.toString().length > 1)
-        ) {
-            event.target.style.boxShadow = '0 0 5px red';
-        } else {
-            event.target.style.boxShadow = 'none';
-            event.target.style.boxShadow = '0 0 5px green';
-        }
-    };
-
-    const botonDesactivado = () => {
-        if (!idPersona || idPersona.toString().length > 11 || idPersona.toString().length < 7) {
-            return true;
-        }
-
-        if (
-            !personaNombre ||
-            personaNombre.trim() === '' ||
-            /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g.test(personaNombre) ||
-            /\d/.test(personaNombre) ||
-            personaNombre.length > 100
-        ) {
-            return true;
-        }
-
-        if (
-            !personaApellido ||
-            personaApellido.trim() === '' ||
-            /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g.test(personaApellido) ||
-            /\d/.test(personaApellido) ||
-            personaApellido.length > 100
-        ) {
-            return true;
-        }
-
-        if (personaEdad === null || personaEdad < 0 || personaEdad > 112) {
-            return true;
-        }
-
-        if (
-            !personaTelefono ||
-            personaTelefono.toString().length > 13 ||
-            personaTelefono.toString().length < 6 ||
-            personaTelefono < 1
-        ) {
-            return true;
-        }
-
-        if (PERSONA_idPersona.toString().length === 0 || (PERSONA_idPersona.toString().length >= 7 && PERSONA_idPersona.toString().length <= 10)) {
-            return false;
-        } else {
-            return true;
-        }
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/personas`, {
+    const createVendedor = async (e) => {
+        e.preventDefault();
+        alert('Creando vendedor');
+        toast.info('Creando vendedor');
+        const res = await fetch('http://localhost:4000/api/vendedores', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                idPersona: idPersona,
-                personaNombre: personaNombre,
-                personaApellido: personaApellido,
-                personaSexo: personaSexo,
-                personaEdad: personaEdad,
-                personaTelefono: personaTelefono,
-                PERSONA_idPersona: PERSONA_idPersona
+                Nombres_vendedor,
+                Direccion_vendedor,
+                Descripcion_adicional,
+                MUNICIPIO_ID_Municipio,
+                Correo_usuario,
+                Contraseña_encriptada
             })
         });
-        const responseData = await response.json();
-        console.log(responseData.body);
-        if (!responseData.error) {
-            toast.success(responseData.body);
-            setIdPersona(null);
-            setPersonaNombre('');
-            setPersonaApellido('');
-            setPersonaSexo(null);
-            setPersonaEdad(null);
-            setPersonaTelefono(null);
-            setPERSONA_idPersona(null);
+        const data = await res.json();
+        if (data.status === 200) {
+            alert(data.body);
+            toast.success(data.body);
         } else {
-            toast.error(responseData.body);
+            alert(data.body);
+            toast.error(data.body);
         }
-    };
+    }
+
+
 
     return (
         <div>
             <ToastContainer position='bottom-right'/>
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Documento de identificación</label>
-                <input type="number" className="form-control" id="exampleFormControlInput1" placeholder=""
-                    onChange={(event) => setIdPersona(event.target.value)}
-                    value={idPersona}
-                    onBlur={validarNumero}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput2" className="form-label">Nombre</label>
-                <input type="text" className="form-control" id="exampleFormControlInput2" placeholder=""
-                    onChange={(event) => setPersonaNombre(event.target.value)}
-                    value={personaNombre}
-                    onBlur={validarPalabra}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput3" className="form-label">Apellido</label>
-                <input type="text" className="form-control" id="exampleFormControlInput3" placeholder=""
-                    onChange={(event) => setPersonaApellido(event.target.value)}
-                    value={personaApellido}
-                    onBlur={validarPalabra}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput4" className="form-label">Sexo</label>
-                <select className="form-select" id="exampleFormControlInput4"
-                    onChange={(event) => setPersonaSexo(event.target.value)}
-                    value={personaSexo}
-                >
-                    <option value="">Seleccione</option>
-                    <option value="M">Masculino</option>
-                    <option value="F">Femenino</option>
-                </select>
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput5" className="form-label">Edad</label>
-                <input type="number" className="form-control" id="exampleFormControlInput5" placeholder=""
-                    onChange={(event) => setPersonaEdad(event.target.value)}
-                    value={personaEdad}
-                    onBlur={validarCampo}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput6" className="form-label">Teléfono</label>
-                <input type="number" className="form-control" id="exampleFormControlInput6" placeholder=""
-                    onChange={(event) => setPersonaTelefono(event.target.value)}
-                    value={personaTelefono}
-                    onBlur={validarTelefono}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput7" className="form-label">Documento de la persona cabeza de familia</label>
-                <input type="number" className="form-control" id="exampleFormControlInput7" placeholder=""
-                    onChange={(event) => setPERSONA_idPersona(event.target.value)}
-                    value={PERSONA_idPersona}
-                    onBlur={validarCdF}
-                />
-            </div>
-            <button className="btn btn-primary" onClick={handleSubmit} disabled={botonDesactivado()}>Guardar</button>
+            <Form onSubmit={createVendedor}>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Nombre
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="text" placeholder="Nombre" onChange={(e) => setNombre(e.target.value)} />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Dirección
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="text" placeholder="Dirección" onChange={(e) => setDireccion(e.target.value)} />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Descripción
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="text" placeholder="Descripción" onChange={(e) => setDescripcion(e.target.value)} />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Departamento
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Select onChange={(e) => setDepartamento(e.target.value)}>
+                            <option>Seleccione un departamento</option>
+                            {Departamentos.map((departamento) => (
+                                <option value={departamento.ID_Departamento}>{departamento.Nombre_departamento}</option>
+                            ))}
+                        </Form.Select>
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Municipio
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Select onChange={(e) => setMunicipio(e.target.value)}>
+                            <option>Seleccione un municipio</option>
+                            {Municipios.map((municipio) => (
+                                <option value={municipio.ID_Municipio}>{municipio.Nombre_municipio}</option>
+                            ))}
+                        </Form.Select>
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Correo
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="email" placeholder="Correo" onChange={(e) => setCorreo(e.target.value)} />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Contraseña
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="password" placeholder="Contraseña" onChange={(e) => setContraseña(e.target.value)} />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3">
+                    <Col sm={{ span: 10, offset: 2 }}>
+                        <Button type="submit">Crear</Button>
+                    </Col>
+                </Form.Group>
+            </Form>
+
         </div>
     );
 }

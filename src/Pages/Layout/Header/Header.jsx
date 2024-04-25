@@ -59,7 +59,7 @@ export default function Header() {
                         className="me-auto my-2 my-lg-0"
                     >
                         {/* Header links por rol */}
-                        {userRole === 'NoRegistrado' || userRole === 'Comprador' ? (
+                        {userRole === 'Comprador' ? (
                             <>
                                 <Nav.Link href="/products">Productos</Nav.Link>
                                 <NavDropdown title="Categorías" id="navbarScrollingDropdown">
@@ -71,6 +71,8 @@ export default function Header() {
                                     <NavDropdown.Item href="#action8">Cuidado del jardín</NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Link href="/about">Nosotros</Nav.Link>
+                                &nbsp;
+                                &nbsp;
                                 <Nav.Item>
                                     <SearchBar 
                                         handleSubmit={handleSubmit}
@@ -102,6 +104,8 @@ export default function Header() {
                                     <NavDropdown.Item href="#action8">Cuidado del jardín</NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Link href="/about">Nosotros</Nav.Link>
+                                &nbsp;
+                                &nbsp;
                                 <Nav.Item>
                                     <SearchBar 
                                         handleSubmit={handleSubmit}

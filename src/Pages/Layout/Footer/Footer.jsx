@@ -43,27 +43,26 @@ export default function Footer() {
               <Link to="/Products" className="text-reset">Productos</Link>
             </li>
             <li>
-                            <a href="#" onClick={handleShowTermsModal}>términos y condiciones</a>
-
-            <Modal 
-                show={showTermsModal} 
-                onHide={handleCloseTermsModal}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                >
-                <Modal.Header closeButton>
-                    <Modal.Title>Términos y Condiciones</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <TerminosCondiciones />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseTermsModal}>
-                    Cerrar
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+              <a href="#" onClick={handleShowTermsModal}>Términos y condiciones</a>
+              <Modal 
+                  show={showTermsModal} 
+                  onHide={handleCloseTermsModal}
+                  size="lg"
+                  aria-labelledby="contained-modal-title-vcenter"
+                  centered
+                  >
+                  <Modal.Header closeButton>
+                      <Modal.Title>Términos y Condiciones</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                      <TerminosCondiciones />
+                  </Modal.Body>
+                  <Modal.Footer>
+                      <Button variant="secondary" onClick={handleCloseTermsModal}>
+                      Cerrar
+                      </Button>
+                  </Modal.Footer>
+              </Modal>
             </li>
             <li>
               <Link to="/about" className="text-reset">About</Link>

@@ -79,10 +79,10 @@ export default function Login() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
-                                {/*}
+                                
                                 <a id="link2" href="reset">
                                     Olvide mi contraseña
-    </a>*/}
+                                    </a>
                                 <button
                                     type="button"
                                     id="btnLogin"

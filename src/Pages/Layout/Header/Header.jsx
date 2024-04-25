@@ -96,12 +96,11 @@ export default function Header() {
                             <>
                                 <Nav.Link href="/products">Productos</Nav.Link>
                                 <NavDropdown title="Categorías" id="navbarScrollingDropdown">
-                                    <NavDropdown.Item href="#action3">Alimentos</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action4">Productos lácteos</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action5">Cuidado personal</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action6">Productos para el hogar</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action7">Suplementos dietéticos</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action8">Cuidado del jardín</NavDropdown.Item>
+                                    <NavDropdown.Item href="/products/food">Alimentos</NavDropdown.Item>
+                                    <NavDropdown.Item href="/products/personal-care">Cuidado personal</NavDropdown.Item>
+                                    <NavDropdown.Item href="/products/home">Productos para el hogar</NavDropdown.Item>
+                                    <NavDropdown.Item href="/products/supplements">Suplementos dietéticos</NavDropdown.Item>
+                                    <NavDropdown.Item href="/products/garden">Cuidado del jardín</NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Link href="/about">Nosotros</Nav.Link>
                                 &nbsp;

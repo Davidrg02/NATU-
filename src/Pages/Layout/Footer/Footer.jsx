@@ -69,7 +69,7 @@ export default function Footer() {
             <li className="footer-section fw-bold fs-7 mb-2">Síguenos</li>  {/* Added class 'footer-section' */}
             <li className="d-flex justify-content-between">
               <a
-                href="https://www.facebook.com/TuPaginaDeFacebook"
+                href="https://www.facebook.com/profile.php?id=61557990925535"
                 target="_blank"
                 rel="noopener noreferrer"
               >

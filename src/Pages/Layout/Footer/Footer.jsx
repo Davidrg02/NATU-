@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import "../Header/Header.css";
 import "../../../index.css";
-
+import TerminosCondiciones from '../../../Components/TerminosCondiciones/TerminosCondiciones';
 
 export default function Footer() {
+
+  // Define un estado para controlar si el modal de términos y condiciones está abierto o cerrado
+  const [showTermsModal, setShowTermsModal] = useState(false);
+
+  // Función para abrir el modal de términos y condiciones
+  const handleShowTermsModal = () => setShowTermsModal(true);
+
+  // Función para cerrar el modal de términos y condiciones
+  const handleCloseTermsModal = () => setShowTermsModal(false);
+
   return (
     <footer className="footer py-3 shadow-lg ">  {/* Added class 'footer' */}
       <div className="container fontFooter ">
@@ -30,7 +41,29 @@ export default function Footer() {
             <li>
               <Link to="/contact" className="text-reset">Contáctanos</Link>
             </li>
-          
+            <li>
+              <a href="#" onClick={handleShowTermsModal}>Términos y condiciones</a>
+              <Modal 
+                show={showTermsModal} 
+                onHide={handleCloseTermsModal}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                sx={{overflowY: 'scroll', maxHeight: '90vh', height: '90vh'}}
+                >
+                <Modal.Header closeButton>
+                    <Modal.Title>Términos y Condiciones</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <TerminosCondiciones />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseTermsModal}>
+                    Cerrar
+                    </Button>
+                </Modal.Footer>
+              </Modal>
+            </li>
           </ul>
           <ul className="col-12 col-md-3 list-unstyled px-4 text-center">  {/* Added class 'list-unstyled' */}
             <li className="footer-section fw-bold fs-7 mb-2">Síguenos</li>  {/* Added class 'footer-section' */}

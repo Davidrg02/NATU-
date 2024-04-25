@@ -16,7 +16,7 @@ export default function Login() {
     };
 
     const loginUser = () => {
-        fetch(`${api_url}/login`, {
+        fetch(`${api_url}/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -47,11 +47,13 @@ export default function Header() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary shadow fontHeader">
             <Container fluid>
-                <Navbar.Brand href="/">
-                    <img
-                        src="/natu_logo.png"
-                        width="200"
-                    />
+                <Navbar.Brand>
+                    <Link to="/">
+                        <img
+                            src="/natu_logo.png"
+                            width="200"
+                        />
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
@@ -61,16 +63,29 @@ export default function Header() {
                         {/* Header links por rol */}
                         {userRole === 'Comprador' ? (
                             <>
-                                <Nav.Link href="/products">Productos</Nav.Link>
+                                <Nav.Item>
+                                    <Link className="nav-link" to="/products">Productos</Link>
+                                </Nav.Item>
                                 <NavDropdown title="Categorías" id="navbarScrollingDropdown">
-                                    <NavDropdown.Item href="#action3">Alimentos</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action4">Productos lácteos</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action5">Cuidado personal</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action6">Productos para el hogar</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action7">Suplementos dietéticos</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action8">Cuidado del jardín</NavDropdown.Item>
+                                    <NavDropdown.Item>
+                                        <Link className="dropdown-item" to="/products/food">Alimentos</Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item>
+                                        <Link className="dropdown-item" to="/products/personal-care">Cuidado personal</Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item >
+                                        <Link className="dropdown-item" to="/products/home">Productos para el hogar</Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item >
+                                        <Link className="dropdown-item" to="/products/supplements">Suplementos dietéticos</Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item >
+                                        <Link className="dropdown-item" to="/products/garden">Cuidado del jardín</Link>
+                                    </NavDropdown.Item>
                                 </NavDropdown>
-                                <Nav.Link href="/about">Nosotros</Nav.Link>
+                                <Nav.Item>
+                                    <Link className='nav-link' to="/about" >Nosotros</Link>
+                                </Nav.Item>
                                 &nbsp;
                                 &nbsp;
                                 <Nav.Item>
@@ -83,10 +98,18 @@ export default function Header() {
                             </>
                         ) : userRole === 'Vendedor' ? (
                             <>
-                                <Nav.Link href="/seller/my-products">Mis productos</Nav.Link>
-                                <Nav.Link href="/envios">Envíos</Nav.Link>
-                                <Nav.Link href="/ventas">Ventas</Nav.Link>
-                                <Nav.Link href="/about">Nosotros</Nav.Link>
+                                <Nav.Item>
+                                    <Link className="nav-link" to="/seller/my-products">Mis productos</Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Link className='nav-link' to="/envios" >Envíos</Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Link className='nav-link' to="/ventas" >Ventas</Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Link className='nav-link' to="/about" >Nosotros</Link>
+                                </Nav.Item>
                             </>
                         ) : userRole === 'Administrador' ? (
                             <>
@@ -94,15 +117,29 @@ export default function Header() {
                             </>
                         ) : (
                             <>
-                                <Nav.Link href="/products">Productos</Nav.Link>
+                                <Nav.Item>
+                                    <Link className="nav-link" to="/products">Productos</Link>
+                                </Nav.Item>
                                 <NavDropdown title="Categorías" id="navbarScrollingDropdown">
-                                    <NavDropdown.Item href="/products/food">Alimentos</NavDropdown.Item>
-                                    <NavDropdown.Item href="/products/personal-care">Cuidado personal</NavDropdown.Item>
-                                    <NavDropdown.Item href="/products/home">Productos para el hogar</NavDropdown.Item>
-                                    <NavDropdown.Item href="/products/supplements">Suplementos dietéticos</NavDropdown.Item>
-                                    <NavDropdown.Item href="/products/garden">Cuidado del jardín</NavDropdown.Item>
+                                    <NavDropdown.Item>
+                                        <Link className="dropdown-item" to="/products/food">Alimentos</Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item>
+                                        <Link className="dropdown-item" to="/products/personal-care">Cuidado personal</Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item >
+                                        <Link className="dropdown-item" to="/products/home">Productos para el hogar</Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item >
+                                        <Link className="dropdown-item" to="/products/supplements">Suplementos dietéticos</Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item >
+                                        <Link className="dropdown-item" to="/products/garden">Cuidado del jardín</Link>
+                                    </NavDropdown.Item>
                                 </NavDropdown>
-                                <Nav.Link href="/about">Nosotros</Nav.Link>
+                                <Nav.Item>
+                                    <Link className='nav-link' to="/about" >Nosotros</Link>
+                                </Nav.Item>
                                 &nbsp;
                                 &nbsp;
                                 <Nav.Item>

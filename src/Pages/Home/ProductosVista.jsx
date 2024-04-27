@@ -100,14 +100,12 @@ export default function ProductosVista() {
         </div>  
         <div className="productos-grid">
           {productos.map((producto) => (
-            <div className="producto-item" key={producto.ID_Producto}>
-              <Link to={`/ProductDet/${producto.ID_Producto}`} style={{textDecoration:'none'}}>
+            <Link to={`/ProductDet/${producto.ID_Producto}`} className="producto-item" key={producto.ID_Producto} style={{textDecoration:'none'}}>
                 <img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} className="producto-imagen" />
                 <h3 className='producto-nombre'>{producto.Nombre_producto}</h3>
                 <p className="producto-descripcion">{producto.Descripcion_breve_producto}</p>
                 <span className="producto-precio">${producto.Precio_producto}</span>
-              </Link>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

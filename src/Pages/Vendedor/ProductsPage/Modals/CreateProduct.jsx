@@ -134,13 +134,13 @@ export default function CreateProduct(props) {
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="8" controlId="validationCustom04" className="mb-3">
-                            <Form.Label>Categoria</Form.Label>
+                            <Form.Label>Categoría</Form.Label>
                             <Form.Select 
                                 required
                                 value={product.CATEGORIA_ID_Categoria}
                                 onChange={(e) => setProduct({...product, CATEGORIA_ID_Categoria: e.target.value})}
                             >
-                                <option value={null} >Seleccione una categoria</option>
+                                <option value={null} >Seleccione una categoría</option>
                                 {categories.map(category => (
                                     <option key={category.ID_Categoria} value={category.ID_Categoria}>{category.Nombre_Categoria}</option>
                                 ))}

@@ -1,3 +1,9 @@
+.home-container{
+  position: relative;
+  width: 100%;
+  font-family: var(--font-text);
+}
+
 
 .container-1 {
   display: flex;
@@ -14,6 +20,7 @@
   margin-top: 40px;
   max-width: 45%; /* Establece un ancho máximo para el contenedor */
 }
+
 .home-page-text-container {
   text-align: right; 
   margin-right: 8px;
@@ -410,7 +417,7 @@
 }
 /*-------------------------------Productos Vista V1----------------------------*/
 .productos-vista {
-  margin: 2rem 0;
+  margin: 3rem 0;
   background-color: #F5F5F5; /* Color de fondo */
   padding: 1rem;
   border-radius: 20px; /* Bordes redondeados 

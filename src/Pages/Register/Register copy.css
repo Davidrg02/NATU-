@@ -31,20 +31,6 @@
   width: 100%;
 }
 
-.register-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://img.freepik.com/foto-gratis/coleccion-verduras-blanco-negro_125540-564.jpg?w=1060&t=st=1714173644~exp=1714174244~hmac=db1dd31a289c16f96c2b607e4bcd4952caefd2b156611f018ddf45ac296e85f9');
-  background-repeat: repeat; /* La imagen se repetirá tanto horizontal como verticalmente */
-  background-size: 300px; /* Cambia el tamaño de la imagen */
-  opacity: 0.2; /* Cambia la opacidad de la imagen */
-  z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
-}
-
 
 #link {
   margin-top: 10px;

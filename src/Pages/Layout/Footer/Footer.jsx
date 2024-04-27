@@ -17,7 +17,7 @@ export default function Footer() {
   const handleCloseTermsModal = () => setShowTermsModal(false);
 
   return (
-    <footer className="footer py-3 shadow-lg ">  {/* Added class 'footer' */}
+    <footer className="footer py-3 shadow-lg bg-light">  {/* Added class 'footer' */}
       <div className="container fontFooter ">
         <nav className="row justify-content-between">
           <Link to="/" className="col-12 col-md-3 d-flex align-items-center justify-content-center">

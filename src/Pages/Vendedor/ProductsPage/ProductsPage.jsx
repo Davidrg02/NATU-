@@ -16,7 +16,7 @@ const productos = [
         Descripcion_breve_producto: "Fresas frescas cultivadas en Chiquinquira, Boyacá",
         Precio_producto: 5600,
         Cantidad_producto: 54,
-        Activo: true
+        Activo: 1
     },
     {
         ID_Producto: 2,
@@ -25,7 +25,7 @@ const productos = [
         Descripcion_breve_producto: "Naranjas dulces cultivadas en el Valle del Cauca",
         Precio_producto: 1600,
         Cantidad_producto: 14,
-        Activo: true
+        Activo: 1
     },
     {
         ID_Producto: 3,
@@ -34,7 +34,7 @@ const productos = [
         Descripcion_breve_producto: "Papa pastusa de buena calidad cultivadas en el Popayán",
         Precio_producto: 2600,
         Cantidad_producto: 78,
-        Activo: true
+        Activo: 1
     },
     {
         ID_Producto: 5,
@@ -43,7 +43,7 @@ const productos = [
         Descripcion_breve_producto: "Tomate chonto de excelente calidad cultivadas en el Cauca",
         Precio_producto: 2600,
         Cantidad_producto: 78,
-        Activo: true
+        Activo: 1
     },
     {
         ID_Producto: 6,
@@ -52,7 +52,7 @@ const productos = [
         Descripcion_breve_producto: "Tomate cherry de excelente calidad cultivadas en el Cauca",
         Precio_producto: 2600,
         Cantidad_producto: 78,
-        Activo: true
+        Activo: 1
     },
     {
         ID_Producto: 7,
@@ -61,7 +61,7 @@ const productos = [
         Descripcion_breve_producto: "Tomate larga vida de excelente calidad cultivadas en el Cauca",
         Precio_producto: 2600,
         Cantidad_producto: 78,
-        Activo: true
+        Activo: 0
     },
     {
         ID_Producto: 8,
@@ -70,7 +70,7 @@ const productos = [
         Descripcion_breve_producto: "Tomate perita de excelente calidad cultivadas en el Cauca",
         Precio_producto: 2600,
         Cantidad_producto: 78,
-        Activo: true
+        Activo: 1
     },
     {
         ID_Producto: 9,
@@ -79,7 +79,7 @@ const productos = [
         Descripcion_breve_producto: "Tomate riñon de excelente calidad cultivadas en el Cauca",
         Precio_producto: 2600,
         Cantidad_producto: 78,
-        Activo: true
+        Activo: 1
     },
     {
         ID_Producto: 10,
@@ -88,7 +88,7 @@ const productos = [
         Descripcion_breve_producto: "Tomate cherry de excelente calidad cultivadas en el Cauca",
         Precio_producto: 2600,
         Cantidad_producto: 78,
-        Activo: true
+        Activo: 1
     }
   ];
 
@@ -102,14 +102,14 @@ export default function ProductsPage() {
                 <h1>Mis productos</h1>
                 <SearchBar/>
                 <Button 
-                    variant="outline-success" 
+                    variant="success" 
                     className="mb-4" 
                     size="lg" 
-                    style={{fontWeight: "600"}}
                     onClick={() => setModalShow(true)}
                 >
-                    Publicar producto &nbsp;
-                    <i class="bi bi-arrow-bar-up"></i>
+                    Publicar producto
+                    &nbsp;
+                    <i class="bi bi-plus-square"></i>
                 </Button>
                 <GridProducts products={productos}/>
             </div>

@@ -20,9 +20,31 @@ export default function GridProducts({products}) {
                             <Card.Text>{product.Descripcion_breve_producto}</Card.Text>
                             <Card.Text>Precio: ${product.Precio_producto}</Card.Text>
                             <Card.Text>Cantidad: {product.Cantidad_producto}</Card.Text>
-                            <Button variant="outline-primary" className="mr-2">Editar</Button>
+                            <Button className='mb-1' variant="outline-success" size="sm" onClick={() => setModalShow(true)}>
+                                Editar
+                                <i class="bi bi-pencil-fill"></i>
+                            </Button>
                             &nbsp;
-                            <Button variant="outline-danger">Eliminar</Button>
+                            <Button className='mb-1' variant="outline-danger" size="sm">
+                                Eliminar
+                                <i class="bi bi-trash3-fill"></i>
+                            </Button>
+                            &nbsp;
+                            <Button className='mb-1' variant="outline-primary" size="sm">
+                                {
+                                    product.Activo === 1 ? (
+                                        <>
+                                            <span>Pausar</span>
+                                            <i class="bi bi-eye-slash-fill"></i>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>Mostrar</span>
+                                            <i class="bi bi-eye-fill"></i>
+                                        </>
+                                    )
+                                }
+                            </Button>
                         </Card.Body>
                     </Card>
                 </Col>

@@ -284,6 +284,7 @@
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(16, 15, 15, 0.1);
   overflow: hidden; /* Contener imágenes que sobresalen */
+  font-family: var(--font-text);
 }
 
 /* Consultas de medios para responsividad */
@@ -450,7 +451,7 @@
 }
 
 .producto-nombre {
-  font-family: 'Lexend', sans-serif; 
+  font-family: var(--font-text);
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 1rem;
@@ -460,14 +461,14 @@
 }
 
 .producto-descripcion {
-  font-family: 'Lexend', sans-serif; 
+  font-family: var(--font-text); 
   font-size: 0.9rem;
   margin: 0.5rem 0;
   color: #666; 
 }
 
 .producto-precio {
-  font-family: 'Lexend', sans-serif; 
+  font-family: var(--font-text); 
   font-size: 1.1rem;
   font-weight: bold;
   color: #d7540b;

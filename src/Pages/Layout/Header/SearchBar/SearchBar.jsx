@@ -5,7 +5,7 @@ import './SearchBar.css';
 
 export default function SearchBar({ handleSubmit, handleSearch, searchTerm }) {
     return (
-        <Form className="d-flex" onSubmit={handleSubmit} >
+        <Form className="d-flex" onSubmit={handleSubmit} style={{flexGrow:"1"}}>
             <Form.Control
                 type="search"
                 placeholder="Search"

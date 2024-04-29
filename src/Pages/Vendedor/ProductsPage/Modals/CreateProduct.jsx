@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Modal, Row, Col } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -13,24 +15,14 @@ const Product = {
     Cantidad_producto: null,
     Activo: true,
     CATEGORIA_ID_Categoria: null,
-    VENDEDOR_ID_Vendedor: 0
+    VENDEDOR_ID_Vendedor: localStorage.getItem("id")
 }
 
 export default function CreateProduct(props) {
     const api_url = process.env.REACT_APP_API_URL;
 
     const [categories, setCategories] = useState([]);
-    const [idVendedor, setIdVendedor] = useState(0); //localStorage["id"]
     const [product, setProduct] = useState(Product);
-
-    useEffect(() => {
-        // Verificar si hay un token almacenado en el localStorage
-        const token = localStorage.getItem("token");
-        if (token) {
-            const id = localStorage.getItem("id");
-            setIdVendedor(id);            
-        }
-    }, []);
 
     // Traer categorias
 
@@ -62,11 +54,11 @@ export default function CreateProduct(props) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.body) {
-                        alert("Producto creado correctamente");
-                        props.onHide();
+                    if (data.error === false) {
+                        toast.success("Producto creado exitosamente");
+                        setProduct(Product);
                     } else {
-                        alert("Error al crear el producto");
+                        toast.error("Error al crear el producto");
                     }
                 });
         }
@@ -152,7 +144,7 @@ export default function CreateProduct(props) {
                     </Row>
                     <Row>
                         <Form.Group as={Col} controlId="validationCustom05" className="mb-3">
-                            <Form.Label>Descripcion breve</Form.Label>
+                            <Form.Label>Descripcion breve (Max 50 char)</Form.Label>
                             <Form.Control 
                                 type="text"
                                 maxLength={50}
@@ -217,6 +209,8 @@ export default function CreateProduct(props) {
             <Modal.Footer>
                 <Button onClick={props.onHide} variant='outline-danger'>Close</Button>
             </Modal.Footer>
+
+            <ToastContainer />
         </Modal>
     );
 }

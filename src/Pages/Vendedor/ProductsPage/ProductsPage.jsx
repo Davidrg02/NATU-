@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './ProductsPage.css';
 // Import components
@@ -93,8 +93,42 @@ const productos = [
   ];
 
 export default function ProductsPage() {
+    const api_url = process.env.REACT_APP_API_URL;
 
     const [modalShow, setModalShow] = useState(false);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        // Fetch products from API
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+
+        fetch(`${api_url}/productos/vendedor/${localStorage.getItem('id')}`, {
+            method: 'GET',
+            headers: headers
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            if (data.error === false) {
+                setProducts(data.body);
+            }
+            else {
+                console.error('Error:', data.error);
+                if (data.body === 'jwt expired') {
+                    localStorage.clear();
+                    window.location.href = '/login';
+                }
+                return;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    , []);
 
     return (
         <div className='seller-product-page'>
@@ -111,7 +145,7 @@ export default function ProductsPage() {
                     &nbsp;
                     <i class="bi bi-plus-square"></i>
                 </Button>
-                <GridProducts products={productos}/>
+                <GridProducts products={products}/>
             </div>
             <CreateProduct show={modalShow} onHide={() => setModalShow(false)} className="modals"/>
         </div>

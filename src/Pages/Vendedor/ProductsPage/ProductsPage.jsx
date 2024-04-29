@@ -95,6 +95,12 @@ const productos = [
 export default function ProductsPage() {
     const api_url = process.env.REACT_APP_API_URL;
 
+    const [reload, setReload] = useState(false);
+
+    const reloadPage = () => {
+        setReload(!reload);
+    }
+
     const [modalShow, setModalShow] = useState(false);
     const [products, setProducts] = useState([]);
 
@@ -128,7 +134,7 @@ export default function ProductsPage() {
             console.error('Error:', error);
         });
     }
-    , []);
+    , [reload]);
 
     return (
         <div className='seller-product-page'>
@@ -145,7 +151,7 @@ export default function ProductsPage() {
                     &nbsp;
                     <i class="bi bi-plus-square"></i>
                 </Button>
-                <GridProducts products={products}/>
+                <GridProducts products={products} reloadPage={reloadPage}/>
             </div>
             <CreateProduct show={modalShow} onHide={() => setModalShow(false)} className="modals"/>
         </div>

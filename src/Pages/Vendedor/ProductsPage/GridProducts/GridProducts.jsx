@@ -3,9 +3,16 @@ import { Card, Button, Row, Col } from 'react-bootstrap';
 import "../ProductsPage.css";
 
 import EditProduct from '../Modals/EditProduct';
+import DeleteProduct from '../Modals/DeleteProduct';
+import HideProduct from '../Modals/HideProduct';
 
-export default function GridProducts({products}) {
+
+export default function GridProducts({products, reloadPage}) {
     const [modalShow, setModalShow] = useState(false);
+    const [deleteShow, setDeleteShow] = useState(false);
+    const [hideShow, setHideShow] = useState(false);
+
+    const [selectedProduct, setSelectedProduct] = useState({});
 
     return (
         <Row>
@@ -20,17 +27,32 @@ export default function GridProducts({products}) {
                             <Card.Text>{product.Descripcion_breve_producto}</Card.Text>
                             <Card.Text>Precio: ${product.Precio_producto}</Card.Text>
                             <Card.Text>Cantidad: {product.Cantidad_producto}</Card.Text>
-                            <Button className='mb-1' variant="outline-success" size="sm" onClick={() => setModalShow(true)}>
+                            <Button className='mb-1' variant="outline-success" size="sm" 
+                                onClick={() => {
+                                    setModalShow(true)
+                                    setSelectedProduct(product)
+                                }}
+                            >
                                 Editar
                                 <i class="bi bi-pencil-fill"></i>
                             </Button>
                             &nbsp;
-                            <Button className='mb-1' variant="outline-danger" size="sm">
+                            <Button className='mb-1' variant="outline-danger" size="sm" 
+                                onClick={() => {
+                                    setDeleteShow(true);
+                                    setSelectedProduct(product);
+                                }}
+                            >
                                 Eliminar
                                 <i class="bi bi-trash3-fill"></i>
                             </Button>
                             &nbsp;
-                            <Button className='mb-1' variant="outline-primary" size="sm">
+                            <Button className='mb-1' variant="outline-primary" size="sm"
+                                onClick={() => {
+                                    setHideShow(true);
+                                    setSelectedProduct(product);
+                                }}
+                            >
                                 {
                                     product.Activo === 1 ? (
                                         <>
@@ -49,7 +71,9 @@ export default function GridProducts({products}) {
                     </Card>
                 </Col>
             ))}
-            <EditProduct show={modalShow} onHide={() => setModalShow(false)} className="modals"/>
+            <EditProduct producto={selectedProduct} show={modalShow} onHide={() => setModalShow(false)} reloadPage={reloadPage} className="modals"/>
+            <DeleteProduct id={selectedProduct.ID_Producto} show={deleteShow} onHide={() => setDeleteShow(false)} className="modals"/>
+            <HideProduct producto={selectedProduct} show={hideShow} onHide={() => setHideShow(false)} reloadPage={reloadPage} className="modals"/>
         </Row>
     );
 }

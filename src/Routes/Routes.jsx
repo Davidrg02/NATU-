@@ -11,6 +11,7 @@ import Admin from '../Pages/Admin/Admin.jsx';
 import VendedorProducts from '../Pages/Vendedor/ProductsPage/ProductsPage.jsx';
 import PrivateRoute from '../utils/PrivateRoute.jsx';
 import NotFound from "../Pages/NotFound/NotFound.jsx";
+import VistaCarrito from "../Pages/VistaCarrito/VistaCarrito.jsx";
 
 export default function Routing() {
 
@@ -25,10 +26,11 @@ export default function Routing() {
             <Route path="login" element={<Login />} />
             <Route path="reset" element={<Reset />} />
             <Route path="products" element={<Catalog />}>
-              <Route path=":category" element={<Catalog />} />
+            <Route path=":category" element={<Catalog />} />
             </Route>
             <Route path="about" element={<About />} />
             <Route path="admin" element={<Admin />} />
+            <Route path="cart" element={<VistaCarrito />} />
             {/* Rutas protegidas */}
             {/*
             <Route path="admin" element = {<PrivateRoute roles={["Administrador"]} />} >

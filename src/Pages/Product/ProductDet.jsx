@@ -16,6 +16,17 @@ export default function ProductDet() {
   // Buscamos el producto correspondiente al ID
   const [producto, setProducto] = useState(null);
 
+  // Cantidad de productos a comprar
+  const [Cantidad, setCantidad] = useState(1);
+
+  //Funcion para hacer visible el boton de ver carrito
+  const [mostrarVerCarrito, setMostrarVerCarrito] = useState(false); 
+
+  // Función para añadir al carrito
+  const handleAgregarAlCarrito = () => {
+  console.log(`Añadir al carrito: ${Cantidad}`);
+  setMostrarVerCarrito(true); // Mostrar el enlace para ver el carrito después de hacer clic en el botón
+  };
 
   // Conexion a la base de datos
 
@@ -43,8 +54,8 @@ export default function ProductDet() {
       return <p>Producto no encontrado.</p>;
   }
 
-  
 
+  
   return (
     <div className="contenedor-1">
         <div className="producto-detalle">
@@ -64,8 +75,21 @@ export default function ProductDet() {
                 <div className="producto-compra-det">
                     <label htmlFor="cantidad-det">Cantidad:</label>
                     <div className='caja-cantidad-det'>
-                        <input type="number" id="cantidad-det" min="1" max="10" defaultValue="1" />
-                        <button className="btn-carrito-det">Añadir al carrito <BsCartCheckFill/></button>
+                        <input 
+                        type="number"
+                         id="cantidad-det" 
+                         min="1"
+                         max="20" 
+                         defaultValue="1" 
+                         onChange={(e) => setCantidad(parseInt(e.target.value))} />
+
+                          <button className="btn-carrito-det" onClick={handleAgregarAlCarrito}> Añadir al carrito <BsCartCheckFill/>
+                          </button>
+                          {mostrarVerCarrito && ( // Mostrar el enlace solo si mostrarVerCarrito es true
+                          <Link to="/cart" className="btn-carrito-det">
+                            Ver carrito <BsCart4/>
+                          </Link>  
+                          )}          
                     </div>
                     <Link to="/products" className="btn-seguir-det">
                         Seguir comprando <BsCart4/>
@@ -76,46 +100,3 @@ export default function ProductDet() {
     </div>
 );
 }
-/*
-import { useParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import './ProductDet.css';
-
-export default function ProductDet() {
-  const { id } = useParams(); // Extrae el id de la ruta
-  const [producto, setProducto] = useState({}); // Estado para almacenar el producto detallado
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const response = await fetch(`http://localhost:4000/api/productos/${id}`);
-      const data = await response.json();
-      if (data.error) {
-        console.error(data.error);
-      } else {
-        setProducto(data.body);
-      }
-    };
-    fetchProduct();
-  }, [id]); // Dependencia del id para actualizar al cambiar
-
-  return (
-    <div className="producto-detalle">
-      {producto ? (
-        <>
-          <img
-            src={producto.Imagen_producto}
-            alt={producto.Nombre_producto}
-            className="producto-imagen-detalle"
-          />
-          <h2>{producto.Nombre_producto}</h2>
-          <p className="producto-descripcion">{producto.Descripción_producto}</p>
-          <span className="producto-precio">${producto.Precio_producto}</span>
-          {/* Puedes agregar más detalles como cantidad disponible, características técnicas, etc. 
-        </>
-      ) : (
-        <p>Cargando producto...</p>
-      )}
-    </div>
-  );
-}
-/**/

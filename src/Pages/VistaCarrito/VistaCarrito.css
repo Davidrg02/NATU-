@@ -59,3 +59,114 @@
     border-collapse: collapse;
     margin-top: 20px;
 }
+
+h2{
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse; 
+  border: 1px solid #d0c4c4cd; 
+  border-radius: 15px;
+}
+
+th{
+  padding: 10px;
+  text-align: left;
+  
+  
+
+}
+td {
+  padding: 15px;
+  text-align: left;
+   
+  
+}
+
+th {
+  background-color: #e1f6cdee; /* Gris claro de fondo para encabezado */
+ 
+  
+}
+
+tr{
+  border: 1px solid #d0c4c4cd;
+}
+
+tr:hover {
+  background-color: #eef3eefb; /* Gris claro de fondo al pasar el mouse */
+}
+
+/* Estilos para la imagen del producto */
+.producto-informacion-carrito img {
+  max-width: 100px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+/* Estilos para el nombre del producto */
+.producto-informacion-carrito h2 {
+  margin-bottom: 10px;
+}
+
+/* Estilos para el precio del producto */
+.producto-informacion-carrito .precio {
+  color: #2196F3; /* Color de acento para el precio */
+  font-weight: bold;
+}
+
+/* Estilos para input de cantidad */
+#cantidad-det{
+  width: 3em;
+  text-align: center;
+  min-height: 35px;
+  border-color: #dbd3d3c7;
+}
+
+/* Estilos para el subtotal y total */
+.total-carrito {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.total-carrito p {
+  margin-bottom: 10px;
+}
+
+.total-carrito .total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2196F3; /* Color de acento para el total */
+}
+
+/* Estilos para el botón de compra (continuación) */
+.btn-comprar {
+background-color: #2196F3; /* Color de acento para el botón */
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+background-color: #1976D2; /* Color de acento más oscuro al pasar el mouse */
+}
+
+/* Estilos para la eliminación de productos */
+.producto-informacion-carrito .eliminar {
+color: #dc3545; /* Color rojo para la eliminación */
+font-size: 16px;
+cursor: pointer;
+}
+
+.producto-informacion-carrito .eliminar:hover {
+color: #c82333; /* Color rojo más oscuro al pasar el mouse */
+}

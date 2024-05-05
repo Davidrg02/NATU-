@@ -1,5 +1,126 @@
-import './VistaCarrito.css'
+import './VistaCarrito.css';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { BsTrashFill, BsCartCheckFill } from 'react-icons/bs';
 
+const Carrito = () => {
+  const [cantidades, setCantidades] = useState({}); // Estado para mantener las cantidades de cada producto
+
+  const handleChangeCantidad = (productoId, cantidad) => {
+    setCantidades({ ...cantidades, [productoId]: cantidad }); // Actualizar el estado de las cantidades
+  };
+
+  const productosDePrueba = [
+    {
+      id: 1,
+      nombre: "Fresas Camarrosa x500g",
+      precio: 5600,
+      cantidadProducto: 3,
+      rutaImgProducto: "https://cdn.pixabay.com/photo/2016/11/18/17/23/strawberries-1835934_1280.jpg",
+    },
+    {
+      id: 2,
+      nombre: "Café Molido x250g",
+      precio: 9800,
+      cantidadProducto: 15,
+      rutaImgProducto: "https://cdn.pixabay.com/photo/2019/01/09/18/27/coffee-3923970_640.jpg",
+    },
+    {
+      id: 3,
+      nombre: "Cebolla Cabezona x1kg",
+      precio: 4400,
+      cantidadProducto: 8,
+      rutaImgProducto: "https://cdn.pixabay.com/photo/2016/05/16/22/47/onions-1397037_1280.jpg",
+    }
+  ];
+
+  const calcularSubtotal = (producto) => {
+    const cantidad = cantidades[producto.id] || 1; // Obtener la cantidad del estado o asumir 1 si no está definida
+    return producto.precio * cantidad;
+  };
+
+  const calcularTotalCarrito = () => {
+    return productosDePrueba.reduce((total, producto) => {
+      return total + calcularSubtotal(producto);
+    }, 0);
+  };
+
+  return (
+    <div className="contenedor-1">
+      <div className="producto-detalle-carrito">
+        <div className="producto-informacion-carrito">
+          <div className="info-productos">
+            <h2>Este es tu carrito, verifica tu pedido</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Subtotal</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {productosDePrueba.map((producto) => (
+                  <tr key={producto.id}>
+                    <td><img src={producto.rutaImgProducto} alt={producto.nombre} /></td>
+                    <td>{producto.nombre}</td>
+                    <td>${producto.precio} COP</td>
+                    <td>
+                      <input
+                        id='cantidad-det'
+                        type="number"
+                        min="1"
+                        max="20"
+                        defaultValue={cantidades[producto.id] || 1} // Establecer el valor del input desde el estado
+                        onChange={(e) => handleChangeCantidad(producto.id, parseInt(e.target.value))}
+                      />
+                    </td>
+                    <td>${calcularSubtotal(producto)} COP</td>
+                    <td>
+                      <button onClick={() => console.log('Eliminar producto', producto.id)}>
+                        <BsTrashFill />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="total-carrito">
+                <table>
+                    <thead>
+                        <tr>Total Carrito</tr>
+                    </thead>
+                    <tbody>
+                        <tr> Subtotal: ${calcularTotalCarrito()} COP</tr>
+                        <tr> Envío: $0 COP</tr>
+                        <tr> Total: ${calcularTotalCarrito()} COP</tr>
+                    
+                    </tbody>
+                </table>
+              <Link to="/checkout" className="btn-comprar">
+                Proceder a la compra <BsCartCheckFill />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Carrito;
+
+
+
+
+
+
+
+
+/*
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsTrashFill, BsCartCheckFill } from 'react-icons/bs';
@@ -71,7 +192,7 @@ const VistaCarrito = () => {
                             </tbody>
                         </table>
                         <div className="total-carrito">
-                            <p>Total: ${/* Calcular el total del carrito */}</p>
+                            <p>Total: ${/* Calcular el total del carrito }</p>
                             <Link to="/checkout" className="btn-comprar">
                             Proceder a la compra <BsCartCheckFill />
                             </Link>
@@ -82,61 +203,4 @@ const VistaCarrito = () => {
         </div>
   );
 };
-
-export default VistaCarrito;
-/*
-export default function VistaCarrito() {
-    return (
-        <div className="contenedor-1">
-           
-            <div className="producto-detalle-carrito">
-                <div className="producto-informacion-carrito">
-                <p> Este es tu carrito, verifica tu pedido</p>
-                    <div className="info-productos">
-                    <form class="cart-form" action="/checkout" method="post">
-                        <table class="cart-table">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Precio</th>
-                                    <th>Cantidad</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            
-                                <tr>
-                                    <td>Producto 1</td>
-                                    <td>$10.00</td>
-                                    <td>
-                                        <input type="number" name="quantity_product_1" value="1" min="1" max="10"></input>
-                                    </td>
-                                    <td>$10.00</td>
-                                    
-                                </tr>
-                            
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3"></td>
-                                    <td>Total:</td>
-                                    <td>$50.00</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <button type="submit" class="update-cart">Actualizar carrito</button>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </form>
-                    </div>
-                </div>
-            </div>
-           
-
-            
-        </div>
-    )
-}
 */

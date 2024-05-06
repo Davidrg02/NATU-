@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from '../Pages/Home/Home.jsx';
 import ProductDet from '../Pages/Product/ProductDet.jsx';
 import Register from '../Pages/Register/Register.jsx';
+import RegisterBuyer from "../Pages/Register/Buyer/RegisterBuyer.jsx";
+import RegisterSeller from "../Pages/Register/Seller/RegisterSeller.jsx";
 import Login from '../Pages/Login/Login.jsx';
 import Layout from '../Pages/Layout/Layout.jsx';
 import Reset from '../Pages/Recover/Reset.jsx';
@@ -22,6 +24,8 @@ export default function Routing() {
             <Route path="/" element={<Home />} />
             <Route path="productDet/:id" element={<ProductDet />} />
             <Route path="register" element={<Register />} />
+            <Route path="register-buyer" element={<RegisterBuyer />} />
+            <Route path="register-seller" element={<RegisterSeller />} />
             <Route path="login" element={<Login />} />
             <Route path="reset" element={<Reset />} />
             <Route path="products" element={<Catalog />}>
@@ -30,11 +34,6 @@ export default function Routing() {
             <Route path="about" element={<About />} />
             <Route path="admin" element={<Admin />} />
             {/* Rutas protegidas */}
-            {/*
-            <Route path="admin" element = {<PrivateRoute roles={["Administrador"]} />} >
-              <Route path="sellers" element={<Admin />} />
-            </Route>
-            */}
             <Route path="seller" element = {<PrivateRoute roles={["Vendedor"]} />}>
               <Route path="my-products" element={<VendedorProducts />} exact/>
             </Route>

@@ -243,14 +243,3 @@
     margin: 0 auto;
 }
 
-.row {
-    display: flex;
-    justify-content: space-between;
-    margin-top: -10px;
-}
-
-.col.direccion {
-    right: 10px;
-    width: 70%;
-}
-

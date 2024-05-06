@@ -18,6 +18,13 @@ const Product = {
     VENDEDOR_ID_Vendedor: localStorage.getItem("id")
 }
 
+/**
+ * Component for creating a new product.
+ * 
+ * @component
+ * @param {Object} props - The properties passed to the component.
+ * @returns {JSX.Element} - The JSX element representing the create product modal.
+ */
 export default function CreateProduct(props) {
     const api_url = process.env.REACT_APP_API_URL;
 

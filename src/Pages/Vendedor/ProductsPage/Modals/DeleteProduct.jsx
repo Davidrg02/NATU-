@@ -1,6 +1,14 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
+/**
+ * Component for deleting a product.
+ * @param {Object} props - The component props.
+ * @param {number} props.id - The ID of the product to delete.
+ * @param {boolean} props.show - Flag indicating whether the modal is shown or hidden.
+ * @param {function} props.onHide - Function to handle hiding the modal.
+ * @returns {JSX.Element} The delete product modal component.
+ */
 export default function DeleteProduct({ id, show, onHide }) {
     const api_url = process.env.REACT_APP_API_URL;
 

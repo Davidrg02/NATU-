@@ -4,6 +4,17 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+/**
+ * EditProduct component for editing a product.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.producto - The product to be edited.
+ * @param {boolean} props.show - Flag to control the visibility of the modal.
+ * @param {Function} props.reloadPage - Function to reload the page after editing the product.
+ * @param {Function} props.onHide - Function to handle the modal hide event.
+ * @returns {JSX.Element} The EditProduct component.
+ */
 export default function EditProduct({ producto, show, reloadPage, onHide }) {
     const api_url = process.env.REACT_APP_API_URL;
 

@@ -7,6 +7,13 @@ import DeleteProduct from '../Modals/DeleteProduct';
 import HideProduct from '../Modals/HideProduct';
 
 
+/**
+ * Renders a grid of products.
+ * 
+ * @param {Object[]} products - The array of products to display.
+ * @param {Function} reloadPage - The function to reload the page.
+ * @returns {JSX.Element} The grid of products.
+ */
 export default function GridProducts({products, reloadPage}) {
     const [modalShow, setModalShow] = useState(false);
     const [deleteShow, setDeleteShow] = useState(false);

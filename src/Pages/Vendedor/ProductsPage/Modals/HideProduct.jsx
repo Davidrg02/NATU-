@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
+/**
+ * Component for hiding or unhiding a product.
+ * @param {Object} props - The component props.
+ * @param {Object} props.producto - The product object.
+ * @param {boolean} props.show - Flag indicating whether the modal is visible.
+ * @param {Function} props.reloadPage - Function to reload the page.
+ * @param {Function} props.onHide - Function to hide the modal.
+ * @returns {JSX.Element} The HideProduct component.
+ */
 export default function HideProduct({ producto, show, reloadPage, onHide }) {
     const api_url = process.env.REACT_APP_API_URL;
 
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        // Actualizar el estado del producto cuando la prop cambie
+        // Update the product state when the "producto" prop changes
         setProduct(producto);
     }, [producto]);
 
     const mensaje = product.Activo === 1 ? 'pausar' : 'reanudar';
-    
 
+    /**
+     * Handles hiding or unhiding the product.
+     */
     const handleHideProduct = () => {
         fetch (`${api_url}/productos/ocultar/${product.ID_Producto}`, {
             method: 'PUT',
@@ -38,7 +49,6 @@ export default function HideProduct({ producto, show, reloadPage, onHide }) {
                 return;
             }
         })
-
     }
 
     return (

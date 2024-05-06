@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 :root {
   --light-blue: #c3dcfd;
   --mid-blue: #bc5b0c;
@@ -7,308 +10,75 @@
   --white: #ffffff;
   --letters: #333;
   --letters-2: #7a7a7a;
-  --verde-1: #204a23;
+  --verde-1: #225f26;
   --verde-2: #9fdf58;
   --registrarse-static: #f0fff0;
   --verde-3: #136c33;
-  --border1: #aaa
+  --border1: #aaa;
+  --font-subtitle: 'Open Sans', sans-serif;
+  --font-text: 'Lexend', sans-serif;
 }
-
-#background {
-  position: absolute;
-  top: 50%;
-  left: 50%; /* Posición horizontal al 50% del contenedor principal */
-  transform: translate(-50%, -50%); /* Corrige la posición para centrar vertical y horizontalmente */
-}
-
-#background #shape {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  border-radius: 50%;
-}
-
-#shape:first-child {
-  background: linear-gradient(var(--orange), var(--orange-3));
-  left: -10px;
-  top: calc(50% - 100px); /* Alinea verticalmente con respecto al contenedor principal */
-}
-
-#shape:last-child {
-  background: linear-gradient(to right, var(--verde-1), var(--verde-2));
-  right: -70px;
-  bottom: calc(50% - 40px); /* Alinea verticalmente con respecto al contenedor principal */
-}
-
 .vinculos {
   margin-top: 20px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  color:var(--verde-1);  /* Verde claro */
-  /* transition: color 0.3s; Transición suave */
+  font-weight: 550px;
 }
-
-  .vinculos:hover {
-  color: var(--verde-2); /* Verde claro más claro al pasar el cursor */
-}
-
-#link {/* enlace de Ir a login*/
-  font-family: 'Poppins', sans-serif;
-  margin-right: 130px;
-    
-}
-#link-1 {/* enlace de Volver al inicio*/
-  font-family: 'Poppins', sans-serif;
-  margin-left: 23%;
-}
-
-
 
 .register-container {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-#register-form {
-  position: relative; /* Establece el formulario como el contenedor de posición para #background */
   width: 100%;
-  max-width: 500px;
-  padding: 50px 35px;
-  margin-top: 20px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  margin-bottom: 30px;
 }
 
-.register-container form * {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  flex-direction: column; /* Cambiamos la dirección del flexbox a vertical */
-}
-.register-container form h3 {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 42px;
-  text-align: center;
-}
 
-.register-container label {
-  display: block;
-  margin-top: 20px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.register-container input {
-  display: block;
-  height: 50px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.07);
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-}
-.register-container ::placeholder {
-  color: #88a;
-  opacity: 0.7; /* Valor de opacidad (0 es completamente transparente, 1 es opaco) */
-  font-style: italic; /* Aplicar cursiva */
-}
-
-.register-container .social {
+#link {
   margin-top: 10px;
-  display: flex;
-}
-.register-container .social button {
-  margin: 4px 2px;
-}
-.register-container .social div {
-  width: 150px;
-
-  color: rgb(0, 0, 0);
-  text-align: center;
-}
-.register-container .social div:hover {
-  background-color: rgba(255, 255, 255, 0.47);
-}
-.register-container .social .fb {
-  border: 1px #cfdfff solid;
-  border-radius: 2000px;
-}
-.register-container .go {
-  margin-left: 80px;
-  border-radius: 2000px;
+  margin-right: 20px;
 }
 
-.register-container .go button {
-  border: 1px #cfdfff solid;
-  size: 300px;
-  border-radius: 2000px;
-}
-
-.register-container .lgn {
-  border: 1px var(--letters-2) solid;
-  border-radius: 8px;
-}
-.register-container .btn {
-  border: 1px #cfcfff solid;
-  margin-right: 200px;
-}
-.register-container .btn:hover {
-  background-color: rgba(205, 205, 255, 0.47);
-}
-.register-container .go:hover {
-  background-color: rgba(4, 215, 255, 0.47);
-}
-.register-container #botonRegistro {
-  margin-top: 20px;
-  width: 100%;
-  padding: 15px 25px;
-  border: unset;
-  border-radius: 15px;
-  color: #212121;
-  z-index: 1;
-  background: #e8e8e8;
-  position: relative;
-  font-weight: 1000;
-  font-size: 14px;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
-  overflow: hidden;
+#background {
+  width: 780px;
+  height: 420px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
   
 }
-
-.register-container #botonRegistro ::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: #212121;
-  z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
-}
-
-.register-container #botonRegistro:hover {
-  color: var(--registrarse-static);
-  background-color: var(--verde-3);
-}
-.register-container .logo h1 {
-  font-size: 24px;
-  padding: 0 0 0 8px;
-  margin: 11px 0;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
-  border-left: 8px solid var(--orange);
-  text-align: left;
-}
-
-.register-container .logo h1 a,
-.logo h1 a:hover {
-  color: #545454;
-  text-decoration: none;
-}
-
-.logo img {
-  padding: 0;
-  margin: 0;
-  max-height: 38px;
-}
-/* The switch - the box around the slider */
-.switch {
-  font-size: 14px;
-  position: relative;
-  display: inline-block;
-  width: 3.5em;
-  height: 2em;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 30px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 1.4em;
-  width: 1.4em;
-  border-radius: 20px;
-  left: 0.3em;
-  bottom: 0.3em;
-  background-color: white;
-  transition: 0.4s;
-}
-
-.register-container input:checked + .slider {
-  background-color: rgb(0, 221, 80);
-}
-
-.register-container input:focus + .slider {
-  box-shadow: 0 0 1px rgb(0, 221, 80);
-}
-
-.register-container input:checked + .slider:before {
-  transform: translateX(1.5em);
-}
-
-#img-centrada {
-  max-width: 100%; /* Ajustamos el ancho máximo de la imagen para que se ajuste al contenedor */
-  height: auto;
-  margin: 0 auto;
-}
-
-.row {
+#register-container {
   display: flex;
-  justify-content: space-between;
-  margin-top: -10px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(8, 7, 16, 0.39);
+  padding: 50px 35px;
+  margin-block: 50px;
+  width: 100%;
+  max-width: 700px; /* Ancho máximo del contenedor */
+  font-family: var(--font-text);
 }
 
-.col {
-  width: 100%; /* Establecemos un ancho del 100% para ocupar todo el espacio disponible */
+@media (max-width: 768px) {
+  #register-container {
+    max-width: 90%; /* Reducir el ancho máximo del contenedor */
+  }
 }
 
 
-#cuadros{
-  border: 1px var(--border1) solid;
-  border-radius: 7px;
-  margin-bottom: 8px;
-  transition: box-shadow 0.3s; /* Agrega una transición suave al cambio de sombra */
-
+#register-container img{
+  width: 180px;
+  margin-bottom: 20px;
 }
 
-#cuadros:focus {
-  box-shadow: 0 0 5px blue; /* Establece una sombra azul cuando el input está enfocado */
+#register-form h3 {
+  color: var(--verde-1);
+  font-size: 1.5rem;
+  font-family: var(--font-text);
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 40px;
 }
+

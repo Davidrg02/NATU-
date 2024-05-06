@@ -1,12 +1,21 @@
 import React, {useEffect, useState} from "react";
 import "./Login.css";
 
+/**
+ * Represents the Login component.
+ * @component
+ */
 export default function Login() {
     const api_url = process.env.REACT_APP_API_URL;
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    /**
+     * Checks if the email and password inputs are filled.
+     * If both inputs are filled, calls the loginUser function.
+     * If any input is empty, displays an alert message.
+     */
     const checkInputs = () => {
         if (email === "" || password === "") {
             alert("Por favor llena todos los campos");
@@ -15,6 +24,13 @@ export default function Login() {
         }
     };
 
+    /**
+     * Sends a login request to the API with the provided email and password.
+     * If the login is successful, stores the token, role, and user information in the local storage.
+     * Redirects the user to the home page.
+     * If the login fails, displays an alert message.
+     * If there is an error during the login request, logs the error to the console.
+     */
     const loginUser = () => {
         fetch(`${api_url}/auth/login`, {
             method: "POST",

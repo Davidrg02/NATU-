@@ -1,7 +1,7 @@
 import './VistaCarrito.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BsTrashFill, BsCartCheckFill } from 'react-icons/bs';
+import { BsTrashFill } from 'react-icons/bs';
 
 const Carrito = () => {
   const [cantidades, setCantidades] = useState({}); // Estado para mantener las cantidades de cada producto
@@ -36,13 +36,15 @@ const Carrito = () => {
 
   const calcularSubtotal = (producto) => {
     const cantidad = cantidades[producto.id] || 1; // Obtener la cantidad del estado o asumir 1 si no está definida
-    return producto.precio * cantidad;
+    const subtotal = producto.precio * cantidad;
+    return `${subtotal.toLocaleString()} `; // Aplicar formato con separador de miles y concatenar
   };
-
+  
   const calcularTotalCarrito = () => {
-    return productosDePrueba.reduce((total, producto) => {
-      return total + calcularSubtotal(producto);
+    const total = productosDePrueba.reduce((total, producto) => {
+      return total + producto.precio * (cantidades[producto.id] || 1); // Aquí ya se está aplicando el formato correctamente
     }, 0);
+    return `${total.toLocaleString()} `; // Aplicar formato con separador de miles y concatenar
   };
 
   return (
@@ -50,9 +52,9 @@ const Carrito = () => {
       <div className="producto-detalle-carrito">
         <div className="producto-informacion-carrito">
           <div className="info-productos">
-            <h2>Este es tu carrito, verifica tu pedido</h2>
-            <table>
-              <thead>
+            <p className='descripcion-carrito'>Este es tu carrito, por favor verifica tu pedido</p>
+            <table cellSpacing={0}>
+              <thead className='table-head'>
                 <tr>
                   <th></th>
                   <th>Nombre</th>
@@ -66,8 +68,8 @@ const Carrito = () => {
                 {productosDePrueba.map((producto) => (
                   <tr key={producto.id}>
                     <td><img src={producto.rutaImgProducto} alt={producto.nombre} /></td>
-                    <td>{producto.nombre}</td>
-                    <td>${producto.precio} COP</td>
+                    <td className='nombre-producto'>{producto.nombre}</td>
+                    <td className='precio-producto'>${producto.precio} COP</td>
                     <td>
                       <input
                         id='cantidad-det'
@@ -78,7 +80,7 @@ const Carrito = () => {
                         onChange={(e) => handleChangeCantidad(producto.id, parseInt(e.target.value))}
                       />
                     </td>
-                    <td>${calcularSubtotal(producto)} COP</td>
+                    <td className='subtotal-producto'>$ {calcularSubtotal(producto)} COP</td>
                     <td>
                       <button onClick={() => console.log('Eliminar producto', producto.id)}>
                         <BsTrashFill />
@@ -89,20 +91,35 @@ const Carrito = () => {
               </tbody>
             </table>
             <div className="total-carrito">
-                <table>
+                <table cellSpacing={0} className='total'>
                     <thead>
                         <tr>Total Carrito</tr>
                     </thead>
                     <tbody>
-                        <tr> Subtotal: ${calcularTotalCarrito()} COP</tr>
-                        <tr> Envío: $0 COP</tr>
-                        <tr> Total: ${calcularTotalCarrito()} COP</tr>
+                        
+                        <tr> 
+                          <th>Subtotal</th>
+                          <td>${calcularTotalCarrito()} COP</td>
+                        </tr>
+
+                        <tr> 
+                          <th>Envío</th>
+                          <td>$0 COP</td>
+                        </tr>
+
+                        <tr> 
+                          <th>Total</th>
+                          <td>${calcularTotalCarrito()} COP</td>
+                        </tr>
                     
                     </tbody>
                 </table>
-              <Link to="/checkout" className="btn-comprar">
-                Proceder a la compra <BsCartCheckFill />
+              
+              <div>
+              <Link to="/checkout" className="btns-compra-carrito">
+                Finalizar compra 
               </Link>
+                </div>
             </div>
           </div>
         </div>

@@ -135,7 +135,7 @@ box-shadow: 0 0 10px rgba(22, 69, 25, 0.5);
 .producto-precio-det {
   font-size: clamp(1vw, 2.8vw, 1rem);
   font-weight: bold;
-  color: #EB6613; /* Rojo para el precio */
+  color: #EB6613;
   margin-top: 5px;
   text-align: center;
  

@@ -60,9 +60,16 @@
     margin-top: 20px;
 }
 
-h2{
-  margin: 0 auto;
-  padding: 10px;
+.descripcion-carrito{
+  
+  font-family: var(--font-text) ;
+  font-size: clamp(2vw, 5vw, 1.5rem); 
+  font-weight: bold;
+  line-height: 1.1; 
+  color: #337841;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  
   text-align: center;
 }
 
@@ -75,24 +82,40 @@ table {
 }
 
 th{
-  padding: 10px;
+  font-family: var(--font-text) ;
+  padding: 15px;
   text-align: left;
-  
-  
-
+  background-color:lavender;
+  color: #b38b5b;
+  font-size: clamp(1vw, 2.8vw, 1.3rem);
 }
 td {
   padding: 15px;
   text-align: left;
-   
-  
+  font-family: var(--font-text);
+  font-weight: bold;
+  font-size: clamp(1vw, 2.8vw, 1.1rem);  
 }
 
-th {
-  background-color: #e1f6cdee; /* Gris claro de fondo para encabezado */
- 
-  
+.nombre-producto{
+  color: #337841;
 }
+
+.precio-producto{
+  color: #EB6613;
+  font-weight: normal;
+}
+
+.cantidad-producto{
+  color: #b38b5b;
+  text-align: center;
+}
+
+.subtotal-producto{
+  color: #EB6613;
+  font-weight: bold;
+}
+
 
 tr{
   border: 1px solid #d0c4c4cd;
@@ -101,17 +124,22 @@ tr{
 tr:hover {
   background-color: #eef3eefb; /* Gris claro de fondo al pasar el mouse */
 }
-
+/* Estilos para el header de la tabla */
+.table-header {
+  background-color: #f1f1f1; /* Gris claro de fondo para el encabezado */
+  font-weight: bold;
+}
 /* Estilos para la imagen del producto */
 .producto-informacion-carrito img {
-  max-width: 100px;
+  max-width: 150px;
   height: auto;
   margin-right: 20px;
-  border-radius: 5px;
+  border-radius: 50px;
+  
 }
 
 /* Estilos para el nombre del producto */
-.producto-informacion-carrito h2 {
+.producto-informacion-carrito {
   margin-bottom: 10px;
 }
 
@@ -124,9 +152,11 @@ tr:hover {
 /* Estilos para input de cantidad */
 #cantidad-det{
   width: 3em;
+  font-weight: bold;
   text-align: center;
   min-height: 35px;
   border-color: #dbd3d3c7;
+  color: #b38b5b;
 }
 
 /* Estilos para el subtotal y total */
@@ -135,25 +165,35 @@ tr:hover {
   margin-top: 20px;
 }
 
-.total-carrito p {
-  margin-bottom: 10px;
+.total-carrito{
+  
+  margin-bottom: 50px;
+  
+
 }
 
 .total-carrito .total {
   font-size: 18px;
   font-weight: bold;
-  color: #2196F3; /* Color de acento para el total */
+  color: #090909; /* Color de acento para el total */
 }
 
 /* Estilos para el botón de compra (continuación) */
-.btn-comprar {
-background-color: #2196F3; /* Color de acento para el botón */
-color: white;
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease;
+.btns-compra-carrito {
+  background-color: #276cb1; /* Color de acento para el botón */
+  display: inline-block; /* Cambiado a inline-block para permitir el ajuste del ancho */
+  padding: 0.5vw 1.5vw; /* Ajusta el relleno del botón en función del tamaño de la pantalla */
+  border-radius: 2rem; /* Redondea los bordes del botón */
+  font-size: clamp(0.8rem, 1.5vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
+  font-weight: 500;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  background: #EB6613;
+  margin: 0 auto;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+  
 }
 
 .btn-comprar:hover {
@@ -169,4 +209,10 @@ cursor: pointer;
 
 .producto-informacion-carrito .eliminar:hover {
 color: #c82333; /* Color rojo más oscuro al pasar el mouse */
+}
+
+/* Estilos para la tabla de compra total */
+.total {
+width: 50%;
+
 }

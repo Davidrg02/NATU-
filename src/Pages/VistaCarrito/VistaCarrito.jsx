@@ -90,10 +90,10 @@ const Carrito = () => {
                 ))}
               </tbody>
             </table>
-            <div className="total-carrito">
+            <div className="total-carrito" >
                 <table cellSpacing={0} className='total'>
                     <thead>
-                        <tr>Total Carrito</tr>
+                        <th className="titulo-total-carrito">Total Carrito</th>
                     </thead>
                     <tbody>
                         

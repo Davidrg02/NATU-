@@ -85,7 +85,6 @@ th{
   font-family: var(--font-text) ;
   padding: 15px;
   text-align: left;
-  background-color:lavender;
   color: #b38b5b;
   font-size: clamp(1vw, 2.8vw, 1.3rem);
 }
@@ -124,11 +123,7 @@ tr{
 tr:hover {
   background-color: #eef3eefb; /* Gris claro de fondo al pasar el mouse */
 }
-/* Estilos para el header de la tabla */
-.table-header {
-  background-color: #f1f1f1; /* Gris claro de fondo para el encabezado */
-  font-weight: bold;
-}
+
 /* Estilos para la imagen del producto */
 .producto-informacion-carrito img {
   max-width: 150px;
@@ -136,17 +131,6 @@ tr:hover {
   margin-right: 20px;
   border-radius: 50px;
   
-}
-
-/* Estilos para el nombre del producto */
-.producto-informacion-carrito {
-  margin-bottom: 10px;
-}
-
-/* Estilos para el precio del producto */
-.producto-informacion-carrito .precio {
-  color: #2196F3; /* Color de acento para el precio */
-  font-weight: bold;
 }
 
 /* Estilos para input de cantidad */
@@ -159,10 +143,24 @@ tr:hover {
   color: #b38b5b;
 }
 
-/* Estilos para el subtotal y total */
-.total-carrito {
-  text-align: right;
-  margin-top: 20px;
+/* Estilos para el subtotal y total--------------------- */
+
+.total-carrito{
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 25px;
+ 
+
+}
+
+.titulo-total-carrito {
+  font-family: var(--font-text) ;
+  font-size: clamp(1.5vw, 5vw, 1rem); 
+  font-weight: bold;
+  text-align: left;
+  font-size: clamp(1vw, 2.8vw, 1.3rem);
+  
 }
 
 .total-carrito{

@@ -53,11 +53,12 @@ const Carrito = () => {
         <div className="producto-informacion-carrito">
           <div className="info-productos">
             <p className='descripcion-carrito'>Este es tu carrito, por favor verifica tu pedido</p>
+            <div className="table-container">
             <table cellSpacing={0}>
               <thead className='table-head'>
                 <tr>
                   <th></th>
-                  <th>Nombre</th>
+                  <th>Producto</th>
                   <th>Precio</th>
                   <th>Cantidad</th>
                   <th>Subtotal</th>
@@ -76,7 +77,7 @@ const Carrito = () => {
                         type="number"
                         min="1"
                         max="20"
-                        defaultValue={cantidades[producto.id] || 1} // Establecer el valor del input desde el estado
+                        defaultValue={cantidades[producto.id] || 1}
                         onChange={(e) => handleChangeCantidad(producto.id, parseInt(e.target.value))}
                       />
                     </td>
@@ -90,41 +91,44 @@ const Carrito = () => {
                 ))}
               </tbody>
             </table>
-            <div className="total-carrito" >
-                <table cellSpacing={0} className='total'>
-                    <thead>
-                        <th className="titulo-total-carrito">Total Carrito</th>
-                    </thead>
-                    <tbody>
-                        
-                        <tr> 
-                          <th>Subtotal</th>
-                          <td>${calcularTotalCarrito()} COP</td>
-                        </tr>
-
-                        <tr> 
-                          <th>Envío</th>
-                          <td>$0 COP</td>
-                        </tr>
-
-                        <tr> 
-                          <th>Total</th>
-                          <td>${calcularTotalCarrito()} COP</td>
-                        </tr>
-                    
-                    </tbody>
-                </table>
-              
-              <div>
+            </div>
+            <div className="segunda-tabla-contenedor">
+              <table cellSpacing={0}>
+                <thead>
+                  <tr className="titulo-total-carrito">
+                    <th>Total Carrito</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr> 
+                    <td className="subtotal-carrito">Subtotal</td>
+                    <td className='precios-carrito'>${calcularTotalCarrito()} COP</td>
+                  </tr>
+                  <tr> 
+                    <td>Envío</td>
+                    <td className='precios-carrito'>$0 COP</td>
+                  </tr>
+                  <tr> 
+                    <td>Total</td>
+                    <td className='precios-carrito'>${calcularTotalCarrito()} COP</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="contenedor-btn">
               <Link to="/checkout" className="btns-compra-carrito">
                 Finalizar compra 
               </Link>
-                </div>
+
+              <Link to="/products" className="btns-compra-carrito">
+                Seguir comprando
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </div>
+</div>
+
   );
 };
 

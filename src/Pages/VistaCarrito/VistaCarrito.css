@@ -6,6 +6,7 @@
     padding-block: 50px;
     background-color: #0057b300;
     font-family: var(--font-text);
+    
   }
 
   /* Estilos generales para el producto */
@@ -18,7 +19,11 @@
     border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     margin-inline: 20px;
-    background-color: white;
+   background-color: white;
+  }
+
+  .producto-detalle-carrito table {
+    margin: 0 auto !important; /* Centra la tabla horizontalmente */
   }
   
   /* Media query para pantallas más pequeñas */
@@ -55,73 +60,89 @@
   }
 
 .info-productos{
+    margin: auto;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 30px;
+    display: flex; /* Utilizamos flexbox para alinear elementos */
+    flex-wrap: wrap; /* Permitimos que los elementos se envuelvan en filas */
+    justify-content: space-around; /* Distribución uniforme de los elementos */
+  
 }
 
 .descripcion-carrito{
-  
   font-family: var(--font-text) ;
   font-size: clamp(2vw, 5vw, 1.5rem); 
   font-weight: bold;
   line-height: 1.1; 
   color: #337841;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
   margin-top: 10px;
-  
   text-align: center;
+ 
+}
+
+/* Estilos para la tabla principal--------------------- */
+/* Elimina la propiedad border en la regla tr */
+tr {
+  border: none; /* Elimina el borde de las filas */
+}
+
+/* Establece el borde solo en la parte inferior de las filas */
+tr td {
+  border-bottom: 1px solid #d0c4c4cd; /* Borde inferior de las celdas */
+}
+
+/* Agrega un borde en la parte inferior del encabezado de la tabla */
+.table-head th {
+  border-bottom: 2px solid #d0c4c4cd; /* Borde inferior del encabezado */
+}
+
+.table-container {
+  overflow-x: auto;
 }
 
 table {
-  width: 90%;
-  margin: 0 auto;
-  border-collapse: collapse; 
-  border: 1px solid #d0c4c4cd; 
+  border-collapse: collapse;
+  border: 1px solid #d0c4c4cd;
   border-radius: 15px;
+  width: 100%;
 }
 
-th{
-  font-family: var(--font-text) ;
-  padding: 15px;
-  text-align: left;
-  color: #b38b5b;
-  font-size: clamp(1vw, 2.8vw, 1.3rem);
-}
+th,
 td {
   padding: 15px;
   text-align: left;
   font-family: var(--font-text);
   font-weight: bold;
-  font-size: clamp(1vw, 2.8vw, 1.1rem);  
-}
-
-.nombre-producto{
+  font-size: clamp(1vw, 2.8vw, 1.1rem);
   color: #337841;
 }
 
-.precio-producto{
-  color: #EB6613;
+th {
+  font-family: var(--font-text);
+  padding: 15px;
+  text-align: left;
+  color: #666;
+  font-size: clamp(1vw, 2.8vw, 1.3rem);
+}
+
+.precio-producto {
+  color: #eb6613;
   font-weight: normal;
 }
 
-.cantidad-producto{
+.cantidad-producto {
   color: #b38b5b;
   text-align: center;
 }
 
-.subtotal-producto{
-  color: #EB6613;
-  font-weight: bold;
-}
-
-
-tr{
-  border: 1px solid #d0c4c4cd;
+.subtotal-producto {
+  color: #eb6613;
+  font-weight: normal;
 }
 
 tr:hover {
-  background-color: #eef3eefb; /* Gris claro de fondo al pasar el mouse */
+  background-color: #eef3eefb;
 }
 
 /* Estilos para la imagen del producto */
@@ -130,11 +151,10 @@ tr:hover {
   height: auto;
   margin-right: 20px;
   border-radius: 50px;
-  
 }
 
 /* Estilos para input de cantidad */
-#cantidad-det{
+#cantidad-det {
   width: 3em;
   font-weight: bold;
   text-align: center;
@@ -143,15 +163,21 @@ tr:hover {
   color: #b38b5b;
 }
 
-/* Estilos para el subtotal y total--------------------- */
 
-.total-carrito{
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 25px;
- 
 
+/* Estilos para tabla subtotal y total--------------------- */
+.segunda-tabla-contenedor {
+  width: 45%; /* Ancho del contenedor de la segunda tabla */
+  margin: 15px auto 15px; /* Centra el contenedor de la segunda tabla */
+}
+
+@media (max-width: 768px) {
+  .segunda-tabla-contenedor {
+    width: 100%; /* Ajusta el ancho al 100% en pantallas pequeñas */
+    bottom: 0;
+    left: 0;
+    margin-top: 20px; /* Agrega margen superior en pantallas pequeñas */
+  }
 }
 
 .titulo-total-carrito {
@@ -159,15 +185,22 @@ tr:hover {
   font-size: clamp(1.5vw, 5vw, 1rem); 
   font-weight: bold;
   text-align: left;
-  font-size: clamp(1vw, 2.8vw, 1.3rem);
-  
+  border-bottom: 1px solid #d0c4c4cd;
 }
 
-.total-carrito{
-  
-  margin-bottom: 50px;
-  
 
+.subtotal-carrito{
+  color: #337841;
+  font-size: clamp(1vw, 2.8vw, 1.2rem);
+  border: 1px solid #d0c4c4cd; /* Borde inferior del encabezado */
+  border-right: none;
+}
+
+.precios-carrito{
+  color: #EB6613;
+  font-size: clamp(1vw, 2.8vw, 1.2rem);
+  border: 1px solid #d0c4c4cd; /* Borde inferior del encabezado */
+  border-left: none;
 }
 
 .total-carrito .total {
@@ -176,26 +209,53 @@ tr:hover {
   color: #090909; /* Color de acento para el total */
 }
 
+
+
+
+
+
 /* Estilos para el botón de compra (continuación) */
+
+.contenedor-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  width: 100%;
+
+
+}
+
 .btns-compra-carrito {
-  background-color: #276cb1; /* Color de acento para el botón */
-  display: inline-block; /* Cambiado a inline-block para permitir el ajuste del ancho */
-  padding: 0.5vw 1.5vw; /* Ajusta el relleno del botón en función del tamaño de la pantalla */
-  border-radius: 2rem; /* Redondea los bordes del botón */
-  font-size: clamp(0.8rem, 1.5vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
+  display: inline-block; 
+  padding: 0.5vw 1.5vw;
+  border-radius: 2rem; 
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
   font-weight: 500;
   color: white;
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  background: #EB6613;
-  margin: 0 auto;
+  background: #337841;
   transition: background-color 0.3s ease; /* Transición suave del color de fondo */
-  
+  animation: pulse 1s infinite alternate; /* Aplica la animación 'pulse' de 1 segundo de duración, infinitamente y de manera alternada */
 }
 
-.btn-comprar:hover {
-background-color: #1976D2; /* Color de acento más oscuro al pasar el mouse */
+/* Definición de la animación 'pulse' */
+@keyframes pulse {
+  from {
+    transform: scale(0.85); /* Escala normal */
+  }
+  to {
+    transform: scale(0.9); /* Escala aumentada */
+  }
+}
+
+/* Cambio de color al pasar el cursor */
+.btns-compra-carrito:hover {
+  background-color: #a7845f; /* Cambia el color de fondo al pasar el cursor */
 }
 
 /* Estilos para la eliminación de productos */

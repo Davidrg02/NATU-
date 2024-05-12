@@ -1,0 +1,79 @@
+.contenedor-1 {
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor-perfil-vendedor {
+  max-width: 750px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+  background-color: white;
+}
+
+h2 {
+  text-align: center;
+}
+
+.seccion-datos {
+  margin-bottom: 20px;
+}
+
+.grupo-datos,
+.grupo-datos-editable {
+  display: wrap;
+  margin-bottom: 10px;
+}
+
+.grupo-datos span {
+  display: wrap;
+  width: 150px;
+  font-weight: bold;
+}
+
+.grupo-datos p,
+.grupo-datos-editable input {
+  margin-left: 20px;
+}
+
+.grupo-datos-editable input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.botones-accion {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.boton-editar,
+.boton-cancelar,
+.boton-guardar {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boton-editar:hover,
+.boton-cancelar:hover,
+.boton-guardar:hover {
+  background-color: #0056b3;
+}
+
+.boton-cancelar {
+  margin-right: 10px;
+}
+
+.boton-guardar {
+  background-color: #28a745;
+}

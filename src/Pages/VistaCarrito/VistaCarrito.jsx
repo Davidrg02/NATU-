@@ -2,15 +2,20 @@ import './VistaCarrito.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsTrashFill } from 'react-icons/bs';
+import { useEffect } from 'react';
+
 
 const Carrito = () => {
+  const api_url = process.env.REACT_APP_API_URL;
+
+  
   const [cantidades, setCantidades] = useState({}); // Estado para mantener las cantidades de cada producto
 
   const handleChangeCantidad = (productoId, cantidad) => {
     setCantidades({ ...cantidades, [productoId]: cantidad }); // Actualizar el estado de las cantidades
   };
 
-  const productosDePrueba = [
+ /* const productosDePrueba = [
     {
       id: 1,
       nombre: "Fresas Camarrosa x500g",
@@ -33,19 +38,55 @@ const Carrito = () => {
       rutaImgProducto: "https://cdn.pixabay.com/photo/2016/05/16/22/47/onions-1397037_1280.jpg",
     }
   ];
+  */
+
+  const [productosDePrueba, setProductosDePrueba] = useState([
+    {
+      ID_Producto: 1,
+      Nombre_producto: "Fresas Camarrosa x500g",
+      Precio_producto: 5600,
+      Cantidad: 3,
+      Ruta_img_producto: "https://cdn.pixabay.com/photo/2016/11/18/17/23/strawberries-1835934_1280.jpg",
+    },
+  ]);
 
   const calcularSubtotal = (producto) => {
-    const cantidad = cantidades[producto.id] || 1; // Obtener la cantidad del estado o asumir 1 si no está definida
-    const subtotal = producto.precio * cantidad;
+    const cantidad = cantidades[producto.ID_Producto] || 1; // Obtener la cantidad del estado o asumir 1 si no está definida
+    const subtotal = producto.Precio_producto * cantidad;
     return `${subtotal.toLocaleString()} `; // Aplicar formato con separador de miles y concatenar
   };
   
   const calcularTotalCarrito = () => {
     const total = productosDePrueba.reduce((total, producto) => {
-      return total + producto.precio * (cantidades[producto.id] || 1); // Aquí ya se está aplicando el formato correctamente
+      return total + producto.Precio_producto * (cantidades[producto.ID_Producto] || 1); // Aquí ya se está aplicando el formato correctamente
     }, 0);
     return `${total.toLocaleString()} `; // Aplicar formato con separador de miles y concatenar
   };
+
+  const idUser = localStorage.getItem('id');
+  
+  const token = localStorage.getItem('token');
+
+  const fetchProduct = () => {
+    const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }; 
+    fetch(`${api_url}/carrito/productos/${idUser}`, { headers })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+          return console.error(data.body);
+        }
+        setProductosDePrueba(data.body);
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    });
+
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
+
 
   return (
     <div className="contenedor-1">
@@ -67,23 +108,23 @@ const Carrito = () => {
               </thead>
               <tbody>
                 {productosDePrueba.map((producto) => (
-                  <tr key={producto.id}>
-                    <td><img src={producto.rutaImgProducto} alt={producto.nombre} /></td>
-                    <td className='nombre-producto'>{producto.nombre}</td>
-                    <td className='precio-producto'>${producto.precio} COP</td>
+                  <tr key={producto.ID_Producto}>
+                    <td><img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} /></td>
+                    <td className='nombre-producto'>{producto.Nombre_producto}</td>
+                    <td className='precio-producto'>${producto.Precio_producto} COP</td>
                     <td>
                       <input
                         id='cantidad-det'
                         type="number"
                         min="1"
                         max="20"
-                        defaultValue={cantidades[producto.id] || 1}
-                        onChange={(e) => handleChangeCantidad(producto.id, parseInt(e.target.value))}
+                        defaultValue={cantidades[producto.ID_Producto] || 1}
+                        onChange={(e) => handleChangeCantidad(producto.ID_Producto, parseInt(e.target.value))}
                       />
                     </td>
                     <td className='subtotal-producto'>$ {calcularSubtotal(producto)} COP</td>
                     <td>
-                      <button onClick={() => console.log('Eliminar producto', producto.id)}>
+                      <button className='btn btn-outline-danger' onClick={() => console.log('Eliminar producto', producto.ID_Producto)}>
                         <BsTrashFill />
                       </button>
                     </td>

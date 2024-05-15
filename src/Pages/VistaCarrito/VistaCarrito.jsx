@@ -87,6 +87,22 @@ const Carrito = () => {
     fetchProduct();
   }, []);
 
+  const EliminarProducto = async(idProducto) => {
+    const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
+    fetch(`${api_url}/carrito/producto/${idUser}/${idProducto}`, { method: 'DELETE', headers })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+          alert(data.body);
+          return console.error(data.body);
+        }
+        alert('Producto eliminado del carrito')
+        fetchProduct();
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    });
+  }
 
   return (
     <div className="contenedor-1">
@@ -124,8 +140,8 @@ const Carrito = () => {
                     </td>
                     <td className='subtotal-producto'>$ {calcularSubtotal(producto)} COP</td>
                     <td>
-                      <button className='btn btn-outline-danger' onClick={() => console.log('Eliminar producto', producto.ID_Producto)}>
-                        <BsTrashFill />
+                      <button className='btn btn-outline-danger' onClick={() => EliminarProducto(producto.ID_Producto)}>
+                        <BsTrashFill/>
                       </button>
                     </td>
                   </tr>

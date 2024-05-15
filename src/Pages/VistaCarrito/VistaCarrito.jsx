@@ -12,9 +12,47 @@ const Carrito = () => {
   
   const[ cantidades, setCantidades ] = useState({});
 
+  const idUser = localStorage.getItem('id');
+  
+  const token = localStorage.getItem('token');
+
   const handleChangeCantidad = (idProducto, cantidad) => {
-    setCantidades({ ...cantidades, [idProducto]: cantidad });
+    setProductos(prevProductos => 
+      prevProductos.map(producto =>
+        producto.ID_Producto === idProducto ? { ...producto, Cantidad: cantidad } : producto
+      )
+    );
+
+    const data = {
+      PRODUCTO_ID_Producto: idProducto,
+      CARRITO_ID_Carrito: idUser,
+      Cantidad: cantidad
+    }
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    };
+
+    fetch(`${api_url}/carrito/producto`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        return console.error(data.body);
+      }
+      console.log(data.body);
+    })
+    .catch(error => {
+      console.error('There was an error!', error);
+    });
+
   };
+  
+  
   /*
   const [productosDePrueba, setProductosDePrueba] = useState([
     {
@@ -27,21 +65,21 @@ const Carrito = () => {
   ]);
   */
   const calcularSubtotal = (producto) => {
-    const cantidad = cantidades[producto.ID_Producto] || 1; // Obtener la cantidad del estado o asumir 1 si no está definida
+    const cantidad = producto.Cantidad || 1; // Obtener la cantidad del producto o asumir 1 si no está definida
     const subtotal = producto.Precio_producto * cantidad;
     return `${subtotal.toLocaleString()} `; // Aplicar formato con separador de miles y concatenar
   };
   
-  const calcularTotalCarrito = (productos) => {
+  const calcularTotalCarrito = () => {
     const total = productos.reduce((total, producto) => {
-      return total + producto.Precio_producto * (cantidades[producto.ID_Producto] || 1); // Aquí ya se está aplicando el formato correctamente
+      const cantidad = producto.Cantidad || 1; // Obtener la cantidad del producto o asumir 1 si no está definida
+      return total + producto.Precio_producto * cantidad;
     }, 0);
     return `${total.toLocaleString()} `; // Aplicar formato con separador de miles y concatenar
   };
-
-  const idUser = localStorage.getItem('id');
   
-  const token = localStorage.getItem('token');
+
+  
 
   const fetchProduct = () => {
     const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }; 
@@ -52,6 +90,7 @@ const Carrito = () => {
           return console.error(data.body); 
         }
         setProductos(data.body);
+        console.log(data.body);
     })
     .catch(error => {
         console.error('There was an error!', error);
@@ -105,14 +144,14 @@ const Carrito = () => {
                     <td className='nombre-producto'>{producto.Nombre_producto}</td>
                     <td className='precio-producto'>${producto.Precio_producto} COP</td>
                     <td>
-                      <input
+                    <input
                         id='cantidad-det'
                         type="number"
                         min="1"
                         max="20"
-                        defaultValue={cantidades[producto.ID_Producto] || 1}
+                        value={producto.Cantidad}
                         onChange={(e) => handleChangeCantidad(producto.ID_Producto, parseInt(e.target.value))}
-                      />
+                    />
                     </td>
                     <td className='subtotal-producto'>$ {calcularSubtotal(producto)} COP</td>
                     <td>

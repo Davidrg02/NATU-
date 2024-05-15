@@ -55,7 +55,9 @@
   @media (max-width: 768px) {
     .producto-informacion-carrito {
         width: calc(100% - 20px); /* Reducir el ancho en pantallas pequeñas */
-        margin-left: 0; /* Eliminar el margen izquierdo en pantallas pequeñas */
+        margin: auto;
+        
+       
     }
   }
 

@@ -8,38 +8,14 @@ import { useEffect } from 'react';
 const Carrito = () => {
   const api_url = process.env.REACT_APP_API_URL;
 
+  const [productos, setProductos] = useState([]);
   
-  const [cantidades, setCantidades] = useState({}); // Estado para mantener las cantidades de cada producto
+  const[ cantidades, setCantidades ] = useState({});
 
-  const handleChangeCantidad = (productoId, cantidad) => {
-    setCantidades({ ...cantidades, [productoId]: cantidad }); // Actualizar el estado de las cantidades
+  const handleChangeCantidad = (idProducto, cantidad) => {
+    setCantidades({ ...cantidades, [idProducto]: cantidad });
   };
-
- /* const productosDePrueba = [
-    {
-      id: 1,
-      nombre: "Fresas Camarrosa x500g",
-      precio: 5600,
-      cantidadProducto: 3,
-      rutaImgProducto: "https://cdn.pixabay.com/photo/2016/11/18/17/23/strawberries-1835934_1280.jpg",
-    },
-    {
-      id: 2,
-      nombre: "Café Molido x250g",
-      precio: 9800,
-      cantidadProducto: 15,
-      rutaImgProducto: "https://cdn.pixabay.com/photo/2019/01/09/18/27/coffee-3923970_640.jpg",
-    },
-    {
-      id: 3,
-      nombre: "Cebolla Cabezona x1kg",
-      precio: 4400,
-      cantidadProducto: 8,
-      rutaImgProducto: "https://cdn.pixabay.com/photo/2016/05/16/22/47/onions-1397037_1280.jpg",
-    }
-  ];
-  */
-
+  /*
   const [productosDePrueba, setProductosDePrueba] = useState([
     {
       ID_Producto: 1,
@@ -49,15 +25,15 @@ const Carrito = () => {
       Ruta_img_producto: "https://cdn.pixabay.com/photo/2016/11/18/17/23/strawberries-1835934_1280.jpg",
     },
   ]);
-
+  */
   const calcularSubtotal = (producto) => {
     const cantidad = cantidades[producto.ID_Producto] || 1; // Obtener la cantidad del estado o asumir 1 si no está definida
     const subtotal = producto.Precio_producto * cantidad;
     return `${subtotal.toLocaleString()} `; // Aplicar formato con separador de miles y concatenar
   };
   
-  const calcularTotalCarrito = () => {
-    const total = productosDePrueba.reduce((total, producto) => {
+  const calcularTotalCarrito = (productos) => {
+    const total = productos.reduce((total, producto) => {
       return total + producto.Precio_producto * (cantidades[producto.ID_Producto] || 1); // Aquí ya se está aplicando el formato correctamente
     }, 0);
     return `${total.toLocaleString()} `; // Aplicar formato con separador de miles y concatenar
@@ -73,9 +49,9 @@ const Carrito = () => {
     .then(response => response.json())
     .then(data => {
         if (data.error) {
-          return console.error(data.body);
+          return console.error(data.body); 
         }
-        setProductosDePrueba(data.body);
+        setProductos(data.body);
     })
     .catch(error => {
         console.error('There was an error!', error);
@@ -123,7 +99,7 @@ const Carrito = () => {
                 </tr>
               </thead>
               <tbody>
-                {productosDePrueba.map((producto) => (
+                {productos.map((producto) => (
                   <tr key={producto.ID_Producto}>
                     <td><img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} /></td>
                     <td className='nombre-producto'>{producto.Nombre_producto}</td>
@@ -159,7 +135,7 @@ const Carrito = () => {
                 <tbody>
                   <tr> 
                     <td className="subtotal-carrito">Subtotal</td>
-                    <td className='precios-carrito'>${calcularTotalCarrito()} COP</td>
+                    <td className='precios-carrito'>${calcularTotalCarrito(productos)} COP</td>
                   </tr>
                   <tr> 
                     <td>Envío</td>
@@ -167,7 +143,7 @@ const Carrito = () => {
                   </tr>
                   <tr> 
                     <td>Total</td>
-                    <td className='precios-carrito'>${calcularTotalCarrito()} COP</td>
+                    <td className='precios-carrito'>${calcularTotalCarrito(productos)} COP</td>
                   </tr>
                 </tbody>
               </table>

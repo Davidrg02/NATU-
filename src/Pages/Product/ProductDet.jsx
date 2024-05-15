@@ -22,11 +22,42 @@ export default function ProductDet() {
   //Funcion para hacer visible el boton de ver carrito
   const [mostrarVerCarrito, setMostrarVerCarrito] = useState(false); 
 
+  const token = localStorage.getItem('token');
+
+  const idUser = localStorage.getItem('id');
+
   // Función para añadir al carrito
   const handleAgregarAlCarrito = () => {
-  console.log(`Añadir al carrito: ${Cantidad}`);
-  setMostrarVerCarrito(true); // Mostrar el enlace para ver el carrito después de hacer clic en el botón
+    const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
+
+    const data = {
+      PRODUCTO_ID_Producto: id,
+      CARRITO_ID_Carrito: idUser,
+      Cantidad: Cantidad,  
+    }
+
+    fetch(`${api_url}/carrito/producto/`, 
+    { 
+      method: 'POST', 
+      headers,
+      body: JSON.stringify(data) 
+    })
+
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+          alert(data.error);
+          return console.error(data.error);
+        }
+        alert('Producto añadido al carrito');
+        setMostrarVerCarrito(true); // Mostrar el enlace para ver el carrito después de hacer clic en el botón
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    });    
   };
+
+
 
   // Conexion a la base de datos
 

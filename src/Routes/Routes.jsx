@@ -28,7 +28,7 @@ export default function Routing() {
             <Route path="login" element={<Login />} />
             <Route path="reset" element={<Reset />} />
             <Route path="products" element={<Catalog />}>
-            <Route path=":category" element={<Catalog />} />
+              <Route path=":category" element={<Catalog />} />
             </Route>
             <Route path="about" element={<About />} />
             <Route path="admin" element={<Admin />} />

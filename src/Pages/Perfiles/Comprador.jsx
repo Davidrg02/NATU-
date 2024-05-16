@@ -301,7 +301,7 @@ export default function Comprador() {
                                 </Button>
 
                                 <Button variant="outline-danger" className="boton-cancelar" onClick={toggleEditMode}>
-                                    Cancelar Edición
+                                    Cancelar Cambios
                                 </Button>
                             </>
                              ) : (

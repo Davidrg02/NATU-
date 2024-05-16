@@ -286,7 +286,7 @@ export default function Vendedor() {
                                 </Button>
 
                                 <Button variant="outline-danger" className="boton-cancelar" onClick={toggleEditMode}>
-                                    Cancelar Edición
+                                    Cancelar Cambios
                                 </Button>
                             </>
                              ) : (

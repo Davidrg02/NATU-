@@ -5,7 +5,9 @@ import Register from '../Pages/Register/Register copy.jsx';
 import Login from '../Pages/Login/Login.jsx';
 import Layout from '../Pages/Layout/Layout.jsx';
 import Reset from '../Pages/Recover/Reset.jsx';
-import Catalog from '../Pages/Home/ProductosVista.jsx';
+import ProductosVista from '../Pages/Catalog/ProductosVista.jsx';
+import ProductosCategoria from '../Pages/Catalog/ProductosCategoria.jsx';
+import ProductosBusqueda from '../Pages/Catalog/ProductosBusqueda.jsx';
 import About from '../Pages/About/About.jsx';
 import Admin from '../Pages/Admin/Admin.jsx';
 import VendedorProducts from '../Pages/Vendedor/ProductsPage/ProductsPage.jsx';
@@ -27,9 +29,9 @@ export default function Routing() {
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="reset" element={<Reset />} />
-            <Route path="products" element={<Catalog />}>
-              <Route path=":category" element={<Catalog />} />
-            </Route>
+            <Route path="products" element={<ProductosVista />} />
+            <Route path="products/category/:category" element={<ProductosCategoria />} />
+            <Route path="products/search/:searchTerm" element={<ProductosBusqueda />} />
             <Route path="about" element={<About />} />
             <Route path="admin" element={<Admin />} />
             <Route path="cart" element={<VistaCarrito />} />

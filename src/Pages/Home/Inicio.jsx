@@ -4,7 +4,7 @@ import './Home.css'
 import { FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import Beneficios from './Beneficios';
-import ProductosVista from './ProductosVista';
+import ProductosVista from '../Catalog/ProductosVista';
 
 export default function Inicio() {
   return (

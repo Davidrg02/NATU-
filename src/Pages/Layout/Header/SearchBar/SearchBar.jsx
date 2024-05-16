@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './SearchBar.css';
 
 export default function SearchBar({ handleSubmit, handleSearch, searchTerm }) {
+    
     return (
         <Form className="d-flex" onSubmit={handleSubmit} style={{flexGrow:"1"}}>
             <Form.Control
@@ -14,9 +16,11 @@ export default function SearchBar({ handleSubmit, handleSearch, searchTerm }) {
                 value={searchTerm}
                 onChange={handleSearch}
             />
-            <Button variant="outline-success" type="submit">
-                <BiSearch />
-            </Button>
+            <Link to={`/products/search/${searchTerm}`}>
+                <Button variant="outline-success">
+                    <BiSearch />
+                </Button>
+            </Link>
         </Form>
     );
 }

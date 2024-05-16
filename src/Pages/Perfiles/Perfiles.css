@@ -81,3 +81,12 @@
   margin-bottom: 20px;
   margin-top: 40px;
 }
+
+
+.boton-guardar{
+  margin-right: 10px;
+}
+
+.boton-cancelar{
+  margin-left: 10px;
+}

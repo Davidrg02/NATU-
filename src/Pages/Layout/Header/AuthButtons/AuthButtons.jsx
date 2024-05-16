@@ -9,7 +9,7 @@ export default function AuthButtons({ loggedIn, userNames, handleLogout }) {
         <div style={{display: "flex"}}>
             {loggedIn ? (
                 <>
-                    <Link to="/perfil" className="btn btn-outline-primary ms-2" id='btn-login'>
+                    <Link to="/comprador" className="btn btn-outline-primary ms-2" id='btn-login'>
                         <i class="bi bi-person-circle"></i>
                         &nbsp;
                         {userNames}

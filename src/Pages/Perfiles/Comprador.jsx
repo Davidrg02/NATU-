@@ -33,21 +33,7 @@ export default function Comprador() {
     const [Direccion, setDireccion] = useState(''); // Agregué el estado Direccion
     const [Descripcion, setDescripcion] = useState(''); // Agregué el estado Descripcion
 
-    // Estados para las contraseñas y la confirmación de contraseña
-    const [Password, setPassword] = useState('');
-    const [ConfirmPassword, setConfirmPassword] = useState('');
-    const [confirmPasswordError, setConfirmPasswordError] = useState(false);
     
-
-    // Define un estado para controlar si el modal de términos y condiciones está abierto o cerrado
-    const [showTermsModal, setShowTermsModal] = useState(false);
-
-    // Función para abrir el modal de términos y condiciones
-    const handleShowTermsModal = () => setShowTermsModal(true);
-
-    // Función para cerrar el modal de términos y condiciones
-    const handleCloseTermsModal = () => setShowTermsModal(false);
-
     //-- Traer Departamentos y Municipios --//
 
     // Traer Departamentos
@@ -78,6 +64,8 @@ export default function Comprador() {
     }
     , [Departamento]);
 
+    // Función para habilitar la edición de los campos
+    const [editMode, setEditMode] = useState(false);
 
     //--- Validación de los campos del formulario de registro ---//
 
@@ -93,69 +81,16 @@ export default function Comprador() {
 
         setValidated(true);
 
-        if (form.checkValidity() === true && !confirmPasswordError) {
+        if (form.checkValidity() === true && editMode === true) {
             registerUser();
+            setEditMode(false);
         }
     };
 
-    // Estado para la validación de la contraseña
-    const [passwordValidation, setPasswordValidation] = useState({
-        minLength: false,
-        hasLetter: false,
-        hasNumber: false,
-        hasUpperCase: false,
-        hasSpecialChar: false
-    });
-
-    // Función para validar la contraseña
-    const validatePassword = (password) => {
-        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
-        setPasswordValidation({
-            minLength: password.length >= 6,
-            hasLetter: /[a-zA-Z]/.test(password),
-            hasNumber: /\d/.test(password),
-            hasUpperCase: /[A-Z]/.test(password),
-            hasSpecialChar: /[@$!%*#?&-_]/.test(password)
-        });
+    const toggleEditMode = () => {
+        setEditMode(!editMode);
     };
-
-    // Función para manejar el cambio en el campo de contraseña
-    const handlePasswordChange = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
-        validatePassword(newPassword);
-    };
-
-    // Función para manejar el cambio en el campo de confirmación de contraseña
-    const handleConfirmPasswordChange = (e) => {
-        const newConfirmPassword = e.target.value;
-        setConfirmPassword(newConfirmPassword);
-        setConfirmPasswordError(newConfirmPassword !== Password);
-    };
-
-    // Función para determinar si la contraseña es válida
-    const isPasswordValid = () => {
-        return (
-            passwordValidation.minLength &&
-            passwordValidation.hasLetter &&
-            passwordValidation.hasNumber &&
-            passwordValidation.hasUpperCase &&
-            passwordValidation.hasSpecialChar
-        );
-    };
-
-    // Función para mostrar el mensaje de retroalimentación de la validación de la contraseña
-    const renderPasswordValidationFeedback = () => {
-        const { minLength, hasLetter, hasNumber, hasUpperCase, hasSpecialChar } = passwordValidation;
-        if (!minLength) return 'La contraseña debe tener al menos 6 caracteres.';
-        if (!hasLetter) return 'La contraseña debe contener al menos una letra.';
-        if (!hasNumber) return 'La contraseña debe contener al menos un número.';
-        if (!hasUpperCase) return 'La contraseña debe contener al menos una letra mayúscula.';
-        if (!hasSpecialChar) return 'La contraseña debe contener al menos un carácter especial (@$!%*#?&-_).';
-        return null;
-    };
-
-
+    
     //-- Conexion con la API para el registro de un usuario --//
 
     const registerUser = async () => {
@@ -169,7 +104,7 @@ export default function Comprador() {
             MUNICIPIO_ID_Municipio: Municipio,
             Direccion: Direccion,
             Descripcion_adicional: Descripcion,
-            Contraseña_encriptada: Password
+           
         };
 
         const response = await fetch(`${api_url}/compradores`, {
@@ -218,6 +153,8 @@ export default function Comprador() {
                                 placeholder="Nombres"
                                 value={Nombres}
                                 onChange={(e) => setNombres(e.target.value)}
+                                disabled={editMode === false}
+                                
                             />
                             <Form.Control.Feedback type="invalid">Por favor ingresa tus nombres.</Form.Control.Feedback>
                         </Form.Group>
@@ -230,6 +167,7 @@ export default function Comprador() {
                                 placeholder="Apellidos"
                                 value={Apellidos}
                                 onChange={(e) => setApellidos(e.target.value)}
+                                disabled={editMode === false}
                             />
                             <Form.Control.Feedback type="invalid">Por favor ingresa tus apellidos.</Form.Control.Feedback>
                         </Form.Group>
@@ -247,6 +185,7 @@ export default function Comprador() {
                                     value={Documento}
                                     onChange={(e) => setDocumento(e.target.value)}
                                     required
+                                    disabled
                                 />
                                 <Form.Control.Feedback type="invalid">Por favor ingresa tu número de documento.</Form.Control.Feedback>
                             </InputGroup>
@@ -260,6 +199,7 @@ export default function Comprador() {
                                 value={Email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
+                                disabled
                             />
                             <Form.Control.Feedback type="invalid">Por favor ingresa un correo electrónico válido.</Form.Control.Feedback>
                         </Form.Group>
@@ -272,8 +212,10 @@ export default function Comprador() {
                                 type="number"
                                 placeholder="Teléfono"
                                 value={Telefono}
-                                onChange={(e) => setTelefono(e.target.value)}
+                                onChange={(e) => setNombres(e.target.value)}
+                                disabled={editMode === false}
                                 required
+                                
                             />
                             <Form.Control.Feedback type="invalid">Por favor ingresa tu número de teléfono.</Form.Control.Feedback>
                         </Form.Group>
@@ -285,6 +227,7 @@ export default function Comprador() {
                                 value={FechaNacimiento}
                                 onChange={(e) => setFechaNacimiento(e.target.value)}
                                 required
+                                disabled={editMode === false}
                             />
                             <Form.Control.Feedback type="invalid">Por favor selecciona tu fecha de nacimiento.</Form.Control.Feedback>
                         </Form.Group>
@@ -297,11 +240,13 @@ export default function Comprador() {
                                 required
                                 value={Departamento}
                                 onChange={(e) => setDepartamento(e.target.value)}
+                                disabled = {editMode === false}
                             >
                                 <option value="" style={{color: ""}}>Selecciona un departamento</option>
                                 {Departamentos.map((departamento) => (
                                     <option key={departamento.ID_Departamento} value={departamento.ID_Departamento}>{departamento.Nombre_departamento}</option>
                                 ))}
+                                
                             </Form.Select>
                             <Form.Control.Feedback type="invalid">Por favor selecciona un departamento.</Form.Control.Feedback>
                         </Form.Group>
@@ -311,6 +256,7 @@ export default function Comprador() {
                                 required
                                 value={Municipio}
                                 onChange={(e) => setMunicipio(e.target.value)}
+                                disabled = {editMode === false}
                             >
                                 <option value="">Selecciona un municipio</option>
                                 {Municipios.map((municipio) => (
@@ -330,6 +276,7 @@ export default function Comprador() {
                                 value={Direccion}
                                 onChange={(e) => setDireccion(e.target.value)}
                                 required
+                                disabled = {editMode === false}
                             />
                             <Form.Control.Feedback type="invalid">Por favor ingresa tu dirección.</Form.Control.Feedback>
                         </Form.Group>
@@ -341,45 +288,27 @@ export default function Comprador() {
                                 placeholder="Descripción"
                                 value={Descripcion}
                                 onChange={(e) => setDescripcion(e.target.value)}
+                                disabled = {editMode === false}
                             />
                         </Form.Group>
                     </Row>
-                    <h3 >Datos de la Cuenta</h3>
-                        <Row className="mb-3">
-                            <Form.Group as={Col} md="6" controlId="validationCustom10">
-                                <Form.Label>Contraseña</Form.Label>
-                                <Form.Control
-                                    maxLength={100}
-                                    type="password"
-                                    placeholder="Contraseña"
-                                    value={Password}
-                                    onChange={handlePasswordChange}
-                                    
-                                    isInvalid={!isPasswordValid()}
-                                />
-                                <Form.Control.Feedback type="invalid">
-                                    {renderPasswordValidationFeedback()}
-                                </Form.Control.Feedback>
-                            </Form.Group>
-                            <Form.Group as={Col} md="6" controlId="validationCustom11">
-                                <Form.Label>Confirmar Contraseña</Form.Label>
-                                <Form.Control
-                                    maxLength={100}
-                                    type="password"
-                                    placeholder="Confirmar Contraseña"
-                                    value={ConfirmPassword}
-                                    onChange={handleConfirmPasswordChange}
-                                    required
-                                    isInvalid={confirmPasswordError}
-                                />
-                                <Form.Control.Feedback type="invalid">
-                                    La confirmación de contraseña no coincide.
-                                </Form.Control.Feedback>
-                            </Form.Group>
-                        </Row>
-                    <div style={{display:"flex", flexDirection:"column" , alignItems:"center", justifyContent: "center", width: "100%", marginTop: "50px"}}>
-                        
-                        <Button type="submit" variant="outline-success" size="lg">Modificar</Button>
+                    
+                    <div className="botones-accion" style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", width: "100%", marginTop: "50px"}}>
+                        {editMode ? (
+                            <>
+                                <Button variant='outline-success' type="submit" className="boton-guardar" >
+                                    Guardar Cambios
+                                </Button>
+
+                                <Button variant="outline-danger" className="boton-cancelar" onClick={toggleEditMode}>
+                                    Cancelar Edición
+                                </Button>
+                            </>
+                             ) : (
+                                <Button variant="outline-success" className="boton-editar" onClick={toggleEditMode}>
+                                    Modificar Datos
+                                </Button>
+                        )}
                     </div>
                 </Form>
             </div>

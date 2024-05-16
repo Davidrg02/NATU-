@@ -11,6 +11,9 @@ import Admin from '../Pages/Admin/Admin.jsx';
 import VendedorProducts from '../Pages/Vendedor/ProductsPage/ProductsPage.jsx';
 import PrivateRoute from '../utils/PrivateRoute.jsx';
 import NotFound from "../Pages/NotFound/NotFound.jsx";
+import Shopping  from "../Pages/Shopping/Shopping.jsx";
+import Soporte  from "../Pages/Soporte/Soporte.jsx";
+
 
 export default function Routing() {
 
@@ -40,6 +43,8 @@ export default function Routing() {
             </Route>
             {/* Ruta no encontrada */}
             <Route path="*" element={<NotFound />} />
+            <Route path="shopping" element={<Shopping />} />
+            <Route path="soporte" element={<Soporte />} />
           </Route>
         </Routes>
       </BrowserRouter>

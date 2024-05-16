@@ -16,6 +16,7 @@ import NotFound from "../Pages/NotFound/NotFound.jsx";
 import VistaCarrito from "../Pages/VistaCarrito/VistaCarrito.jsx";
 import Comprador from "../Pages/Perfiles/Comprador.jsx";
 import Vendedor from "../Pages/Perfiles/Vendedor.jsx";
+import PasarelaPago from "../Pages/PasarelaPago/PasarelaPago.jsx";
 
 export default function Routing() {
 
@@ -37,6 +38,7 @@ export default function Routing() {
             <Route path="about" element={<About />} />
             <Route path="admin" element={<Admin />} />
             <Route path="cart" element={<VistaCarrito />} />
+            <Route path="checkout" element={<PasarelaPago />} />
             <Route path="comprador" element={<Comprador />} />
             <Route path="vendedor" element={<Vendedor />} />
             {/* Rutas protegidas */}

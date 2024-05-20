@@ -22,7 +22,7 @@ export default function GridProducts({products, reloadPage}) {
     const [selectedProduct, setSelectedProduct] = useState({});
 
     return (
-        <Row>
+        <Row style={{width:"100%"}}>
             {products.map(product => (
                 <Col key={product.ID_Producto} xs={12} sm={6} md={4} lg={3}>
                     <Card className="mb-4" id='item-product'>

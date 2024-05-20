@@ -1,8 +1,8 @@
 import React from 'react';
-import "./Shopping.css"; // Importa los estilos CSS
+import "./Sales.css"; // Importa los estilos CSS
 
-export default function Shopping() {
-    const compras = [
+export default function Sales() {
+    const ventas = [
         {
             fecha: "12/05/2024",
             estado: "Pendiente de envío",
@@ -40,19 +40,19 @@ export default function Shopping() {
     };
 
     return (
-        <div id='container-compras'>
-            {compras.map((compra, index) => (
-                <div key={index} id="container-producto">
+        <div id='container-ventas'>
+            {ventas.map((venta, index) => (
+                <div key={index} id="item-container">
                     <div className="item-content">
-                        <img src={compra.imagen} alt="img-producto" />
+                        <img src={venta.imagen} alt="img-producto" />
                         <div className="item-text">
-                            <p id='fecha'>{compra.fecha}</p>
-                            <p id='estado' style={{ color: getColorForEstado(compra.estado) }}>{compra.estado}</p>
-                            <hr id='estilo-linea'></hr>
-                            <p id='nombre-producto'>{compra.nombre}</p>
-                            <p id='descripcion-producto'>{compra.descripcion}</p>
-                            <button type="button" id="boton-compras" value="ver-compra">Ver compra</button>
-                            <button type="button" id="boton-compras" value="volver-a-comprar">Volver a comprar</button>
+                            <p id='fecha'>{venta.fecha}</p>
+                            <p id='estado' style={{ color: getColorForEstado(venta.estado) }}>{venta.estado}</p>
+                            <hr id='linea'></hr>
+                            <p id='nombre-producto'>{venta.nombre}</p>
+                            <p id='descripcion-producto'>{venta.descripcion}</p>
+                            <button type="button" className="boton-ver-compra">Ver compra</button>
+                            <button type="button" className="boton-volver-comprar">Volver a comprar</button>
                         </div>
                     </div>
                 </div>

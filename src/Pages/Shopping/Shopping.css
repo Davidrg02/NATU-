@@ -101,7 +101,8 @@
   #descripcion {
     text-align: center;
   }
-=======
+
+  
 :root {
   --color-1: rgba(24, 163, 39, 0.6);
   --color-2: rgba(45 ,45 ,188, 0.6);
@@ -214,6 +215,8 @@
 }
 #estado {
   text-align: right;
-  margin: 0; /* Eliminar cualquier margen predeterminado */
+  margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+  margin-right: 20px; /* Ajusta el margen derecho según sea necesario */
   color: var(--color-1); /* Cambiar al color verde definido en :root */
+  font-weight: bold; 
 }

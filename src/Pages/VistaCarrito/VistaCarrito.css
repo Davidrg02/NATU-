@@ -277,7 +277,7 @@ tr:hover {
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  background: #337841;
+  background: #EB6613;
   transition: background-color 0.3s ease; /* Transición suave del color de fondo */
   animation: pulse 1s infinite alternate; /* Aplica la animación 'pulse' de 1 segundo de duración, infinitamente y de manera alternada */
 }
@@ -312,4 +312,10 @@ color: #c82333; /* Color rojo más oscuro al pasar el mouse */
 .total {
 width: 50%;
 
+}
+
+.wallet-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
 }

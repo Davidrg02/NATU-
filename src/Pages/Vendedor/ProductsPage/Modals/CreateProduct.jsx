@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Modals.css';
 
+// Initial product object
 const Product = {
     Nombre_producto: "",
     Ruta_img_producto: "",
@@ -16,41 +17,49 @@ const Product = {
     VENDEDOR_ID_Vendedor: localStorage.getItem("id")
 };
 
+/**
+ * Component for creating a new product.
+ * @param {Object} props - The component props.
+ * @returns {JSX.Element} - The JSX element representing the CreateProduct component.
+ */
 export default function CreateProduct(props) {
     const api_url = process.env.REACT_APP_API_URL;
 
-    const [categories, setCategories] = useState([]);
-    const [product, setProduct] = useState(Product);
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [imagePreviewUrl, setImagePreviewUrl] = useState('');
-    const [validated, setValidated] = useState(false);
+    // State variables
+    const [categories, setCategories] = useState([]); // Categories array
+    const [product, setProduct] = useState(Product); // Product object
+    const [selectedFile, setSelectedFile] = useState(null); // Selected file for image upload
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(''); // Image preview URL
+    const [validated, setValidated] = useState(false); // Form validation flag
 
+    // Fetch categories from API on component mount
     useEffect(() => {
         fetch(`${api_url}/categorias`)
             .then(response => response.json())
             .then(data => setCategories(data.body));
     }, [api_url]);
 
+    // Handle file change for image upload
     const handleFileChange = (event) => {
         const file = event.target.files[0];
-        const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i; // Expresión regular para extensiones permitidas
-    
-        // Verificar si el archivo tiene una extensión permitida
+        const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i; // Regular expression for allowed extensions
+
+        // Check if the file has a valid extension
         if (!allowedExtensions.test(file.name)) {
             toast.error("Por favor seleccione una imagen con una extensión válida (jpg, jpeg, png)");
             return;
         }
-    
+
         setSelectedFile(file);
-    
+
         const reader = new FileReader();
         reader.onloadend = () => {
             setImagePreviewUrl(reader.result);
         };
         reader.readAsDataURL(file);
     };
-    
 
+    // Handle form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.currentTarget;

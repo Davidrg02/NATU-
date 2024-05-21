@@ -18,6 +18,11 @@ import NotFound from "../Pages/NotFound/NotFound.jsx";
 import VistaCarrito from "../Pages/VistaCarrito/VistaCarrito.jsx";
 import Comprador from "../Pages/Perfiles/Comprador.jsx";
 import Vendedor from "../Pages/Perfiles/Vendedor.jsx";
+import Shopping  from "../Pages/Shopping/Shopping.jsx";
+import Sales  from "../Pages/Sales/Sales.jsx";
+import Soporte  from "../Pages/Soporte/Soporte.jsx";
+import Contact  from "../Pages/Contact/Contact.jsx";
+
 
 export default function Routing() {
 
@@ -47,6 +52,10 @@ export default function Routing() {
             </Route>
             {/* Ruta no encontrada */}
             <Route path="*" element={<NotFound />} />
+            <Route path="shopping" element={<Shopping />} />
+            <Route path="Soporte" element={<Soporte />} />
+            <Route path="Contact" element={<Contact />} />
+            <Route path="Sales" element={<Sales />} />
           </Route>
         </Routes>
       </BrowserRouter>

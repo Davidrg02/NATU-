@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from '../Pages/Home/Home.jsx';
 import ProductDet from '../Pages/Product/ProductDet.jsx';
 import Register from '../Pages/Register/Register.jsx';
@@ -15,7 +15,7 @@ import Admin from '../Pages/Admin/Admin.jsx';
 import VendedorProducts from '../Pages/Vendedor/ProductsPage/ProductsPage.jsx';
 import PrivateRoute from '../utils/PrivateRoute.jsx';
 import NotFound from "../Pages/NotFound/NotFound.jsx";
-import VistaCarrito from "../Pages/VistaCarrito/VistaCarrito.jsx";
+//import VistaCarrito from "../Pages/VistaCarrito/VistaCarrito.jsx";
 import Comprador from "../Pages/Perfiles/Comprador.jsx";
 import Vendedor from "../Pages/Perfiles/Vendedor.jsx";
 import Shopping  from "../Pages/Shopping/Shopping.jsx";
@@ -23,6 +23,8 @@ import Sales  from "../Pages/Sales/Sales.jsx";
 import Soporte  from "../Pages/Soporte/Soporte.jsx";
 import Contact  from "../Pages/Contact/Contact.jsx";
 
+import Carrito from "../Pages/Carrito/Carrito.jsx";
+import Checkout from "../Pages/Carrito/Checkout/Checkout.jsx";
 
 export default function Routing() {
 
@@ -43,7 +45,8 @@ export default function Routing() {
             <Route path="products/search/:searchTerm" element={<ProductosBusqueda />} />
             <Route path="about" element={<About />} />
             <Route path="admin" element={<Admin />} />
-            <Route path="cart" element={<VistaCarrito />} />
+            <Route path="cart" element={<Carrito />} />
+            <Route path="checkout" element={<Checkout />} />
             <Route path="comprador" element={<Comprador />} />
             <Route path="vendedor" element={<Vendedor />} />
             {/* Rutas protegidas */}

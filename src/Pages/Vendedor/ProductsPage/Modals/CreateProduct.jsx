@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Modal, Row, Col } from 'react-bootstrap';
-import InputGroup from 'react-bootstrap/InputGroup';
+import { Form, Button, Modal, Row, Col, InputGroup, Image } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Modals.css';
 
-
-
+// Initial product object
 const Product = {
     Nombre_producto: "",
     Ruta_img_producto: "",
@@ -16,54 +15,100 @@ const Product = {
     Activo: true,
     CATEGORIA_ID_Categoria: null,
     VENDEDOR_ID_Vendedor: localStorage.getItem("id")
-}
+};
 
 /**
  * Component for creating a new product.
- * 
- * @component
- * @param {Object} props - The properties passed to the component.
- * @returns {JSX.Element} - The JSX element representing the create product modal.
+ * @param {Object} props - The component props.
+ * @returns {JSX.Element} - The JSX element representing the CreateProduct component.
  */
 export default function CreateProduct(props) {
     const api_url = process.env.REACT_APP_API_URL;
 
-    const [categories, setCategories] = useState([]);
-    const [product, setProduct] = useState(Product);
+    // State variables
+    const [categories, setCategories] = useState([]); // Categories array
+    const [product, setProduct] = useState(Product); // Product object
+    const [selectedFile, setSelectedFile] = useState(null); // Selected file for image upload
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(''); // Image preview URL
+    const [validated, setValidated] = useState(false); // Form validation flag
 
-    // Traer categorias
-
+    // Fetch categories from API on component mount
     useEffect(() => {
         fetch(`${api_url}/categorias`)
             .then(response => response.json())
             .then(data => setCategories(data.body));
-    }, []);
+    }, [api_url]);
 
-    //-- Validacion de campos del formulario --//
+    // Handle file change for image upload
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i; // Regular expression for allowed extensions
 
-    const [validated, setValidated] = useState(false);
+        // Check if the file has a valid extension
+        if (!allowedExtensions.test(file.name)) {
+            toast.error("Por favor seleccione una imagen con una extensión válida (jpg, jpeg, png)");
+            return;
+        }
 
-    const handleSubmit = (event) => {
+        setSelectedFile(file);
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setImagePreviewUrl(reader.result);
+        };
+        reader.readAsDataURL(file);
+    };
+
+    // Handle form submission
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.currentTarget;
+
+        if (!selectedFile) {
+            toast.error("Por favor suba una imagen");
+            return;
+        }
+
         if (form.checkValidity() === false) {
-            event.preventDefault();
             event.stopPropagation();
         } else {
-            event.preventDefault();
+            let uploadedImageUrl = '';
+            if (selectedFile) {
+                const formData = new FormData();
+                formData.append('image', selectedFile);
+
+                try {
+                    const response = await fetch(`https://api.imgbb.com/1/upload?key=232d375012e53c9d277542e8f7cea814`, {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    const data = await response.json();
+                    uploadedImageUrl = data.data.url;
+                } catch (error) {
+                    console.error('Error uploading the image:', error);
+                    toast.error("Error al subir la imagen");
+                    return;
+                }
+            }
+
+            const updatedProduct = { ...product, Ruta_img_producto: uploadedImageUrl };
+
             fetch(`${api_url}/productos`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
                 },
-                body: JSON.stringify(product)
+                body: JSON.stringify(updatedProduct)
             })
                 .then(response => response.json())
                 .then(data => {
                     if (data.error === false) {
                         toast.success("Producto creado exitosamente");
                         setProduct(Product);
+                        setSelectedFile(null);
+                        setImagePreviewUrl('');
                     } else {
                         toast.error("Error al crear el producto");
                     }
@@ -139,7 +184,7 @@ export default function CreateProduct(props) {
                                 value={product.CATEGORIA_ID_Categoria}
                                 onChange={(e) => setProduct({...product, CATEGORIA_ID_Categoria: e.target.value})}
                             >
-                                <option value={null} >Seleccione una categoría</option>
+                                <option value={null}>Seleccione una categoría</option>
                                 {categories.map(category => (
                                     <option key={category.ID_Categoria} value={category.ID_Categoria}>{category.Nombre_Categoria}</option>
                                 ))}
@@ -164,22 +209,23 @@ export default function CreateProduct(props) {
                                 Por favor ingrese una descripcion breve valida
                             </Form.Control.Feedback>
                         </Form.Group>
-                        
                     </Row>
                     <Row>
-                        <Form.Group as={Col} controlId="validationCustom06" className="mb-3">
-                            <Form.Label>Imagen</Form.Label>
-                            <Form.Control 
-                                type="text"
-                                placeholder="URL de la imagen"
-                                value={product.Ruta_img_producto}
-                                required
-                                onChange={(e) => setProduct({...product, Ruta_img_producto: e.target.value})}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                Por favor ingrese una URL valida
-                            </Form.Control.Feedback>
-                        </Form.Group>
+                        <Col>
+                            <Form.Group controlId="formFile" className="mb-3">
+                                <Form.Label>Imagen</Form.Label>
+                                <Form.Control 
+                                    type="file" 
+                                    onChange={handleFileChange} 
+                                    accept=".jpg, .jpeg, .png" // Limitar a extensiones de imágenes
+                                />
+                                {imagePreviewUrl && (
+                                    <div className="image-preview-container">
+                                        <Image src={imagePreviewUrl} alt="Uploaded" fluid className="image-preview" />
+                                    </div>
+                                )}
+                            </Form.Group>
+                        </Col>
                     </Row>
                     <Row>
                         <Form.Group as={Col} controlId="validationCustom07" className="mb-3">
@@ -197,7 +243,7 @@ export default function CreateProduct(props) {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Row>
-                    <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+                    <div className="text-center">
                         <Form.Group className="mb-3" controlId="validationCustom08">
                             <Form.Check 
                                 type="switch"

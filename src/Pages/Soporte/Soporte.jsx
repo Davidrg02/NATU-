@@ -18,7 +18,7 @@ export default function Soporte() {
     const api_url = null;
     // const api_url = process.env.REACT_APP_API_URL;
 
-    //--- Valores de los campos del formulario de registro ---//
+    //--- Valores de los campos del formulario de soporte ---//
 
     const [Documento, setDocumento] = useState('');
     const [Email, setEmail] = useState('');
@@ -26,64 +26,72 @@ export default function Soporte() {
     const [content, setContent] = useState('');
     const [validated, setValidated] = useState(false);
 
-    // Función para manejar el envío del formulario
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    
+    //--- Función para enviar el formulario de soporte ---//
+
+    const handleSubmit = async (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
+            event.preventDefault();
             event.stopPropagation();
         } else {
-            registerUser();
+            event.preventDefault();
+            const data = {
+                Documento: Documento,
+                Email: Email,
+                Descripcion: Descripcion,
+                content: content
+            };
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            };
+            const response = await fetch(`${api_url}/soporte`, requestOptions);
+            const res = await response.json();
+            if (res.status === 'success') {
+                toast.success(res.message, {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                setDocumento('');
+                setEmail('');
+                setDescripcion('');
+                setContent('');
+                setValidated(false);
+            } else {
+                toast.error(res.message, {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
         }
         setValidated(true);
-    };
-
-    // Función para registrar al usuario en la API
-    const registerUser = async () => {
-        const data = {
-            Documento_comprador: Documento,
-            Correo_usuario: Email,
-            Descripcion: Descripcion,
-            Descripcion_adicional: content,
-        };
-
-        const response = await fetch(`${api_url}/compradores`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const responseData = await response.json();
-        if (responseData.error) {
-            if (responseData.body.includes("Duplicate entry")) {
-                toast.error("El correo electrónico ya está registrado.");
-            } else {
-                toast.error(responseData.body);
-            }
-        } else {
-            toast.success("Usuario registrado exitosamente.");
-        }
-
-        console.log(responseData);
     }
+    
 
     return (
         <div className='register-container-2'>
             <ToastContainer position='bottom-right' />
-            <div id="background1">
-                <div id="shape1" />
-                <div id="shape1" />
-            </div>
             <div id="register-container" className="content-container">
-                <Form noValidate validated={validated} onSubmit={handleSubmit} id='register-form'>
-                    <img src="Banner.png" alt="image" id='banner'/>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </Form>
+                <img src="Banner.png" alt="image" id='banner-image'/>
+                <p style={{textAlign:"justify"}}>
+                En NATU Tienda Orgánica, estamos comprometidos con ofrecerte la mejor experiencia de compra. Si tienes alguna pregunta, inquietud o necesitas asistencia con tu pedido, no dudes en contactarnos. Nuestro equipo de atención al cliente está aquí para ayudarte.
+                Ya sea que necesites información sobre nuestros productos, ayuda con tu cuenta o asistencia con un pedido, puedes comunicarte con nosotros a través de nuestro formulario de contacto o llamándonos al número proporcionado en nuestra página de contacto.
+                Estamos disponibles para atenderte de lunes a viernes, de 9:00 a.m. a 6:00 p.m. ¡Esperamos poder asistirte pronto!
+                </p>
             </div>       
-            <div id="register-container">
-                <img src="Natu_Logo_.png" alt="Logo" />
+            <div id="register-container" style={{marginBlock:"0px"}}>
                 <Form noValidate validated={validated} onSubmit={handleSubmit} id='register-form'>
                     <h3>Solicitud</h3>
                     <Row className="mb-3">
@@ -118,7 +126,7 @@ export default function Soporte() {
                     </Row>
                     <Row className="mb-3">
                         <Form.Group as={Col} md="12" controlId="validationDescripcion">
-                            <Form.Label>Descripcion</Form.Label>
+                            <Form.Label>Asunto</Form.Label>
                             <Form.Control
                                 maxLength={45}
                                 type="text"
@@ -153,7 +161,6 @@ export default function Soporte() {
                                         imageType: 'image/jpeg'
                                     }
                                 }}
-                                style={{ height: '150px' }} // Ajustar la altura del editor
                             />
                         </Form.Group>
                     </Row>

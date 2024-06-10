@@ -17,10 +17,11 @@ export default function About(){
 
 </p>
     <h2 id='titulo2'>Visión</h2>
-      <p className='vision'>Para 2028, Natu se posicionará como la principal plataforma de intercambio de productos orgánicos en Colombia, logrando la colaboración activa entre productores y empresas dedicadas a alimentos orgánicos con el fin de aumentar el alcance de compra por parte de los consumidores de nuestro país priorizando la calidad del servicio y adaptándonos a las cambiantes necesidades del mercado. Buscamos ser una herramienta integral que involucre alrededor del 30% de los actores del sector orgánico, proporcionando a los usuarios una experiencia de alta calidad y satisfaciendo sus expectativas en constante evolución.
+      <p className='vision'>Para 2028, Natu se posicionará como una de las principales plataformas de intercambio de productos orgánicos en Colombia. Buscamos ser una herramienta integral que involucre alrededor del 30% de los actores del sector orgánico, proporcionando a los usuarios una experiencia de alta calidad  y adaptándonos a las cambiantes necesidades del mercado.
 </p>
     <h2 id='titulo2'>Misión</h2>
-      <p className='mision'>Natu es una plataforma en línea que busca brindar un espacio centralizado de productos orgánicos adaptativa a las necesidades del usuario que facilite su compra directa entre productores y consumidores locales, permitiendo una actividad comercial rápida y eficiente entre ambos actores.</p> 
+      <p className='mision'>En Natu, nos comprometemos a proporcionar una plataforma web que facilite la compra directa, promoviendo así una actividad comercial ágil y efectiva entre productores locales y consumidores. Buscamos fomentar la sostenibilidad y el consumo consciente al ofrecer una amplia variedad de productos orgánicos, adaptándonos continuamente a las necesidades del usuario y del mercado.
+</p> 
     </div>
 
     <div id="about-us-container2">

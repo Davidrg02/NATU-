@@ -40,7 +40,7 @@ export default function ProductDet() {
 
   // Si no se encuentra el producto, se muestra un mensaje
   if (!producto) {
-      return <p>Producto no encontrado.</p>;
+      return <h1>Producto no encontrado.</h1>;
   }
 
   

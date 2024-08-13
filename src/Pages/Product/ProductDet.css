@@ -135,7 +135,7 @@ box-shadow: 0 0 10px rgba(22, 69, 25, 0.5);
 .producto-precio-det {
   font-size: clamp(1vw, 2.8vw, 1rem);
   font-weight: bold;
-  color: #EB6613; /* Rojo para el precio */
+  color: #EB6613;
   margin-top: 5px;
   text-align: center;
  
@@ -154,6 +154,7 @@ box-shadow: 0 0 10px rgba(22, 69, 25, 0.5);
   transition: background-color 0.3s;
   margin: 5px auto;
   margin-left: 15px;
+  text-decoration: none;
 }
 
 
@@ -225,8 +226,5 @@ box-shadow: 0 0 10px rgba(22, 69, 25, 0.5);
     }
   }
   
-  .btn-carrito:hover {
-    background-color: #0056b3;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
+  
   

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function Beneficios() {
   return (
     <div className="beneficios-container">
-      <h2 className="beneficios-titulo">Beneficios de una alimentación natural y saludable</h2>
+      <h2 className="beneficios-titulo">¡Beneficios que ofrecen nuestros productos orgánicos!</h2>
       <div className="beneficios-lista">
         <li className="beneficio-item animate__animated animate__fadeInUp">
           <img src="https://cdn.pixabay.com/photo/2014/09/09/19/07/corn-field-440338_1280.jpg" alt="Cultivados en el campo" />

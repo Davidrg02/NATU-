@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import './Checkout.css';
 
-initMercadoPago('TEST-c20b6352-d9af-4493-9fbf-769df6cc21c8');
+initMercadoPago('APP_USR-b3cb0407-b58c-4eaa-8eae-e647a72b4b5f');
 
 export default function Checkout() {
     const location = useLocation();

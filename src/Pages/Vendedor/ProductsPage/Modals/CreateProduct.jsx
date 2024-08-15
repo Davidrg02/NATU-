@@ -260,7 +260,7 @@ export default function CreateProduct(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide} variant='outline-danger'>Close</Button>
+                <Button onClick={props.onHide} variant='outline-danger'>Cerrar</Button>
             </Modal.Footer>
 
             <ToastContainer />

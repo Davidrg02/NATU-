@@ -4,11 +4,13 @@ import "./Shopping.css"; // Importa los estilos CSS
 export default function Shopping() {
     const [compras, setCompras] = React.useState([]);
 
+    const api_url = process.env.REACT_APP_API_URL;
+
 
     //traer las compras del usuario
     React.useEffect(() => {
         
-        fetch(`http://localhost:4000/api/ordenes/usuario/${localStorage.getItem("id")}`)
+        fetch(`${api_url}/ordenes/usuario/${localStorage.getItem("id")}`)
             .then((response) => response.json())
             .then((data) => {
                 setCompras(data.body);

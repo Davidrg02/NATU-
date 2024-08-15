@@ -105,12 +105,6 @@ export default function Header() {
                                     <Link className="nav-link" to="/seller/my-products">Mis productos</Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Link className='nav-link' to="/envios" >Envíos</Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <Link className='nav-link' to="/ventas" >Ventas</Link>
-                                </Nav.Item>
-                                <Nav.Item>
                                     <Link className='nav-link' to="/about" >Nosotros</Link>
                                 </Nav.Item>
                             </>

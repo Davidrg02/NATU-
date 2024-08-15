@@ -20,7 +20,7 @@ export default function Login() {
      */
     const checkInputs = () => {
         if (email === "" || password === "") {
-            alert("Por favor llena todos los campos");
+            toast.error("Por favor llena todos los campos");
         } else {
             loginUser();
         }

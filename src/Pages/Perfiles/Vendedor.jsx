@@ -95,6 +95,7 @@ export default function Vendedor() {
       event.stopPropagation();
     } else {
       // Aquí puedes hacer el fetch para actualizar los datos del vendedor
+      console.log(Municipio)
       fetch(`${api_url}/vendedores/${id}`, {
         method: 'PUT',
         headers: {
@@ -102,22 +103,20 @@ export default function Vendedor() {
           'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
-          Nombres_vendedor: Nombres,
+          Nombre_vendedor: Nombres,
           Apellidos_vendedor: Apellidos,
           Nombre_tienda: Nombre_tienda,
           Documento_vendedor: Documento,
-          Correo_usuario: Email,
           Telefono_vendedor: Telefono,
           FechaNacimiento_vendedor: FechaNacimiento,
-          DEPARTAMENTO_ID_Departamento: Departamento,
-          ID_Municipio: Municipio,
+          MUNICIPIO_ID_Municipio: Municipio,
           Direccion: Direccion,
           Descripcion_adicional: Descripcion,
         }),
       })
         .then((response) => response.json())
         .then((data) => {
-          if (data.success) {
+          if (!data.error) {
             toast.success('Datos actualizados correctamente');
             setEditMode(false);
           } else {

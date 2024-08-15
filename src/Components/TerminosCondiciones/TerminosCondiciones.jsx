@@ -1,14 +1,13 @@
 export default function TerminosCondiciones() {
     return (
         <div>
-            <p>
             <h1>Términos y condiciones de uso de la tienda en línea "Orgánica Natu"</h1>
 
             <h2>1. Introducción</h2>
             <p>1.1. Estos términos y condiciones rigen el uso de la tienda en línea "Natu" y cualquier servicio proporcionado por la misma.</p>
             <p>1.2. Para poder operar en la plataforma todas las Personas Usuarias deberán aceptar los Términos y Condiciones, los anexos y la Declaración de Privacidad. </p>
             <p>1.3. "Natu" se reserva el derecho de actualizar, modificar o cambiar estos términos y condiciones en cualquier momento sin previo aviso. Se alienta a los usuarios a revisar periódicamente los términos y condiciones para mantenerse informados sobre cualquier cambio.</p>
-            <p>1.4. La continuidad del uso de la tienda Natu después de la realización de cualquier cambio constituye la aceptación de dichos cambios.</p>
+            <p>1.4. La continuidad del uso de la tienda "Natu" después de la realización de cualquier cambio constituye la aceptación de dichos cambios.</p>
 
             <h2>2. Uso del Sitio</h2>
             <p>2.1. Usted acepta utilizar nuestro sitio web solo para fines legales y de acuerdo con estos términos y condiciones.</p>
@@ -29,7 +28,9 @@ export default function TerminosCondiciones() {
             <p>5.2. Los costos de envío y cualquier impuesto aplicable se indicarán durante el proceso de pago.</p>
 
             <h2>6. Devoluciones y Reembolsos</h2>
-            <p>6.1. Consulte nuestra política de devoluciones y reembolsos para obtener información detallada sobre cómo devolver productos y solicitar reembolsos.</p>
+            <p>6.1. "Natu" actúa como un intermediario entre el comprador y los proveedores de los productos ofrecidos en nuestra tienda en línea. Como tal, cualquier solicitud de devolución o reembolso debe ser gestionada directamente con el proveedor correspondiente.</p>
+            <p>6.2. "Natu" no se responsabiliza por el proceso de devolución o reembolso, pero haremos todo lo posible para asistir en la comunicación entre el comprador y el proveedor para facilitar una resolución adecuada.</p>
+            <p>6.3. Consulte la política de devoluciones específica de cada proveedor para obtener información detallada sobre cómo proceder en caso de necesitar una devolución o reembolso.</p>
 
             <h2>7. Propiedad Intelectual</h2>
             <p>7.1. Todos los derechos de propiedad intelectual relacionados con la tienda "Orgánica Natu", incluidos los derechos de autor, marcas comerciales y derechos de diseño, son propiedad nuestra.</p>
@@ -42,8 +43,6 @@ export default function TerminosCondiciones() {
 
             <h2>10. Modificaciones</h2>
             <p>10.1. Nos reservamos el derecho de actualizar o modificar estos términos y condiciones en cualquier momento sin previo aviso. Cualquier cambio entrará en vigencia inmediatamente después de su publicación en este sitio web.</p>
-
-            </p>
         </div>
     );
 }

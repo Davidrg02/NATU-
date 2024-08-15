@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "./Login.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /**
  * Represents the Login component.
@@ -45,7 +47,7 @@ export default function Login() {
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
-                    return alert("Inicio de sesión fallido");
+                    return toast.error("Inicio de sesión fallido");
                 } else {
                     localStorage.setItem("token", data.body.token);
                     localStorage.setItem("rol", data.body.rol);
@@ -56,7 +58,7 @@ export default function Login() {
                         localStorage.setItem("user", data.body.user[0].Nombres_comprador);
                     }
 
-                    alert("¡Inicio de sesión exitoso!");
+                    
                     window.location.href = "/";
                 }
             })

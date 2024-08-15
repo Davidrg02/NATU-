@@ -30,7 +30,7 @@ export default function About(){
 
       <div id="team-container2">
         <div id="team-member2">
-        <img src="https://media.licdn.com/dms/image/D4E03AQGWNZAEWFe67A/profile-displayphoto-shrink_400_400/0/1690652960251?e=1718841600&v=beta&t=bQZTsqiEyCEPuB5acAngChDqAPTLO2713XAqncR1x-U" alt="Integrante 1" />
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQGWNZAEWFe67A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1690652960251?e=1729123200&v=beta&t=LRkywxK-HXttGvDH2Hjv_nxtozFELhbi_JY60hYqERk" alt="Integrante 1" />
           <h3 >David Rodriguez</h3>
           <p>Desarrollador Full-Stack</p>
           <a href="https://github.com/Davidrg02" target="_blank" rel="noreferrer" className='giro' style={{ fontSize: '1.8em' }} >
@@ -42,7 +42,7 @@ export default function About(){
         </div>
 
         <div id="team-member2">
-          <img src="https://media.licdn.com/dms/image/D4E03AQFGSt6YIQSBBw/profile-displayphoto-shrink_800_800/0/1711971949970?e=1718841600&v=beta&t=FA0CT5ArUs-EvpUT5amMXtcnAWMDIZSrZF0wAEmWAVQ" alt="Integrante 2" />
+          <img src="https://media.licdn.com/dms/image/D4E03AQFGSt6YIQSBBw/profile-displayphoto-shrink_800_800/0/1711971949970?e=1729123200&v=beta&t=PGXFg_etn8uwLOGK6iw53eU5DwRVmElQjgphvqRnBM4" alt="Integrante 2" />
           <h3 >Nicolás Hernandez</h3>
           <p>Desarrollador Backend</p>
           <a href="https://github.com/nihernandezv" target="_blank" rel="noreferrer" className='giro' style={{ fontSize: '1.8em' }}>
@@ -54,7 +54,7 @@ export default function About(){
         </div>
 
         <div id="team-member2">
-          <img src="https://media.licdn.com/dms/image/D4E03AQECnGJoycT4sg/profile-displayphoto-shrink_200_200/0/1713405331489?e=1718841600&v=beta&t=PTpkR10llQIORuYZLPFnWqpjppj8S-pKrysh6drdjRE" alt="Integrante 4" />
+          <img src="https://media.licdn.com/dms/image/v2/D4E03AQF8RrWqImrATw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721868685516?e=1729123200&v=beta&t=jntpQLLMTiH378PSMDfoRVG4jGHrB96XavL7j_sz2Aw" alt="Integrante 4" />
           <h3 >Brayan Maldonado</h3>
           <p>Desarrollador Frontend</p>
           <a href="https://github.com/BryanSantiagoo" target="_blank" rel="noreferrer" className='giro' style={{ fontSize: '1.8em' }}>
@@ -66,7 +66,7 @@ export default function About(){
         </div>
         
         <div id="team-member2">
-          <img src="https://media.licdn.com/dms/image/D4E03AQEB9kkB7CQcPg/profile-displayphoto-shrink_800_800/0/1714028763561?e=1719446400&v=beta&t=hKHsYBqYtJd4Ld9x3vIOxiK9c-T2DBt_EbFrSdNc96k" alt="Integrante 3" />
+          <img src="https://media.licdn.com/dms/image/v2/D4E03AQEB9kkB7CQcPg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1714028763561?e=1729123200&v=beta&t=DLZS3F4OdCtd4YGn7mQ9RE2bcN5LEsqVh-HG4bUCvyY" alt="Integrante 3" />
           <h3 >Ivan Sepulveda</h3>
           <p>Desarrollador Frontend</p>
           <a href="https://github.com/ivanyspaez" target="_blank" rel="noreferrer" className='giro' style={{ fontSize: '1.8em' }}>

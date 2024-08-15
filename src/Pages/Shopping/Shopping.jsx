@@ -2,29 +2,19 @@ import React from 'react';
 import "./Shopping.css"; // Importa los estilos CSS
 
 export default function Shopping() {
-    const compras = [
-        {
-            fecha: "12/05/2024",
-            estado: "Pendiente de envío",
-            nombre: "Producto A",
-            descripcion: "Descripción del producto A",
-            imagen: "https://blog.lexmed.com/images/librariesprovider80/blog-post-featured-images/shutterstock_1896755260.tmb-medium.jpg?sfvrsn=52546e0a_1"
-        },
-        {
-            fecha: "10/05/2024",
-            estado: "En tránsito",
-            nombre: "Producto B",
-            descripcion: "Descripción del producto B",
-            imagen: "https://blog.lexmed.com/images/librariesprovider80/blog-post-featured-images/shutterstock_1896755260.tmb-medium.jpg?sfvrsn=52546e0a_1"
-        },
-        {
-            fecha: "05/05/2024",
-            estado: "Entregado",
-            nombre: "Producto C",
-            descripcion: "Descripción del producto C",
-            imagen: "https://blog.lexmed.com/images/librariesprovider80/blog-post-featured-images/shutterstock_1896755260.tmb-medium.jpg?sfvrsn=52546e0a_1"
-        }
-    ];
+    const [compras, setCompras] = React.useState([]);
+
+
+    //traer las compras del usuario
+    React.useEffect(() => {
+        
+        fetch(`http://localhost:4000/api/ordenes/usuario/${localStorage.getItem("id")}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setCompras(data.body);
+            })
+            .catch((error) => console.error(error));
+    }, []);
 
     const getColorForEstado = (estado) => {
         switch (estado) {
@@ -39,20 +29,26 @@ export default function Shopping() {
         }
     };
 
+    // Redirigir al producto para volver a comprar
+
+    const volverAComprar = (idProducto) => {
+        window.location.href = `/ProductDet/${idProducto}`;
+    }
+
+
     return (
         <div id='container-compras'>
             {compras.map((compra, index) => (
                 <div key={index} id="container-producto">
                     <div className="item-content">
-                        <img src={compra.imagen} alt="img-producto" />
+                        <img src={compra.Ruta_img_producto} alt="img-producto" />
                         <div className="item-text">
-                            <p id='fecha'>{compra.fecha}</p>
-                            <p id='estado' style={{ color: getColorForEstado(compra.estado) }}>{compra.estado}</p>
+                            <p id='fecha'>{compra.FechaHora_orden}</p>
+                            <p id='estado' style={{ color: getColorForEstado(compra.Estado) }}>{compra.Estado}</p>
                             <hr id='estilo-linea'></hr>
-                            <p id='nombre-producto'>{compra.nombre}</p>
-                            <p id='descripcion-producto'>{compra.descripcion}</p>
-                            <button type="button" id="boton-compras" value="ver-compra">Ver compra</button>
-                            <button type="button" id="boton-compras" value="volver-a-comprar">Volver a comprar</button>
+                            <p id='nombre-producto'>{compra.Nombre_producto}</p>
+                            <p id='descripcion-producto'>{compra.Descripcion_breve_producto}</p>
+                            <button type="button" id="boton-compras" value="volver-a-comprar" onClick={() => volverAComprar(compra.ID_Producto)}>Volver a comprar</button>
                         </div>
                     </div>
                 </div>

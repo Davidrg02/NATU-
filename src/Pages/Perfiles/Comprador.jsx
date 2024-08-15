@@ -144,7 +144,7 @@ export default function Comprador() {
       <div id="register-container">
         <img src="Natu_Logo_.png" alt="image" />
         <Form noValidate validated={validated} onSubmit={handleSubmit} id='register-form'>
-          <h3>Datos personales del comprador</h3>
+          <h3>Mis datos personales</h3>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom01">
               <Form.Label>Nombres</Form.Label>

@@ -84,6 +84,9 @@ export default function Header() {
                                     </NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Item>
+                                    <Link className='nav-link' to="/shopping" >Mis compras</Link>
+                                </Nav.Item>
+                                <Nav.Item>
                                     <Link className='nav-link' to="/about" >Nosotros</Link>
                                 </Nav.Item>
                                 &nbsp;

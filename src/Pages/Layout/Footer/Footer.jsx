@@ -42,6 +42,9 @@ export default function Footer() {
               <Link to="/contact" className="text-reset">Contáctanos</Link>
             </li>
             <li>
+              <Link to="/encuesta" className="text-reset">Califícanos</Link>
+            </li>
+            <li>
               <a href="#" onClick={handleShowTermsModal}>Términos y condiciones</a>
               <Modal 
                 show={showTermsModal} 

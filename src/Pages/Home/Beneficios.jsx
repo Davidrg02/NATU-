@@ -4,6 +4,11 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 
 export default function Beneficios() {
+
+  function handleClick() {
+    window.location.href = "https://www.gmail.com/";
+  }
+
   return (
     <div className="beneficios-container">
       <h2 className="beneficios-titulo">¡Beneficios que ofrecen nuestros productos orgánicos!</h2>
@@ -37,6 +42,11 @@ export default function Beneficios() {
           <img src="https://cdn.pixabay.com/photo/2016/10/07/13/36/tangerines-1721590_1280.jpg" alt="Sabrosos" />
           <h3>Sabrosos</h3>
           <p>Disfruta de una gran variedad de sabores y texturas.</p>
+        </li>
+        <li className="beneficio-item animate__animated animate__fadeInUp" onClick={handleClick} style={{cursor: 'pointer'}}>
+          <img src="https://cdn-icons-png.flaticon.com/512/2721/2721511.png" alt="Sabrosos" />
+          <h3>Click aquí</h3>
+          <p>Y pauta con nosotros</p>
         </li>
       </div>
       <Link to="/products" className="beneficios-boton">

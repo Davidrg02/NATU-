@@ -68,19 +68,19 @@ export default function Header() {
                                 </Nav.Item>
                                 <NavDropdown title="Categorías" id="navbarScrollingDropdown">
                                     <NavDropdown.Item>
-                                        <Link className="dropdown-item" to="/products/food">Alimentos</Link>
+                                        <Link className="dropdown-item" to="/products/category/food">Alimentos</Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Item>
-                                        <Link className="dropdown-item" to="/products/personal-care">Cuidado personal</Link>
+                                        <Link className="dropdown-item" to="/products/category/personal-care">Cuidado personal</Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Item >
-                                        <Link className="dropdown-item" to="/products/home">Productos para el hogar</Link>
+                                        <Link className="dropdown-item" to="/products/category/home">Productos para el hogar</Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Item >
-                                        <Link className="dropdown-item" to="/products/supplements">Suplementos dietéticos</Link>
+                                        <Link className="dropdown-item" to="/products/category/supplements">Suplementos dietéticos</Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Item >
-                                        <Link className="dropdown-item" to="/products/garden">Cuidado del jardín</Link>
+                                        <Link className="dropdown-item" to="/products/category/garden">Cuidado del jardín</Link>
                                     </NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Item>
@@ -122,19 +122,19 @@ export default function Header() {
                                 </Nav.Item>
                                 <NavDropdown title="Categorías" id="navbarScrollingDropdown">
                                     <NavDropdown.Item>
-                                        <Link className="dropdown-item" to="/products/food">Alimentos</Link>
+                                        <Link className="dropdown-item" to="/products/category/food">Alimentos</Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Item>
-                                        <Link className="dropdown-item" to="/products/personal-care">Cuidado personal</Link>
+                                        <Link className="dropdown-item" to="/products/category/personal-care">Cuidado personal</Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Item >
-                                        <Link className="dropdown-item" to="/products/home">Productos para el hogar</Link>
+                                        <Link className="dropdown-item" to="/products/category/home">Productos para el hogar</Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Item >
-                                        <Link className="dropdown-item" to="/products/supplements">Suplementos dietéticos</Link>
+                                        <Link className="dropdown-item" to="/products/category/supplements">Suplementos dietéticos</Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Item >
-                                        <Link className="dropdown-item" to="/products/garden">Cuidado del jardín</Link>
+                                        <Link className="dropdown-item" to="/products/category/garden">Cuidado del jardín</Link>
                                     </NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Item>

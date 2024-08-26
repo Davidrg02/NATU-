@@ -127,9 +127,30 @@
   
   text-align: center;
 }
-#git{
+
+.giro {
+  transition: transform 1s linear; /* Transición suave */
   color:#181717;
 }
+
+.giro:hover {
+  transform: rotate(360deg); /* Rotación al hacer hover */
+}
+
+.giro:hover {
+  animation: rotateAnimation 5s linear infinite; 
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg); 
+  }
+  100% {
+    transform: rotate(360deg); 
+  }
+}
+
+
 #team-member2 a {
   display: inline-block;
   color: #323334;
@@ -202,6 +223,7 @@
   height: 235px;
   margin-top: 38px;
 }
+
 
 
 

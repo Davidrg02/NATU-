@@ -19,7 +19,6 @@ export default function RegisterSeller() {
     // Datos Personales
     const [Nombres, setNombres] = useState(''); // Agregué el estado Nombres
     const [Apellidos, setApellidos] = useState(''); // Agregué el estado Apellidos
-    const [Nombre_tienda, setNombre_tienda] = useState(''); // Agregué el estado Nombre_tienda
     const [Documento, setDocumento] = useState(null); // Agregué el estado Documento
     const [Email, setEmail] = useState(''); // Agregué el estado Email
     const [Telefono, setTelefono] = useState(null); // Agregué el estado Telefono
@@ -27,6 +26,7 @@ export default function RegisterSeller() {
 
     // Datos de la Dirección
 
+    const [Nombre_tienda, setNombre_tienda] = useState(''); // Agregué el estado Nombre_tienda
     const [Departamento, setDepartamento] = useState(''); // Agregué el estado Departamento
     const [Municipio, setMunicipio] = useState(''); // Agregué el estado Municipio
     const [Direccion, setDireccion] = useState(''); // Agregué el estado Direccion
@@ -160,7 +160,69 @@ export default function RegisterSeller() {
     //-- Conexion con la API para el registro de un usuario --//
 
     const registerUser = async () => {
-        toast.info('Registrando usuario...')
+        const data = {
+            Nombres_vendedor: Nombres,
+            Apellidos_vendedor: Apellidos,
+            Documento_vendedor: Documento,
+            Correo_usuario: Email,
+            Telefono_vendedor: Telefono,
+            FechaNacimiento_vendedor: FechaNacimiento,
+            Nombre_tienda: Nombre_tienda,
+            Departamento: Departamento,
+            MUNICIPIO_ID_Municipio: Municipio,
+            Direccion: Direccion,
+            Descripcion_adicional: Descripcion,
+            Contraseña_encriptada: Password
+        };
+
+        fetch(`${api_url}/vendedores`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error === false) {
+                clearForm();
+                toast.success(data.body);
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 3000);
+            } else {
+                if (data.body.includes('Duplicate entry')) {
+                    console.error('Error:', data.body);
+                    toast.error('El correo electrónico ingresado ya se encuentra registrado.');
+                } else {
+                    console.error('Error:', data.body);
+                    toast.error('Ocurrió un error al intentar registrarte. Por favor intenta nuevamente.');
+                }
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            toast.error('Ocurrió un error al intentar registrarte. Por favor intenta nuevamente.');
+        });
+    };
+
+    // Función para limpiar el formulario
+
+    const clearForm = () => {
+        setNombres('');
+        setApellidos('');
+        setDocumento(null);
+        setEmail('');
+        setTelefono(null);
+        setFechaNacimiento(null);
+        setNombre_tienda('');
+        setDepartamento('');
+        setMunicipio('');
+        setDireccion('');
+        setDescripcion('');
+        setPassword('');
+        setConfirmPassword('');
+        setValidated(false);
     };
 
   return (

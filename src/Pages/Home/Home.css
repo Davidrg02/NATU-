@@ -18,7 +18,7 @@
   border-radius: 20px;
   background-color: lavender;
   margin-top: 40px;
-  max-width: 45%; /* Establece un ancho máximo para el contenedor */
+  max-width: 48%; /* Establece un ancho máximo para el contenedor */
 }
 
 .home-page-text-container {
@@ -29,19 +29,22 @@
 /* Estilos del título principal */
 .home-page-title {
   font-family: var(--font-family-text); 
-  font-size: clamp(3vw, 3.5vw, 2.5rem); 
+  font-size: clamp(2.8vw, 5vw, 2.5rem); 
   line-height: 1.1; 
   color: #33784a;
   margin-bottom: 2vw; 
   font-weight: bold; 
+  text-align: right;
 }
 
 /*Estilos del párrafo principal */
 .home-page-description {
-  font-size: clamp(1.2vw, 2.8vw, 1rem); 
+  font-size: clamp(1.3vw, 3.4vw, 1.3rem);
   line-height: 1.5; 
   color: #828282;
   margin-bottom: 2vw; 
+  text-align: right;
+  
 }
 
 /* Estilos botón principal */
@@ -49,7 +52,7 @@
   display: inline-block; /* Cambiado a inline-block para permitir el ajuste del ancho */
   padding: 1.1vw 2.5vw; /* Ajusta el relleno del botón en función del tamaño de la pantalla */
   border-radius: 2rem; /* Redondea los bordes del botón */
-  font-size: clamp(0.8rem, 1.5vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
   font-weight: 500;
   color: white;
   outline: none;
@@ -57,6 +60,7 @@
   text-decoration: none;
   background: #EB6613;
   margin: 0 auto;
+  margin-bottom: 2px;
   transition: background-color 0.3s ease; /* Transición suave del color de fondo */
 
   /* Animación al pasar el cursor */
@@ -136,7 +140,7 @@
 }
 
 
-/* Estilos para el contenedor Acerca */
+/* Estilos para el contenedor 2 */
 .container-2 {
   display: flex;
   flex-wrap: wrap; 
@@ -158,23 +162,27 @@
 
 .home-page-text-container-2 {
   text-align: left; 
+  margin-left: 8px;
 }
 
 /* Título del 2do contenedor */
 .home-page-title-2 {
-  font-size: clamp(3vw, 3.5vw, 2.5rem);  
+  font-family: var(--font-family-text);
+  font-size: clamp(2.8vw, 5vw, 2.5rem);  
   line-height: 1.1; 
   color: #d25925;
   margin-bottom: 2vw; 
   font-weight: bold; 
+  text-align: left;
 } 
 
 /* Texto del contenedor 2*/
 .home-page-description-2 {
-  font-size: clamp(1.2vw, 2.8vw, 1rem);
+  font-size: clamp(1.3vw, 3.4vw, 1.3rem);
   line-height: 1.5;
   color: #828282;
   margin-bottom: 2vw;
+  text-align: left;
 }
 
 /* Botón 2 */
@@ -182,7 +190,7 @@
   display: inline-block; /* Cambiado a inline-block para permitir el ajuste del ancho */
   padding: 1.1vw 2.5vw; /* Ajusta el relleno del botón en función del tamaño de la pantalla */
   border-radius: 2rem; /* Redondea los bordes del botón */
-  font-size: clamp(0.8rem, 1.5vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
   font-weight: 500;
   color: white;
   outline: none;
@@ -190,6 +198,7 @@
   text-decoration: none;
   background: #EB6613;
   margin: 0 auto;
+  margin-bottom: 25px;
   transition: background-color 0.3s ease; /* Transición suave del color de fondo */
   
 
@@ -287,7 +296,7 @@
   background-color: #EAF2E8; /* Asegúrate de utilizar el formato correcto de color (#) */
   width: 100%; /* Utilizamos porcentaje (%) para el ancho */
   max-width: 1000px;
-  margin: 150px auto; /* Centramos el contenedor vertical y horizontalmente */
+  margin: 120px auto; /* Centramos el contenedor vertical y horizontalmente */
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(16, 15, 15, 0.1);
   overflow: hidden; /* Contener imágenes que sobresalen */
@@ -319,7 +328,7 @@
 }
 
 .beneficios-titulo {
-  font-size: 1.8rem;
+  font-size: clamp(2.85vw, 5vw, 2.5rem);
   font-weight: 650;
   text-align: center;
   margin-bottom: 2rem;
@@ -424,13 +433,15 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-.titulo-ProductosVista{
+.productos-titulo{
   font-family: var(--font-family-text) ;
   font-weight: bold;
   text-align: center;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
   color: #39884d; /* Color del título */
 }
+
 
 .productos-grid {
   display: grid;

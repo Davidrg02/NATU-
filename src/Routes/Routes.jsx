@@ -24,6 +24,15 @@ import Soporte  from "../Pages/Soporte/Soporte.jsx";
 import Contact  from "../Pages/Contact/Contact.jsx";
 import Encuesta from "../Pages/Encuesta/Encuesta.jsx";
 
+
+import Campo from "../Pages/Home/Beneficios/Campo.jsx";
+import Locales from "../Pages/Home/Beneficios/Locales.jsx";
+import Saludables from "../Pages/Home/Beneficios/Saludables.jsx";
+import Frescos from "../Pages/Home/Beneficios/Frescos.jsx";
+import Nutritivos from "../Pages/Home/Beneficios/Nutritivos.jsx";
+import Prevenir from "../Pages/Home/Beneficios/Prevenir.jsx";
+
+
 import Carrito from "../Pages/Carrito/Carrito.jsx";
 import Checkout from "../Pages/Carrito/Checkout/Checkout.jsx";
 
@@ -50,6 +59,16 @@ export default function Routing() {
             <Route path="checkout" element={<Checkout />} />
             <Route path="comprador" element={<Comprador />} />
             <Route path="vendedor" element={<Vendedor />} />
+
+           
+            <Route path="campo" element={<Campo />} />
+            <Route path="locales" element={<Locales />} />
+            <Route path="saludables" element={<Saludables />} />
+            <Route path="frescos" element={<Frescos />} />
+            <Route path="nutritivos" element={<Nutritivos />} />
+            <Route path="prevenir" element={<Prevenir />} />
+           
+
             {/* Rutas protegidas */}
             <Route path="seller" element = {<PrivateRoute roles={["Vendedor"]} />}>
               <Route path="my-products" element={<VendedorProducts />} exact/>

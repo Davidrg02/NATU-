@@ -388,6 +388,14 @@
   margin-top: 1rem;
 }
 
+.beneficio-description{
+  font-size: 0.89rem; /* Reduced paragraph size */
+  font-weight: 400;
+  color: #666; /* Lighter text */
+  line-height: 1.3;
+  margin-top: 1rem;
+}
+
 .beneficios-boton {
   display: flex;
   justify-content: center;

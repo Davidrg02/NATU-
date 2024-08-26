@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Beneficios from './Beneficios';
 import ProductosVista from '../Catalog/ProductosVista';
 
+
 export default function Inicio() {
   return (
     <div className='home-container'>
@@ -14,7 +15,7 @@ export default function Inicio() {
       <div className="home-page-container">
         <div className="home-page-text-container">
           <h1 className="home-page-title animate__animated animate__fadeInUp">
-            ¿Quieres nutrir tu cuerpo y mente con productos colombianos orgánicos?
+            ¿Quieres nutrir tu cuerpo con productos colombianos orgánicos?
           </h1>
           <p className="home-page-description animate__animated animate__fadeIn">
             En Natu Tienda Orgánica encontrarás una gran variedad de productos de alta calidad, cultivados y fabricados por productores locales de pueblos de toda Colombia. 

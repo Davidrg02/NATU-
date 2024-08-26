@@ -1,0 +1,90 @@
+.articulos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(7, 176, 35, 0.308);
+    background-image: linear-gradient(to bottom, #f9f6f1, #d1dcd2);
+    animation: backgroundAnimation 5s linear infinite;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+#articulos-contexto {
+    max-width: 900px;
+    text-align: justify;
+}
+
+#articulos-titulo {
+    font-family: 'Yeseva One', sans-serif;
+    font-size: clamp(2.2vw, 5vw, 1.5rem);
+    font-weight: bold;
+    color: #33784acf;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.articulos-imagen{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px; 
+    box-shadow: 0 2px 5px rgba(7, 176, 35, 0.308);
+    
+}
+
+.articulos-descripcion {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.2vw, 2.8vw, 1rem);
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.articulos-video{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px; 
+    box-shadow: 0 2px 5px rgba(7, 176, 35, 0.308);
+}
+
+.articulos-boton {
+    display:flex; /* Cambiado a inline-block para permitir el ajuste del ancho */
+    padding: 1.1vw 2.5vw; /* Ajusta el relleno del botón en función del tamaño de la pantalla */
+    border-radius: 2rem; /* Redondea los bordes del botón */
+    font-size: clamp(0.9rem, 1.5vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
+    font-weight: 500;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    background: #EB6613;
+    margin: 0 auto;
+    margin-bottom: 2px;
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+    max-width: 400px;
+    text-align: center;
+
+
+  /* Animación al pasar el cursor */
+  animation: pulse 1s infinite alternate; 
+}
+
+.articulos-boton:hover {
+    background-color: #8a451e;
+}

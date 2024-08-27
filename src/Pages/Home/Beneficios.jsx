@@ -12,16 +12,18 @@ export default function Beneficios() {
   return (
     <div className="beneficios-container">
       <h2 className="beneficios-titulo">¡Beneficios que ofrecen nuestros productos orgánicos!</h2>
-      <div className="beneficios-lista">
-        <li className="beneficio-item animate__animated animate__fadeInUp">
-          <img src="https://cdn.pixabay.com/photo/2014/09/09/19/07/corn-field-440338_1280.jpg" alt="Cultivados en el campo" />
-          <h3>Cultivados en el campo</h3>
-          <p>Productos orgánicos para tu bienestar y el del tu familia.</p>
-        </li>
+      <div className="beneficios-lista" styles={{textDecoration:"none"}}>
+        <Link to="/articulo1" className="beneficio-item-link" styles={{textDecoration:"none"}}>
+          <li className="beneficio-item animate__animated animate__fadeInUp">
+            <img src="https://cdn.pixabay.com/photo/2014/09/09/19/07/corn-field-440338_1280.jpg" alt="Cultivados en el campo" />
+            <h3>Cultivados en el campo</h3>
+            <p>Productos orgánicos para tu bienestar y el del tu familia.</p>
+          </li>
+        </Link>
         <li className="beneficio-item animate__animated animate__fadeInUp">
           <img src="https://cdn.pixabay.com/photo/2017/08/28/19/12/international-2690990_1280.jpg" alt="Productos locales" />
           <h3>Productos Locales</h3>
-          <p>Apoyamos la economía local colombiana </p>
+          <p>Apoyamos la economía local colombiana</p>
         </li>
         <li className="beneficio-item animate__animated animate__fadeInUp">
           <img src="https://cdn.pixabay.com/photo/2017/09/16/19/21/salad-2756467_1280.jpg" alt="Saludables" />
@@ -54,4 +56,4 @@ export default function Beneficios() {
       </Link>
     </div>
   );
-};
+}

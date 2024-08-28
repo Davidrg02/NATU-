@@ -27,8 +27,6 @@ import Encuesta from "../Pages/Encuesta/Encuesta.jsx";
 import Carrito from "../Pages/Carrito/Carrito.jsx";
 import Checkout from "../Pages/Carrito/Checkout/Checkout.jsx";
 
-import Articulo1 from "../Pages/Articulos/Articulo1.jsx";
-
 export default function Routing() {
 
 
@@ -63,7 +61,6 @@ export default function Routing() {
             <Route path="Contact" element={<Contact />} />
             <Route path="Sales" element={<Sales />} />
             <Route path="Encuesta" element={<Encuesta />} />
-            <Route path="articulo1" element={<Articulo1 />} />
           </Route>
         </Routes>
       </BrowserRouter>

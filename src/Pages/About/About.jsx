@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css'; // Importar archivo CSS
+import './About.css'; 
 
 
 export default function About(){
@@ -79,7 +79,7 @@ export default function About(){
 
         
 
-        {/* Agregar más miembros del equipo aquí */}
+        
       </div>
     </div>
   </div>

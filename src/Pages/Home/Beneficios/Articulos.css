@@ -1,10 +1,9 @@
 .articulos-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
+    width: 100%;
+    margin: 50px auto 150px;
+    padding: 15px;
     border: 1px solid #cccccc;
     border-radius: 15px;
     box-shadow: 0 2px 5px rgba(7, 176, 35, 0.308);
@@ -24,25 +23,31 @@
 #articulos-contexto {
     max-width: 900px;
     text-align: justify;
+    margin: 0 auto;
+}
+
+#articulos-imagen-container {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#img-centrada-articulo {
+    width: auto;
+    height: 335px;
+    box-shadow: 0 2px 5px rgba(7, 176, 35, 0.308);
 }
 
 #articulos-titulo {
     font-family: 'Yeseva One', sans-serif;
-    font-size: clamp(2.2vw, 5vw, 1.5rem);
+    font-size: clamp(2.8vw, 5vw, 2.5rem);
+    line-height: 1.1;
+    color: #33784a;
+    margin-bottom: 2vw;
     font-weight: bold;
-    color: #33784acf;
-    margin-bottom: 20px;
     text-align: center;
-}
-
-.articulos-imagen{
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    margin-top: 40px;
-    margin-bottom: 40px; 
-    box-shadow: 0 2px 5px rgba(7, 176, 35, 0.308);
-    
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .articulos-descripcion {
@@ -50,21 +55,14 @@
     font-size: clamp(1.2vw, 2.8vw, 1rem);
     line-height: 1.5;
     color: #666;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 15px;
     text-align: justify;
 }
 
-.articulos-video{
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    margin-top: 40px;
-    margin-bottom: 40px; 
-    box-shadow: 0 2px 5px rgba(7, 176, 35, 0.308);
-}
-
 .articulos-boton {
-    display:flex; /* Cambiado a inline-block para permitir el ajuste del ancho */
+    display: flex;
     padding: 1.1vw 2.5vw; /* Ajusta el relleno del botón en función del tamaño de la pantalla */
     border-radius: 2rem; /* Redondea los bordes del botón */
     font-size: clamp(0.9rem, 1.5vw, 1.3rem); /* Ajusta el tamaño de la fuente del botón según el ancho de la pantalla */
@@ -73,18 +71,30 @@
     outline: none;
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
+    align-items: center;
     background: #EB6613;
     margin: 0 auto;
     margin-bottom: 2px;
-    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
     max-width: 400px;
-    text-align: center;
-
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
 
   /* Animación al pasar el cursor */
-  animation: pulse 1s infinite alternate; 
+     animation: pulse 1s infinite alternate; 
 }
 
 .articulos-boton:hover {
-    background-color: #8a451e;
+    background-color: #d9540f;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #articulos-contexto {
+        padding: 0 10px;
+    }
+
+    #img-centrada-articulo {
+        height: auto;
+        width: 100%;
+    }
 }

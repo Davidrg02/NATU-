@@ -5,12 +5,10 @@ import './Articulos.css';
 export default function Nutritivos() {
     return (
         <div className="articulos-container">
-            
             <div id="articulos-contexto">
                 <h2 id="articulos-titulo">Beneficios de consumir alimentos ricos en vitaminas, minerales y antioxidantes</h2>
-                 {/* Imagen */}
-                 <div className="articulos-imagen">
-                    <img src="https://img.freepik.com/foto-gratis/vista-superior-frutas-verduras-frescas-diferentes-medicamentos-cuchara-madera_181624-47137.jpg?t=st=1724643056~exp=1724646656~hmac=ab049b5c5d1d08c42f0abe55f3a960dd1e27d43c8a6c84672cc72b27b0fa1e17&w=740" alt="Alimentos ricos en vitaminas y minerales" />
+                <div id="articulos-imagen-container">
+                    <img src="https://img.freepik.com/foto-gratis/vista-superior-frutas-verduras-frescas-diferentes-medicamentos-cuchara-madera_181624-47137.jpg?t=st=1724643056~exp=1724646656~hmac=ab049b5c5d1d08c42f0abe55f3a960dd1e27d43c8a6c84672cc72b27b0fa1e17&w=740" alt="Alimentos ricos en vitaminas y minerales" id="img-centrada-articulo" />
                 </div>
                 <p className="articulos-descripcion">
                     Los alimentos ricos en vitaminas, minerales y antioxidantes son fundamentales para mantener una salud óptima y prevenir enfermedades. En un mundo en el que la comida rápida y los productos procesados dominan las estanterías, es crucial recordar que el cuerpo humano necesita una variedad de nutrientes para funcionar correctamente. A continuación, explicaremos los principales beneficios de consumir alimentos que están llenos de estos valiosos compuestos.
@@ -36,12 +34,7 @@ export default function Nutritivos() {
                 <p className="articulos-descripcion">
                     En resumen, una dieta rica en vitaminas, minerales y antioxidantes no solo proporciona los nutrientes necesarios para el funcionamiento diario, sino que también protege al cuerpo contra enfermedades crónicas, promueve una piel y cabello saludables, y mejora la calidad de vida en general.
                 </p>
-
-                 {/* Video */}
-                 <div className="articulos-video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=uVUyMxMzO8E" title="Vitaminas y Minerales. Las combinaciones más poderosas! - Dr. Jairo Noreña" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                </div>
-
+                
                 <Link to="/products" className="articulos-boton">Descubre nuestros productos</Link>
             </div>
         </div>

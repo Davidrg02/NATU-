@@ -40,8 +40,8 @@ export default function Beneficios() {
         </Link>
         <Link to="/prevenir" className="beneficio-item animate__animated animate__fadeInUp">
           <img src="https://cdn.pixabay.com/photo/2016/10/07/13/36/tangerines-1721590_1280.jpg" alt="Sabrosos" />
-          <h3>Sabrosos</h3>
-          <p>Disfruta de una gran variedad de sabores y texturas.</p>
+          <h3>Prevenir es curar</h3>
+          <p>Ayudan a prevenir algunas enfermedades</p>
         </Link>
         <li className="beneficio-item animate__animated animate__fadeInUp" onClick={handleClick} style={{cursor: 'pointer'}}>
           <img src="https://cdn-icons-png.flaticon.com/512/2721/2721511.png" alt="Sabrosos" />

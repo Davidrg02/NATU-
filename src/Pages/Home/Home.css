@@ -358,6 +358,7 @@
   text-align: center;
   transition: 0.2s;
   border: none; /* Removed border */
+  text-decoration: none;
 }
 
 .beneficio-item:hover {

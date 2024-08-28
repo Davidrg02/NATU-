@@ -54,7 +54,7 @@ export default function About(){
         </div>
 
         <div id="team-member2">
-          <img src="https://media.licdn.com/dms/image/v2/D4E03AQF8RrWqImrATw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721868685516?e=1729123200&v=beta&t=jntpQLLMTiH378PSMDfoRVG4jGHrB96XavL7j_sz2Aw" alt="Integrante 4" />
+          <img src="https://media.licdn.com/dms/image/v2/D4E03AQE45_Vg-VZWHg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724764046475?e=1730332800&v=beta&t=GH23xjl1WwvQe94Jv9Da3FB6wfndFp38QOwf72Ilu-Q" alt="Integrante 4" />
           <h3 >Brayan Maldonado</h3>
           <p>Desarrollador Frontend</p>
           <a href="https://github.com/BryanSantiagoo" target="_blank" rel="noreferrer" className='giro' style={{ fontSize: '1.8em' }}>

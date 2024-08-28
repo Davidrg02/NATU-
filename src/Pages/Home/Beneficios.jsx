@@ -39,7 +39,7 @@ export default function Beneficios() {
           <p>Ricos en vitaminas, minerales y antioxidantes.</p>
         </Link>
         <Link to="/prevenir" className="beneficio-item animate__animated animate__fadeInUp">
-          <img src="https://cdn.pixabay.com/photo/2016/10/07/13/36/tangerines-1721590_1280.jpg" alt="Sabrosos" />
+          <img src="https://cdn.pixabay.com/photo/2022/01/10/12/49/fruit-6928241_1280.jpg" alt="Sabrosos" />
           <h3>Prevenir es curar</h3>
           <p>Ayudan a prevenir algunas enfermedades</p>
         </Link>

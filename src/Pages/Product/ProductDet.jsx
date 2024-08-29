@@ -4,6 +4,9 @@ import { BsCart4 } from "react-icons/bs";
 import { BsCartCheckFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';;
+
 
 export default function ProductDet() {
   const api_url = process.env.REACT_APP_API_URL;
@@ -21,6 +24,7 @@ export default function ProductDet() {
 
   // Cantidad de productos a comprar
   const [Cantidad, setCantidad] = useState(1);
+
 
   //Funcion para hacer visible el boton de ver carrito
   const [mostrarVerCarrito, setMostrarVerCarrito] = useState(false); 
@@ -49,10 +53,10 @@ export default function ProductDet() {
     .then(response => response.json())
     .then(data => {
         if (data.error) {
-          alert(data.error);
+          toast.error(data.error);
           return console.error(data.error);
         }
-        alert('Producto añadido al carrito');
+        toast.success('Producto añadido al carrito');
         setMostrarVerCarrito(true); // Mostrar el enlace para ver el carrito después de hacer clic en el botón
     })
     .catch(error => {
@@ -71,8 +75,9 @@ export default function ProductDet() {
         if (data.error) {
           return console.error(data.error);
         }
+        console.log(data.body[0]);
         setProducto(data.body[0]);
-        fetchproductosRelacionados()
+        fetchproductosRelacionados(data.body[0].CATEGORIA_ID_Categoria)
     })
     .catch(error => {
         console.error('There was an error!', error);
@@ -80,8 +85,8 @@ export default function ProductDet() {
 
   };
 
-  const fetchproductosRelacionados = () => {
-    fetch(`${api_url}/productos`)
+  const fetchproductosRelacionados = (cat) => {
+    fetch(`${api_url}/productos/categoria/${cat}`) // Se obtienen los productos de la misma categoría
     .then(response => response.json())
     .then(data => {
         if (data.error) {
@@ -108,6 +113,7 @@ export default function ProductDet() {
   
   return (
     <div className="contenedor-1">
+        <ToastContainer position='bottom-right'/>
         <div className="producto-detalle">
             <div className="producto-imagen-det">
                 <img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} />
@@ -152,12 +158,12 @@ export default function ProductDet() {
             <h3 className="productos-titulo">Productos Relacionados</h3>
             <div className="productos-grid">
                 {productosRelacionados.map(producto => (
-                    <Link to={`/ProductDet/${producto.ID_Producto}`} className="producto-item" key={producto.ID_Producto} style={{textDecoration:'none'}}>
+                    <a href={`/ProductDet/${producto.ID_Producto}`} className="producto-item" key={producto.ID_Producto} style={{textDecoration:'none'}}>
                         <img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} className="producto-imagen" />
                         <h3 className='producto-nombre'>{producto.Nombre_producto}</h3>
                         <p className="producto-descripcion">{producto.Descripcion_breve_producto}</p>
                         <span className="producto-precio">${producto.Precio_producto}</span>
-                    </Link>
+                    </a>
                 ))}
             </div>
         </div>

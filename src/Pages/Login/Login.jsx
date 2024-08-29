@@ -70,6 +70,7 @@ export default function Login() {
 
     return (
             <div className='register-container' id="login">
+                <ToastContainer position='bottom-right'/>
                 <div id="background">
                     <div id="shape"></div>
                     <div id="shape"></div>

@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { BsTrashFill } from 'react-icons/bs';
 import { useEffect } from 'react';
 import "../VistaCarrito/VistaCarrito.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 initMercadoPago('TEST-c20b6352-d9af-4493-9fbf-769df6cc21c8');
@@ -76,10 +78,10 @@ export default function Carrito() {
         .then(response => response.json())
         .then(data => {
             if (data.error) {
-              alert(data.body);
+              toast.error(data.body);
               return console.error(data.body);
             }
-            alert('Producto eliminado del carrito')
+            toast.success('Producto eliminado del carrito')
             fetchProduct();
         })
         .catch(error => {
@@ -118,7 +120,10 @@ export default function Carrito() {
         const dataBody = {
             title : producto.Nombre_producto,
             unit_price : producto.Precio_producto,
-            quantity : producto.Cantidad
+            quantity : producto.Cantidad,
+            idComprador : idUser,
+            idProducto : producto.ID_Producto,
+            subtotal :  producto.Precio_producto * producto.Cantidad
         };
 
         console.log(dataBody);
@@ -144,6 +149,7 @@ export default function Carrito() {
 
     return (
         <div className="contenedor-1">
+            <ToastContainer position='bottom-right'/>
             <div className="producto-detalle-carrito">
                 <div className="producto-informacion-carrito">
                     <div className="info-productos">

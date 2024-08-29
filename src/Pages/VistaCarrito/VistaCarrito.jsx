@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsTrashFill } from 'react-icons/bs';
 import { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Carrito = () => {
@@ -108,10 +110,10 @@ const Carrito = () => {
     .then(response => response.json())
     .then(data => {
         if (data.error) {
-          alert(data.body);
+          toast.error(data.body);
           return console.error(data.body);
         }
-        alert('Producto eliminado del carrito')
+        toast.success('Producto eliminado del carrito')
         fetchProduct();
     })
     .catch(error => {
@@ -121,6 +123,7 @@ const Carrito = () => {
 
   return (
     <div className="contenedor-1">
+      <ToastContainer position='bottom-right'/>
       <div className="producto-detalle-carrito">
         <div className="producto-informacion-carrito">
           <div className="info-productos">

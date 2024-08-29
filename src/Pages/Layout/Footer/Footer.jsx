@@ -104,6 +104,7 @@ export default function Footer() {
         </nav>
       </div>
       <div className="container">
+        <p className="text-center mb-0 mt-2 fw-bold fs-7 mb-2">natutiendaorganica@gmail.com</p>
         <p className="text-center mb-0 mt-2 fw-bold fs-7 mb-2">Realizado por el equipo Natu</p>
       </div>
     </footer>

@@ -17,18 +17,18 @@ export default function Footer() {
   const handleCloseTermsModal = () => setShowTermsModal(false);
 
   return (
-    <footer className="footer py-3 shadow-lg bg-light">  {/* Added class 'footer' */}
+    <footer className="footer py-3 shadow-lg bg-light">  
       <div className="container fontFooter ">
         <nav className="row justify-content-between">
           <Link to="/" className="col-12 col-md-3 d-flex align-items-center justify-content-center">
             <img src="/Natu_Logo_.png" alt="Logo" className="img-fluid" width="150" height="50" />
           </Link>
-          <ul className="col-12 col-md-2 list-unstyled px-3">  {/* Added class 'list-unstyled' */}
-            <li className="footer-section fw-bold fs-7 mb-2">NATU Tienda Orgánica</li>  {/* Added class 'footer-section' */}
+          <ul className="col-12 col-md-2 list-unstyled px-3">  
+            <li className="footer-section fw-bold fs-7 mb-2">NATU Tienda Orgánica</li>  
             <li className="text-justify">Encuentra productos orgánicos de calidad en esta, tu tienda web de confianza</li>
           </ul>
-          <ul className="col-12 col-md-3 list-unstyled px4">  {/* Added class 'list-unstyled' */}
-            <li className="footer-section fw-bold fs-7 mb-2">Enlaces</li>  {/* Added class 'footer-section' */}
+          <ul className="col-12 col-md-3 list-unstyled px4">  
+            <li className="footer-section fw-bold fs-7 mb-2">Enlaces</li>  
             <li>
               <Link to="/" className="text-reset">Inicio</Link>
             </li>
@@ -74,30 +74,24 @@ export default function Footer() {
               <Link to="/Preguntas" className="text-reset">Preguntas Frecuentes</Link>
             </li>
           </ul>
-          <ul className="col-12 col-md-3 list-unstyled px-4 text-center">  {/* Added class 'list-unstyled' */}
-            <li className="footer-section fw-bold fs-7 mb-2">Síguenos</li>  {/* Added class 'footer-section' */}
+          <ul className="col-12 col-md-3 list-unstyled px-4 text-center"> 
+            <li className="footer-section fw-bold fs-7 mb-2">Síguenos</li>  
             <li className="d-flex justify-content-between">
               <a
                 href="https://www.facebook.com/profile.php?id=61557990925535"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="bi bi-facebook" style={{ fontSize: '2rem', color: 'blue' }}></i> {/* Here you can increase the size of the icon */}
+                <i className="bi bi-facebook" style={{ fontSize: '2rem', color: 'blue' }}></i> 
               </a>
               <a
                 href="https://www.instagram.com/_natu_tienda/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="bi bi-instagram" style={{ fontSize: '2rem', color: '#F78DA7' }}></i> {/* Here you can increase the size of the icon */}
+                <i className="bi bi-instagram" style={{ fontSize: '2rem', color: '#F78DA7' }}></i> 
               </a>
-              <a
-                href="https://www.tiktok.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bi bi-tiktok" style={{ fontSize: '2rem', color: 'black' }}></i> {/* Here you can increase the size of the icon*/}
-                 </a>
+             
               <a
                 href="https://www.gmail.com/"
                 target="_blank"

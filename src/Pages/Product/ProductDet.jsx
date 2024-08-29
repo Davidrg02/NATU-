@@ -4,6 +4,7 @@ import { BsCart4 } from "react-icons/bs";
 import { BsCartCheckFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { Category } from '@mui/icons-material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';;
 

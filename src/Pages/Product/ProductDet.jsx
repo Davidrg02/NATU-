@@ -16,6 +16,9 @@ export default function ProductDet() {
   // Buscamos el producto correspondiente al ID
   const [producto, setProducto] = useState(null);
 
+  //Productos relacionados
+  const [productosRelacionados, setProductosRelacionados] = useState([]);
+
   // Cantidad de productos a comprar
   const [Cantidad, setCantidad] = useState(1);
 
@@ -69,12 +72,28 @@ export default function ProductDet() {
           return console.error(data.error);
         }
         setProducto(data.body[0]);
+        fetchproductosRelacionados()
     })
     .catch(error => {
         console.error('There was an error!', error);
     });
 
   };
+
+  const fetchproductosRelacionados = () => {
+    fetch(`${api_url}/productos`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+          return console.error(data.error);
+        }
+        setProductosRelacionados(data.body);
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    }
+    );
+  }
 
   useEffect(() => {
     fetchProduct();
@@ -126,6 +145,20 @@ export default function ProductDet() {
                         Seguir comprando <BsCart4/>
                     </Link>
                 </div>
+            </div>
+        </div>
+        {/* Sección de productos relacionados */}
+        <div className="productos-relacionados">
+            <h3 className="productos-titulo">Productos Relacionados</h3>
+            <div className="productos-grid">
+                {productosRelacionados.map(producto => (
+                    <Link to={`/ProductDet/${producto.ID_Producto}`} className="producto-item" key={producto.ID_Producto} style={{textDecoration:'none'}}>
+                        <img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} className="producto-imagen" />
+                        <h3 className='producto-nombre'>{producto.Nombre_producto}</h3>
+                        <p className="producto-descripcion">{producto.Descripcion_breve_producto}</p>
+                        <span className="producto-precio">${producto.Precio_producto}</span>
+                    </Link>
+                ))}
             </div>
         </div>
     </div>

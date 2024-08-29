@@ -70,6 +70,9 @@ export default function Footer() {
             <li>
               <a href='https://heyzine.com/flip-book/c951be1b87.html'>Manual de usuario</a>
             </li>
+            <li>
+              <Link to="/Preguntas" className="text-reset">Preguntas Frecuentes</Link>
+            </li>
           </ul>
           <ul className="col-12 col-md-3 list-unstyled px-4 text-center">  {/* Added class 'list-unstyled' */}
             <li className="footer-section fw-bold fs-7 mb-2">Síguenos</li>  {/* Added class 'footer-section' */}

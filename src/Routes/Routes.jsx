@@ -23,6 +23,7 @@ import Sales  from "../Pages/Sales/Sales.jsx";
 import Soporte  from "../Pages/Soporte/Soporte.jsx";
 import Contact  from "../Pages/Contact/Contact.jsx";
 import Encuesta from "../Pages/Encuesta/Encuesta.jsx";
+import Preguntas from "../Pages/Preguntas/Preguntas.jsx";
 
 
 import Campo from "../Pages/Home/Beneficios/Campo.jsx";
@@ -59,6 +60,7 @@ export default function Routing() {
             <Route path="checkout" element={<Checkout />} />
             <Route path="comprador" element={<Comprador />} />
             <Route path="vendedor" element={<Vendedor />} />
+            <Route path="Preguntas" element={<Preguntas/>}/>
 
            
             <Route path="campo" element={<Campo />} />

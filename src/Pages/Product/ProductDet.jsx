@@ -4,6 +4,7 @@ import { BsCart4 } from "react-icons/bs";
 import { BsCartCheckFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { Category } from '@mui/icons-material';
 
 export default function ProductDet() {
   const api_url = process.env.REACT_APP_API_URL;
@@ -81,7 +82,7 @@ export default function ProductDet() {
   };
 
   const fetchproductosRelacionados = () => {
-    fetch(`${api_url}/productos`)
+    fetch(`${api_url}/productos/`)
     .then(response => response.json())
     .then(data => {
         if (data.error) {
@@ -149,17 +150,17 @@ export default function ProductDet() {
         </div>
         {/* Sección de productos relacionados */}
         <div className="productos-relacionados">
-            <h3 className="productos-titulo">Productos Relacionados</h3>
-            <div className="productos-grid">
-                {productosRelacionados.map(producto => (
-                    <Link to={`/ProductDet/${producto.ID_Producto}`} className="producto-item" key={producto.ID_Producto} style={{textDecoration:'none'}}>
-                        <img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} className="producto-imagen" />
-                        <h3 className='producto-nombre'>{producto.Nombre_producto}</h3>
-                        <p className="producto-descripcion">{producto.Descripcion_breve_producto}</p>
-                        <span className="producto-precio">${producto.Precio_producto}</span>
-                    </Link>
-                ))}
-            </div>
+          <h3 className="productos-titulo">Productos Relacionados</h3>
+          <div className="productos-grid">
+            {productosRelacionados.map(producto => (
+              <Link to={`/ProductDet/${producto.ID_Producto}`} className="producto-item" key={producto.ID_Producto} style={{textDecoration:'none'}}>
+                <img src={producto.Ruta_img_producto} alt={producto.Nombre_producto} className="producto-imagen" />
+                <h3 className='producto-nombre'>{producto.Nombre_producto}</h3>
+                <p className="producto-descripcion">{producto.Descripcion_breve_producto}</p>
+                <span className="producto-precio">${producto.Precio_producto}</span>
+              </Link>
+            ))}
+          </div>
         </div>
     </div>
 );
